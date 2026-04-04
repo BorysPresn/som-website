@@ -1,0 +1,56 @@
+// ====================
+// BASE COLORS (from design)
+// ====================
+
+// Accent
+$accent-green: #4FAFAF;
+$accent-secondary: #B1B1B1;
+$accent-dark: #8C8C8C;
+$accent-dark-secondary: #575757;
+
+// Neutrals
+$gray: #8C8C8C;
+$gray-dark: #575757;
+
+$bg-dark: #020202;
+$bg-dark-secondary: #030303;
+
+$border-dark: #363636;
+
+$white: #FFFFFF;
+
+
+// ====================
+// SEMANTIC COLORS
+// ====================
+
+// Background
+$bg-main: $bg-dark;
+$bg-section: $bg-dark-secondary;
+
+// Text
+$text-primary: $white;
+$text-secondary: $gray;
+$text-muted: $gray-dark;
+
+// Button (primary)
+$btn-primary-bg: $bg-dark;
+$btn-primary-text: $accent-green;
+
+$btn-primary-bg-hover: $accent-green;
+$btn-primary-text-hover: $bg-dark;
+
+$btn-primary-bg-active: $accent-green;
+$btn-primary-text-active: $bg-dark;
+
+// Input
+$input-bg: transparent;
+$input-border: $border-dark;
+$input-border-focus: $accent-green;
+
+$input-text: $white;
+$input-placeholder: $gray-dark;
+
+// States (уточнить в макете)
+$color-success: #2ECC71; // TODO: confirm
+$color-error: #FF4D4F;   // TODO: confirm
