@@ -3,22 +3,24 @@
 // ====================
 
 // Accent
-$accent-green: #4FAFAF;
-$accent-secondary: #B1B1B1;
-$accent-dark: #8C8C8C;
+$accent-green: #4fafaf;
+$accent-secondary: #b1b1b1;
+$accent-dark: #8c8c8c;
 $accent-dark-secondary: #575757;
+$accent-green-stroke: #51ecda;
 
+$dark-green: #102f2c;
 // Neutrals
-$gray: #8C8C8C;
+$gray: #8c8c8c;
 $gray-dark: #575757;
 
 $bg-dark: #020202;
 $bg-dark-secondary: #030303;
 
 $border-dark: #363636;
+$border-grey: #b0b6be;
 
-$white: #FFFFFF;
-
+$white: #ffffff;
 
 // ====================
 // SEMANTIC COLORS
@@ -33,15 +35,17 @@ $text-primary: $white;
 $text-secondary: $gray;
 $text-muted: $gray-dark;
 
-// Button (primary)
-$btn-primary-bg: $bg-dark;
-$btn-primary-text: $accent-green;
+// Button 
+$btn-primary-bg: $dark-green;
+$btn-primary-text: $accent-green-stroke;
 
-$btn-primary-bg-hover: $accent-green;
+$btn-primary-bg-hover: $accent-green-stroke;
 $btn-primary-text-hover: $bg-dark;
 
 $btn-primary-bg-active: $accent-green;
 $btn-primary-text-active: $bg-dark;
+
+$btn-call-border: $border-grey;
 
 // Input
 $input-bg: transparent;
@@ -52,5 +56,5 @@ $input-text: $white;
 $input-placeholder: $gray-dark;
 
 // States (уточнить в макете)
-$color-success: #2ECC71; // TODO: confirm
-$color-error: #FF4D4F;   // TODO: confirm
+$color-success: #2ecc71; // TODO: confirm
+$color-error: #ff4d4f; // TODO: confirm
