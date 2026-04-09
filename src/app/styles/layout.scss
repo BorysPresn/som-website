@@ -1,11 +1,13 @@
+@use './variables' as *;
+
 .container {
   max-width: 1920px;
-  padding-inline: 24px;
+  padding-inline: $padding-container-mobile;
   margin-inline: auto;
 }
 
-@media (min-width: 768px) {
+@media (min-width: $bp-tablet) {
   .container {
-    padding-inline: 128px;
+    padding-inline: $padding-container-desktop;
   }
 }

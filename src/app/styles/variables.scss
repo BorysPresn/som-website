@@ -1,60 +1,111 @@
 // ====================
-// BASE COLORS (from design)
+// BASE PALETTE
 // ====================
 
-// Accent
-$accent-green: #4fafaf;
-$accent-secondary: #b1b1b1;
-$accent-dark: #8c8c8c;
-$accent-dark-secondary: #575757;
-$accent-green-stroke: #51ecda;
-
-$dark-green: #102f2c;
-// Neutrals
-$gray: #8c8c8c;
-$gray-dark: #575757;
-
-$bg-dark: #020202;
-$bg-dark-secondary: #030303;
-
-$border-dark: #363636;
-$border-grey: #b0b6be;
-
+// Core
 $white: #ffffff;
+
+// Brand / accent
+$green-brand: #102f2c;
+$green-accent: #51ecda;
+$green-accent-secondary: #4fafaf;
+$green-accent-soft: #aff6ee;
+
+// Backgrounds
+$background-main-base: #111315;
+$background-section-base: #1a1d21;
+
+// Neutral text / stroke
+$heading-light: #e6e9ed;
+$text-light: #f5f7fa;
+$stroke-light: #b0b6be;
+$icon-muted: #919f9e;
+$text-muted: #8c8c8c;
+$text-muted-dark: #575757;
+$stroke-dark: #363636;
+
+// Feedback
+$success: #2ecc71;
+$error: #ff4d4f;
 
 // ====================
 // SEMANTIC COLORS
 // ====================
 
 // Background
-$bg-main: $bg-dark;
-$bg-section: $bg-dark-secondary;
+$color-bg-main: $background-main-base;
+$color-bg-section: $background-section-base;
 
 // Text
-$text-primary: $white;
-$text-secondary: $gray;
-$text-muted: $gray-dark;
+$color-heading: $heading-light;
+$color-text-main: $text-light;
+$color-text-secondary: $stroke-light;
+$color-text-muted: $text-muted-dark;
+$color-text-accent: $green-accent;
 
-// Button 
-$btn-primary-bg: $dark-green;
-$btn-primary-text: $accent-green-stroke;
+// Icons
+$color-icon-main: $green-accent-soft;
+$color-icon-secondary: $icon-muted;
 
-$btn-primary-bg-hover: $accent-green-stroke;
-$btn-primary-text-hover: $bg-dark;
+// Borders / strokes
+$color-stroke-accent: $green-accent;
+$color-stroke-secondary: $stroke-light;
+$color-stroke-dark: $stroke-dark;
 
-$btn-primary-bg-active: $accent-green;
-$btn-primary-text-active: $bg-dark;
+// Buttons
+$color-button-primary-bg: $green-brand;
+$color-button-primary-text: $green-accent;
+$color-button-primary-bg-hover: $green-accent;
+$color-button-primary-text-hover: $background-main-base;
 
-$btn-call-border: $border-grey;
+$color-button-secondary-bg: transparent;
+$color-button-secondary-text: $text-light;
+$color-button-secondary-border: $stroke-light;
+$color-button-secondary-bg-hover: $green-accent;
+$color-button-secondary-text-hover: $background-main-base;
+$color-button-secondary-border-hover: $green-accent;
 
-// Input
-$input-bg: transparent;
-$input-border: $border-dark;
-$input-border-focus: $accent-green;
+// Inputs
+$color-input-bg: transparent;
+$color-input-border: $color-stroke-dark;
+$color-input-border-focus: $green-accent-secondary;
+$color-input-text: $color-text-main;
+$color-input-placeholder: $color-text-muted;
 
-$input-text: $white;
-$input-placeholder: $gray-dark;
+// ====================
+// SPACING
+// ====================
 
-// States (уточнить в макете)
-$color-success: #2ecc71; // TODO: confirm
-$color-error: #ff4d4f; // TODO: confirm
+$space-none: 0;
+$space-xs: 12px;
+$space-sm: 24px;
+$space-md: 32px;
+$space-lg: 48px;
+$space-xl: 64px;
+
+// ====================
+// PADDINGS
+// ====================
+
+$padding-container-mobile: 24px;
+$padding-container-desktop: 128px;
+
+$padding-button-x: 20px;
+$padding-button-y: 16px;
+$padding-card-md: 32px;
+
+// ====================
+// RADIUS
+// ====================
+
+$radius-none: 0;
+$radius-sm: 4px;
+$radius-pill: 100px;
+
+// ====================
+// BREAKPOINTS
+// ====================
+
+$bp-tablet: 768px;
+$bp-desktop: 1280px;
+$bp-wide: 1440px;
