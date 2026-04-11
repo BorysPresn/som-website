@@ -14,39 +14,39 @@
   letter-spacing: $letter-spacing;
 }
 
-@mixin type-heading-2 {
+@mixin type-h2 {
   @include font(
-    $type-heading-2-size,
-    $type-heading-2-weight,
-    $type-heading-2-line-height,
-    $type-heading-2-letter-spacing
+    $type-h2-size,
+    $type-h2-weight,
+    $type-h2-line-height,
+    $type-h2-letter-spacing
   );
 }
 
-@mixin type-paragraph-md {
+@mixin type-p-md {
   @include font(
-    $type-paragraph-md-size,
-    $type-paragraph-md-weight,
-    $type-paragraph-md-line-height,
-    $type-paragraph-md-letter-spacing
+    $type-p-md-size,
+    $type-p-md-weight,
+    $type-p-md-line-height,
+    $type-p-md-letter-spacing
   );
 }
 
-@mixin type-button-md {
+@mixin type-btn-md {
   @include font(
-    $type-button-md-size,
-    $type-button-md-weight,
-    $type-button-md-line-height,
-    $type-button-md-letter-spacing
+    $type-btn-md-size,
+    $type-btn-md-weight,
+    $type-btn-md-line-height,
+    $type-btn-md-letter-spacing
   );
 }
 
-@mixin type-button-sm {
+@mixin type-btn-sm {
   @include font(
-    $type-button-sm-size,
-    $type-button-sm-weight,
-    $type-button-sm-line-height,
-    $type-button-sm-letter-spacing
+    $type-btn-sm-size,
+    $type-btn-sm-weight,
+    $type-btn-sm-line-height,
+    $type-btn-sm-letter-spacing
   );
 }
 

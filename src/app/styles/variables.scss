@@ -29,48 +29,48 @@ $success: #2ecc71;
 $error: #ff4d4f;
 
 // ====================
-// SEMANTIC COLORS
+// SEMANTIC TOKENS
 // ====================
 
 // Background
-$color-bg-main: $background-main-base;
-$color-bg-section: $background-section-base;
+$bg-main: $background-main-base;
+$bg-section: $background-section-base;
 
 // Text
-$color-heading: $heading-light;
-$color-text-main: $text-light;
-$color-text-secondary: $stroke-light;
-$color-text-muted: $text-muted-dark;
-$color-text-accent: $green-accent;
+$heading: $heading-light;
+$text-main: $text-light;
+$text-secondary: $stroke-light;
+$text-muted: $text-muted-dark;
+$text-accent: $green-accent;
 
 // Icons
-$color-icon-main: $green-accent-soft;
-$color-icon-secondary: $icon-muted;
+$icon-main: $green-accent-soft;
+$icon-secondary: $icon-muted;
 
 // Borders / strokes
-$color-stroke-accent: $green-accent;
-$color-stroke-secondary: $stroke-light;
-$color-stroke-dark: $stroke-dark;
+$stroke-accent: $green-accent;
+$stroke-secondary: $stroke-light;
+$stroke-dark-ui: $stroke-dark;
 
 // Buttons
-$color-button-primary-bg: $green-brand;
-$color-button-primary-text: $green-accent;
-$color-button-primary-bg-hover: $green-accent;
-$color-button-primary-text-hover: $background-main-base;
+$btn-primary-bg: $green-brand;
+$btn-primary-text: $green-accent;
+$btn-primary-bg-hover: $green-accent;
+$btn-primary-text-hover: $background-main-base;
 
-$color-button-secondary-bg: transparent;
-$color-button-secondary-text: $text-light;
-$color-button-secondary-border: $stroke-light;
-$color-button-secondary-bg-hover: $green-accent;
-$color-button-secondary-text-hover: $background-main-base;
-$color-button-secondary-border-hover: $green-accent;
+$btn-secondary-bg: transparent;
+$btn-secondary-text: $text-light;
+$btn-secondary-border: $stroke-light;
+$btn-secondary-bg-hover: $green-accent;
+$btn-secondary-text-hover: $background-main-base;
+$btn-secondary-border-hover: $green-accent;
 
 // Inputs
-$color-input-bg: transparent;
-$color-input-border: $color-stroke-dark;
-$color-input-border-focus: $green-accent-secondary;
-$color-input-text: $color-text-main;
-$color-input-placeholder: $color-text-muted;
+$input-bg: transparent;
+$input-border: $stroke-dark-ui;
+$input-border-focus: $green-accent-secondary;
+$input-text: $text-main;
+$input-placeholder: $text-muted;
 
 // ====================
 // SPACING
@@ -90,8 +90,8 @@ $space-xl: 64px;
 $padding-container-mobile: 24px;
 $padding-container-desktop: 128px;
 
-$padding-button-x: 20px;
-$padding-button-y: 16px;
+$padding-btn-x: 20px;
+$padding-btn-y: 16px;
 $padding-card-md: 32px;
 
 // ====================

@@ -57,27 +57,27 @@ $ls-heading-wide: 0.05em;
 // ====================
 
 // Heading
-$type-heading-2-size: $fs-heading-2;
-$type-heading-2-weight: $fw-medium;
-$type-heading-2-line-height: $lh-heading-display;
-$type-heading-2-letter-spacing: $ls-heading-wide;
+$type-h2-size: $fs-heading-2;
+$type-h2-weight: $fw-medium;
+$type-h2-line-height: $lh-heading-display;
+$type-h2-letter-spacing: $ls-heading-wide;
 
 // Paragraph
-$type-paragraph-md-size: $fs-text-md;
-$type-paragraph-md-weight: $fw-regular;
-$type-paragraph-md-line-height: $lh-paragraph-md;
-$type-paragraph-md-letter-spacing: $ls-normal;
+$type-p-md-size: $fs-text-md;
+$type-p-md-weight: $fw-regular;
+$type-p-md-line-height: $lh-paragraph-md;
+$type-p-md-letter-spacing: $ls-normal;
 
 // Buttons
-$type-button-md-size: $fs-text-md;
-$type-button-md-weight: $fw-regular;
-$type-button-md-line-height: $lh-paragraph-md;
-$type-button-md-letter-spacing: $ls-normal;
+$type-btn-md-size: $fs-text-md;
+$type-btn-md-weight: $fw-regular;
+$type-btn-md-line-height: $lh-paragraph-md;
+$type-btn-md-letter-spacing: $ls-normal;
 
-$type-button-sm-size: $fs-text-xs;
-$type-button-sm-weight: $fw-regular;
-$type-button-sm-line-height: $lh-base;
-$type-button-sm-letter-spacing: $ls-tight;
+$type-btn-sm-size: $fs-text-xs;
+$type-btn-sm-weight: $fw-regular;
+$type-btn-sm-line-height: $lh-base;
+$type-btn-sm-letter-spacing: $ls-tight;
 
 // Navigation
 $type-nav-size: $fs-text-sm;
