@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import type { ButtonIcons } from "../../../types/types";
+import { Icon } from "../Icon/Icon";
 import style from "./Button.module.scss";
 
 interface ButtonProps extends React.HTMLAttributes<HTMLElement> {
@@ -22,10 +23,12 @@ export const Button = ({
       <span className={style.label}>{text}</span>
       {iconName === "arrow-right" && (
         <div className={style["icon-container"]}>
-          <span className={style.icon}>→</span>
+          <Icon name="arrow-right" variant="button" className={style.icon} />
         </div>
       )}
-      {iconName === "arrow-up" && <span>←</span>}
+      {iconName === "arrow-up-right" && (
+        <Icon name="arrow-up-right" variant="button" className={style.icon} />
+      )}
     </>
   );
 
