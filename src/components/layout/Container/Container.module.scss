@@ -1,0 +1,12 @@
+@use '../../../app/styles/variables.scss' as *;
+
+.container {
+    
+    padding-inline: $padding-container-mobile;
+}
+
+@media (min-width: $bp-desktop){
+    .container {
+        padding-inline: $padding-container-desktop;
+    }
+}

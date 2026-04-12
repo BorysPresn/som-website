@@ -4,11 +4,18 @@ import type { IconName } from "../../../types/types";
 import { iconMap } from "./iconMap";
 import style from "./Icon.module.scss";
 
-type IconVariant = "button" | "social";
+type IconVariant = "button" | "topbar" | "footer" | "contact";
+
+const sizes: Record<IconVariant, number> = {
+  button: 20,
+  topbar: 17,
+  footer: 24,
+  contact: 40,
+};
 
 interface IconProps extends SVGProps<SVGSVGElement> {
   name: IconName;
-  variant?: IconVariant;
+  variant: IconVariant;
   size?: number | string;
   title?: string;
 }
@@ -35,7 +42,7 @@ export const Icon = ({
   }
 
   const isDecorative = title == null || title.length === 0;
-  const resolvedSize = size ?? (variant === "social" ? 17 : 20);
+  const resolvedSize = size ?? sizes[variant];
 
   return (
     <SvgIcon
