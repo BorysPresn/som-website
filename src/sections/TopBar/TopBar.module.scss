@@ -1,0 +1,49 @@
+@use "../../app/styles/variables.scss" as *;
+@use "../../app/styles/mixins.scss" as *;
+
+.topbar {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: $bg-section;
+  color: $heading;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.schedule {
+  @include type-info;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.statusOpen {
+  color: $btn-primary-bg-hover;
+}
+
+.statusClosed {
+  color: $error;
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    display: none;
+  }
+}

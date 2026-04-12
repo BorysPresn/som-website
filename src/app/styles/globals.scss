@@ -1,5 +1,5 @@
-@use './typography' as *;
-
+@use "./typography" as *;
+@use "./variables" as *;
 *,
 *::before,
 *::after {
@@ -14,4 +14,11 @@ html {
 
 body {
   font-family: $font-primary;
+  background-color: $bg-main;
+}
+
+#root {
+  width: 100%;
+  max-width: 1920px;
+  margin-inline: auto;
 }
