@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Container } from "../../components/layout/Container/Container";
 import { Icon } from "../../components/ui/Icon/Icon";
 import { StatusIcon } from "./StatusIcon";
@@ -20,8 +21,15 @@ const isOpen = () => {
 };
 
 export const TopBar = ({}: TopBarProps) => {
-  const open = isOpen();
-  const status = open ? "Otwarte" : "Zamkniete";
+  const [open, setOpen] = useState(isOpen());
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setOpen(isOpen());
+    }, 60_000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  const status = open ? "Otwarte" : "Zamknięte";
 
   return (
     <div className={style.topbar}>
