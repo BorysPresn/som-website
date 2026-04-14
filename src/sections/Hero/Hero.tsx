@@ -41,15 +41,6 @@ export const Hero = ({}: HeroProps) => {
           ))}
         </div>
 
-        <div className={style.mobileImage}>
-          <img
-            src={slide1}
-            alt=""
-            aria-hidden="true"
-            className={style.mobileImg}
-          />
-        </div>
-
         <div className={style.overlay} />
       </div>
 
