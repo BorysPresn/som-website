@@ -2,75 +2,69 @@
 // BASE PALETTE
 // ====================
 
-// Core
 $white: #ffffff;
 
-// Brand / accent
-$green-brand: #102f2c;
-$green-accent: #51ecda;
-$green-accent-secondary: #4fafaf;
-$green-accent-soft: #aff6ee;
+$accent-green: #51ecda;
+$accent-secondary: #aff6ee;
+$accent-dark: #102f2c;
+$accent-focus: #4fafaf;
 
-// Backgrounds
-$background-main-base: #111315;
-$background-section-base: #1a1d21;
+$dark: #111315;
+$dark-gray: #1a1d21;
 
-// Neutral text / stroke
-$heading-light: #e6e9ed;
-$text-light: #f5f7fa;
-$stroke-light: #b0b6be;
-$icon-muted: #919f9e;
-$text-muted: #8c8c8c;
-$text-muted-dark: #575757;
+$white-darker: #e6e9ed;
+$white-lightest: #f5f7fa;
+$gray: #b0b6be;
+$gray-muted: #919f9e;
+$gray-dark: #575757;
 $stroke-dark: #363636;
 
-// Feedback
 $success: #2ecc71;
 $error: #ff4d4f;
 
 // ====================
-// SEMANTIC TOKENS
+// COLORS
 // ====================
 
-// Background
-$bg-main: $background-main-base;
-$bg-section: $background-section-base;
+$color-bg-main: $dark;
+$color-bg-section: $dark-gray;
+$color-bg-accent-dark: $accent-dark;
+$color-bg-accent-main: $accent-green;
 
-// Text
-$heading: $heading-light;
-$text-main: $text-light;
-$text-secondary: $stroke-light;
-$text-muted: $text-muted-dark;
-$text-accent: $green-accent;
+$color-text-headings: $white-darker;
+$color-text-main: $white-lightest;
+$color-text-secondary: $gray;
+$color-text-accent: $accent-green;
+$color-text-accent-secondary: $accent-secondary;
+$color-text-accent-inverse: $accent-dark;
 
-// Icons
-$icon-main: $green-accent-soft;
-$icon-secondary: $icon-muted;
+$color-button-main: $accent-dark;
+$color-button-main-hover: $accent-green;
+$color-button-main-text: $accent-green;
+$color-button-main-text-hover: $dark;
 
-// Borders / strokes
-$stroke-accent: $green-accent;
-$stroke-secondary: $stroke-light;
-$stroke-dark-ui: $stroke-dark;
+$color-button-secondary: transparent;
+$color-button-secondary-hover: $accent-green;
+$color-button-secondary-text: $white-lightest;
+$color-button-secondary-text-hover: $dark;
+$color-button-secondary-border: $gray;
+$color-button-secondary-border-hover: $accent-green;
 
-// Buttons
-$btn-primary-bg: $green-brand;
-$btn-primary-text: $green-accent;
-$btn-primary-bg-hover: $green-accent;
-$btn-primary-text-hover: $background-main-base;
+$color-icon-main: $accent-secondary;
+$color-icon-secondary: $gray-muted;
 
-$btn-secondary-bg: transparent;
-$btn-secondary-text: $text-light;
-$btn-secondary-border: $stroke-light;
-$btn-secondary-bg-hover: $green-accent;
-$btn-secondary-text-hover: $background-main-base;
-$btn-secondary-border-hover: $green-accent;
+$color-stroke-accent: $accent-green;
+$color-stroke-secondary: $gray;
+$color-stroke-dark: $stroke-dark;
 
-// Inputs
-$input-bg: transparent;
-$input-border: $stroke-dark-ui;
-$input-border-focus: $green-accent-secondary;
-$input-text: $text-main;
-$input-placeholder: $text-muted;
+$color-input-bg: transparent;
+$color-input-border: $stroke-dark;
+$color-input-border-focus: $accent-focus;
+$color-input-text: $white-lightest;
+$color-input-placeholder: $gray-dark;
+
+$color-success: $success;
+$color-error: $error;
 
 // ====================
 // SPACING
@@ -109,3 +103,6 @@ $radius-pill: 100px;
 $bp-tablet: 768px;
 $bp-desktop: 1024px;
 $bp-wide: 1440px;
+
+// ====================
+// ====================

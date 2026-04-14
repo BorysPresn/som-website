@@ -8,8 +8,8 @@
 }
 
 .bar {
-  background-color: $bg-main;
-  color: $heading;
+  background-color: $color-bg-main;
+  color: $color-text-headings;
   border-bottom: 0.8px solid #000;
 }
 
@@ -25,7 +25,7 @@
   justify-content: center;
   align-items: center;
   gap: 40px;
-  @include type-nav;
+  @include desktop-buttons-header;
 }
 
 .mobileMenu {
@@ -37,8 +37,8 @@
   justify-content: center;
 
   padding: 35px 0 50px;
-  background-color: $bg-main;
-  color: $heading;
+  background-color: $color-bg-main;
+  color: $color-text-headings;
 
   overflow: hidden;
   max-height: 0;
@@ -68,7 +68,7 @@
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  @include type-nav;
+  @include desktop-buttons-header;
 }
 
 .mobileCta {
