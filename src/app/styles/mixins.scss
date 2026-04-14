@@ -1,4 +1,5 @@
-@use './typography' as *;
+@use "./typography" as *;
+@use "./variables" as *;
 
 @mixin font(
   $size,
@@ -14,56 +15,108 @@
   letter-spacing: $letter-spacing;
 }
 
-@mixin type-h2 {
+@mixin heading-base {
+  color: $color-text-headings;
+  text-transform: uppercase;
+}
+
+@mixin desktop-h2 {
+  @include heading-base;
   @include font(
-    $type-h2-size,
-    $type-h2-weight,
-    $type-h2-line-height,
-    $type-h2-letter-spacing
+    $desktop-h2-size,
+    $desktop-h2-weight,
+    $desktop-h2-line-height,
+    $desktop-h2-letter-spacing
   );
 }
 
-@mixin type-p-md {
+@mixin mobile-h1 {
+  @include heading-base;
   @include font(
-    $type-p-md-size,
-    $type-p-md-weight,
-    $type-p-md-line-height,
-    $type-p-md-letter-spacing
+    $mobile-h1-size,
+    $mobile-h1-weight,
+    $mobile-h1-line-height,
+    $mobile-h1-letter-spacing
   );
 }
 
-@mixin type-btn-md {
+@mixin desktop-h4 {
   @include font(
-    $type-btn-md-size,
-    $type-btn-md-weight,
-    $type-btn-md-line-height,
-    $type-btn-md-letter-spacing
+    $desktop-h4-size,
+    $desktop-h4-weight,
+    $desktop-h4-line-height,
+    $desktop-h4-letter-spacing
   );
+  color: $color-text-main;
 }
 
-@mixin type-btn-sm {
+@mixin above-heading {
   @include font(
-    $type-btn-sm-size,
-    $type-btn-sm-weight,
-    $type-btn-sm-line-height,
-    $type-btn-sm-letter-spacing
+    $above-heading-size,
+    $above-heading-weight,
+    $above-heading-line-height,
+    $above-heading-letter-spacing
   );
+  color: $color-text-accent-secondary;
+  text-transform: uppercase;
 }
 
-@mixin type-nav {
+@mixin desktop-paragraph-m-bold {
   @include font(
-    $type-nav-size,
-    $type-nav-weight,
-    $type-nav-line-height,
-    $type-nav-letter-spacing
+    $desktop-paragraph-m-bold-size,
+    $desktop-paragraph-m-bold-weight,
+    $desktop-paragraph-m-bold-line-height,
+    $desktop-paragraph-m-bold-letter-spacing
   );
+  color: $color-text-main;
 }
 
-@mixin type-info {
+@mixin mobile-paragraph-m {
   @include font(
-    $type-info-size,
-    $type-info-weight,
-    $type-info-line-height,
-    $type-info-letter-spacing
+    $mobile-paragraph-m-size,
+    $mobile-paragraph-m-weight,
+    $mobile-paragraph-m-line-height,
+    $mobile-paragraph-m-letter-spacing
   );
+  color: $color-text-main;
+}
+
+@mixin desktop-button-m {
+  @include font(
+    $desktop-button-m-size,
+    $desktop-button-m-weight,
+    $desktop-button-m-line-height,
+    $desktop-button-m-letter-spacing
+  );
+  color: $color-text-accent;
+}
+
+@mixin desktop-buttons-s {
+  @include font(
+    $desktop-buttons-s-size,
+    $desktop-buttons-s-weight,
+    $desktop-buttons-s-line-height,
+    $desktop-buttons-s-letter-spacing
+  );
+  color: $color-text-main;
+}
+
+@mixin desktop-buttons-header {
+  @include font(
+    $desktop-buttons-header-size,
+    $desktop-buttons-header-weight,
+    $desktop-buttons-header-line-height,
+    $desktop-buttons-header-letter-spacing
+  );
+  color: $color-button-secondary-text;
+}
+
+@mixin info {
+  @include font(
+    $info-size,
+    $info-weight,
+    $info-line-height,
+    $info-letter-spacing
+  );
+  color: $color-button-secondary-text;
 }
