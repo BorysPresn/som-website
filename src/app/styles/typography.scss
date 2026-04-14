@@ -1,4 +1,4 @@
-$font-primary: 'Lexend Deca', sans-serif;
+$font-primary: "Lexend Deca", sans-serif;
 
 $fw-light: 300;
 $fw-regular: 400;
@@ -8,7 +8,6 @@ $fw-medium: 500;
 // FONT SIZES
 // ====================
 
-// Desktop headings
 $fs-heading-1: 74px;
 $fs-heading-2: 64px;
 $fs-heading-3: 38px;
@@ -16,7 +15,6 @@ $fs-heading-4: 32px;
 $fs-heading-5: 24px;
 $fs-heading-6: 22px;
 
-// Mobile headings
 $fs-heading-1-mobile: 34px;
 $fs-heading-2-mobile: 32px;
 $fs-heading-3-mobile: 26px;
@@ -24,7 +22,6 @@ $fs-heading-4-mobile: 20px;
 $fs-heading-5-mobile: 18px;
 $fs-heading-6-mobile: 16px;
 
-// Body / utility text
 $fs-text-lg: 28px;
 $fs-text-md: 18px;
 $fs-text-sm: 16px;
@@ -56,37 +53,52 @@ $ls-heading-wide: 0.05em;
 // TYPE ROLES
 // ====================
 
-// Heading
-$type-h2-size: $fs-heading-2;
-$type-h2-weight: $fw-medium;
-$type-h2-line-height: $lh-heading-display;
-$type-h2-letter-spacing: $ls-heading-wide;
+$desktop-h2-size: $fs-heading-2;
+$desktop-h2-weight: $fw-medium;
+$desktop-h2-line-height: $lh-heading-display;
+$desktop-h2-letter-spacing: $ls-heading-wide;
 
-// Paragraph
-$type-p-md-size: $fs-text-md;
-$type-p-md-weight: $fw-regular;
-$type-p-md-line-height: $lh-paragraph-md;
-$type-p-md-letter-spacing: $ls-normal;
+$mobile-h1-size: $fs-heading-1-mobile;
+$mobile-h1-weight: $fw-medium;
+$mobile-h1-line-height: 43.2px;
+$mobile-h1-letter-spacing: 1.8px;
 
-// Buttons
-$type-btn-md-size: $fs-text-md;
-$type-btn-md-weight: $fw-regular;
-$type-btn-md-line-height: $lh-paragraph-md;
-$type-btn-md-letter-spacing: $ls-normal;
+$desktop-h4-size: $fs-heading-4;
+$desktop-h4-weight: $fw-medium;
+$desktop-h4-line-height: $lh-heading-display;
+$desktop-h4-letter-spacing: $ls-normal;
 
-$type-btn-sm-size: $fs-text-xs;
-$type-btn-sm-weight: $fw-regular;
-$type-btn-sm-line-height: $lh-base;
-$type-btn-sm-letter-spacing: $ls-tight;
+$above-heading-size: 28px;
+$above-heading-weight: $fw-regular;
+$above-heading-line-height: 38px;
+$above-heading-letter-spacing: 5.6px;
 
-// Navigation
-$type-nav-size: $fs-text-sm;
-$type-nav-weight: $fw-light;
-$type-nav-line-height: $lh-base;
-$type-nav-letter-spacing: $ls-tight;
+$desktop-paragraph-m-bold-size: $fs-text-md;
+$desktop-paragraph-m-bold-weight: $fw-regular;
+$desktop-paragraph-m-bold-line-height: $lh-paragraph-md;
+$desktop-paragraph-m-bold-letter-spacing: $ls-normal;
 
-// Small info text
-$type-info-size: $fs-text-xs;
-$type-info-weight: $fw-light;
-$type-info-line-height: $lh-base;
-$type-info-letter-spacing: $ls-tight;
+$mobile-paragraph-m-size: $fs-text-sm-mobile;
+$mobile-paragraph-m-weight: $fw-regular;
+$mobile-paragraph-m-line-height: 25.6px;
+$mobile-paragraph-m-letter-spacing: $ls-normal;
+
+$desktop-button-m-size: $fs-text-md;
+$desktop-button-m-weight: $fw-regular;
+$desktop-button-m-line-height: $lh-paragraph-md;
+$desktop-button-m-letter-spacing: $ls-normal;
+
+$desktop-buttons-s-size: $fs-text-xs;
+$desktop-buttons-s-weight: $fw-regular;
+$desktop-buttons-s-line-height: $lh-base;
+$desktop-buttons-s-letter-spacing: $ls-tight;
+
+$desktop-buttons-header-size: $fs-text-sm;
+$desktop-buttons-header-weight: $fw-light;
+$desktop-buttons-header-line-height: $lh-base;
+$desktop-buttons-header-letter-spacing: $ls-tight;
+
+$info-size: $fs-text-xs;
+$info-weight: $fw-light;
+$info-line-height: $lh-base;
+$info-letter-spacing: $ls-tight;

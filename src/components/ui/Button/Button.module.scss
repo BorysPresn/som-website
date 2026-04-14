@@ -1,10 +1,10 @@
 @use "../../../app/styles/variables.scss" as *;
 @use "../../../app/styles/mixins.scss" as *;
 
-
 .button {
   position: relative;
   display: inline-flex;
+  gap: 8px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -12,13 +12,13 @@
   text-decoration: none;
   overflow: hidden;
 
-  background-color: $btn-primary-bg;
-  color: $btn-primary-text;
+  background-color: $color-button-main;
+  color: $color-button-main-text;
   transition: 0.3s ease;
 }
 
 .button:hover {
-  color: $btn-primary-text-hover;
+  color: $color-button-main-text-hover;
 }
 
 .label,
@@ -28,11 +28,10 @@
 }
 
 .primary {
-  padding: 16px 20px;
-}
-.primary:hover {
-  padding-inline: 20px 20px;
-  gap: 8px;
+  @include desktop-button-m;
+  padding: $padding-btn-y $padding-btn-x;
+  border: none;
+  text-shadow: 0.5px 0.5px 0 rgba(0, 0, 0, 0.15);
 }
 
 .primary::before {
@@ -42,7 +41,7 @@
   left: 0;
   width: 3px;
   height: 100%;
-  background-color: $btn-primary-bg-hover;
+  background-color: $color-button-main-hover;
   transition: width 0.3s ease;
 }
 .icon-container {
@@ -55,8 +54,7 @@
 }
 .icon {
   opacity: 0;
-  transition:
-    opacity 0.2s ease,
+  transition: opacity 0.2s ease;
 }
 
 .primary:hover::before {
@@ -71,13 +69,12 @@
 }
 
 .call {
-  @include type-btn-sm;
+  @include desktop-buttons-s;
   height: 44px;
   padding: 12px 24px;
-  background-color: $btn-primary-bg;
-  color: $btn-secondary-text;
-  border: 1px solid $btn-secondary-border;
-  border-radius: 4px;
+  background-color: $color-button-main;
+  border: 1px solid $color-button-secondary-border;
+  border-radius: $radius-sm;
 }
 
 .call .label {
@@ -85,7 +82,7 @@
 }
 
 .call:hover {
-  background-color: $btn-secondary-bg-hover;
-  color: $btn-secondary-text-hover;
-  border-color: $btn-secondary-border-hover;
+  background-color: $color-button-secondary-hover;
+  color: $color-button-secondary-text-hover;
+  border-color: $color-button-secondary-border-hover;
 }

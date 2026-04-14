@@ -4,14 +4,14 @@ import { Icon } from "../Icon/Icon";
 import style from "./Button.module.scss";
 
 interface ButtonProps extends React.HTMLAttributes<HTMLElement> {
-  text: string;
+  text?: string;
   iconName?: ButtonIcons;
   href?: string;
   variant: "primary" | "call";
 }
 
 export const Button = ({
-  text,
+  text = "Umów wizytę",
   iconName,
   href,
   variant,
