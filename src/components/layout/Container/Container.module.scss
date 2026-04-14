@@ -1,7 +1,7 @@
 @use '../../../app/styles/variables.scss' as *;
 
 .container {
-    
+    width: 100%;
     padding-inline: $padding-container-mobile;
 }
 

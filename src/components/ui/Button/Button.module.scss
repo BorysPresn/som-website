@@ -1,4 +1,6 @@
 @use "../../../app/styles/variables.scss" as *;
+@use "../../../app/styles/mixins.scss" as *;
+
 
 .button {
   position: relative;
@@ -69,12 +71,21 @@
 }
 
 .call {
+  @include type-btn-sm;
+  height: 44px;
   padding: 12px 24px;
+  background-color: $btn-primary-bg;
+  color: $btn-secondary-text;
   border: 1px solid $btn-secondary-border;
   border-radius: 4px;
 }
 
+.call .label {
+  text-shadow: 0.5px 0.5px 0 rgba(0, 0, 0, 0.15);
+}
+
 .call:hover {
-  background-color: $btn-primary-bg-hover;
+  background-color: $btn-secondary-bg-hover;
+  color: $btn-secondary-text-hover;
   border-color: $btn-secondary-border-hover;
 }

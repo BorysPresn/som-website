@@ -1,0 +1,123 @@
+@use "../../app/styles/variables.scss" as *;
+@use "../../app/styles/mixins.scss" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.bar {
+  background-color: $bg-main;
+  color: $heading;
+  border-bottom: 0.8px solid #000;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80px;
+}
+
+.navList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  @include type-nav;
+}
+
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+
+  padding: 35px 0 50px;
+  background-color: $bg-main;
+  color: $heading;
+
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.mobileMenuOpen {
+  max-height: 389px;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.mobileNav {
+  width: 147px;
+  margin-inline: auto;
+}
+
+.mobileNavList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  @include type-nav;
+}
+
+.mobileCta {
+  display: flex;
+  justify-content: center;
+  width: 147px;
+  margin: 36px auto 0;
+}
+
+.burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.burgerIcon {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+.burgerMenuOpen {
+  transform: rotate(-90deg);
+}
+
+@media (max-width: 768px) {
+  .desktopNav,
+  .desktopCta {
+    display: none;
+  }
+  .logo {
+    width: 48px;
+    height: 48px;
+  }
+  .burger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobileMenu {
+    display: none;
+  }
+}
