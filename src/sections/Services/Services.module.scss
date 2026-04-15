@@ -1,0 +1,230 @@
+@use "../../app/styles/mixins.scss" as *;
+@use "../../app/styles/typography.scss" as *;
+@use "../../app/styles/variables.scss" as *;
+
+.servicesSection {
+  padding-block: 96px;
+  background-color: $color-bg-main;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  @include above-heading;
+}
+
+.title {
+  @include desktop-h2;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  aspect-ratio: 541.33 / 400;
+  padding: 32px 33px;
+  overflow: hidden;
+  border: 1px solid #757c85;
+  border-radius: $radius-sm;
+  background-color: $color-bg-section;
+  isolation: isolate;
+  text-decoration: none;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 3px solid $color-stroke-accent;
+    border-radius: inherit;
+    box-shadow: 0 5px 16.5px rgba(255, 255, 255, 0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.28s ease,
+      box-shadow 0.28s ease;
+    z-index: 2;
+  }
+
+  &:hover::after,
+  &:focus-within::after {
+    opacity: 1;
+  }
+}
+
+.background,
+.overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.background {
+  background-repeat: no-repeat;
+}
+
+.overlay {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 42.8%, rgba(0, 0, 0, 0) 99.92%);
+}
+
+.cardContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.cardTitle {
+  @include desktop-h4;
+  transition: transform 0.28s ease;
+}
+
+.cardDescription {
+  @include font($fs-text-md, $fw-light, $lh-paragraph-md);
+  color: $color-text-main;
+  max-width: 295px;
+  max-height: 0;
+  margin-top: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    max-height 0.28s ease,
+    margin-top 0.28s ease,
+    opacity 0.28s ease,
+    transform 0.28s ease;
+}
+
+.card:hover .cardTitle,
+.card:focus-within .cardTitle {
+  transform: translateY(-2px);
+}
+
+.card:hover .cardDescription,
+.card:focus-within .cardDescription {
+  max-height: 96px;
+  margin-top: 16px;
+  opacity: 0.5;
+  transform: translateY(0);
+}
+
+@media (max-width: $bp-desktop) {
+  .servicesSection {
+    padding-block: 64px;
+  }
+
+  .content {
+    gap: 48px;
+  }
+
+  .title {
+    font-size: $fs-heading-3;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card {
+    aspect-ratio: 541.33 / 400;
+    padding: 24px;
+  }
+
+  .cardTitle {
+    font-size: $fs-heading-5;
+  }
+
+  .cardDescription {
+    font-size: $fs-text-sm;
+    line-height: 25.6px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .content {
+    gap: 32px;
+  }
+
+  .eyebrow {
+    font-size: $fs-text-lg-mobile;
+    line-height: 25.2px;
+    letter-spacing: 3.6px;
+  }
+
+  .title {
+    font-size: $fs-heading-2-mobile;
+    line-height: 38.4px;
+    letter-spacing: 1.6px;
+    max-width: 222px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    aspect-ratio: 344 / 200;
+    min-height: 200px;
+    padding: 16px;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .overlay {
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.85) 21.91%,
+      rgba(0, 0, 0, 0) 99.92%
+    );
+  }
+
+  .cardTitle {
+    font-size: $fs-heading-4-mobile;
+    line-height: $lh-tight;
+    transform: none;
+  }
+
+  .cardDescription {
+    max-width: 100%;
+    max-height: none;
+    margin-top: 16px;
+    font-size: $fs-text-sm-mobile;
+    line-height: 23px;
+    opacity: 0.5;
+    transform: none;
+  }
+
+  .card:hover .cardTitle,
+  .card:focus-within .cardTitle {
+    transform: none;
+  }
+
+  .card:hover .cardDescription,
+  .card:focus-within .cardDescription {
+    max-height: none;
+    margin-top: 16px;
+    opacity: 0.5;
+    transform: none;
+  }
+}
