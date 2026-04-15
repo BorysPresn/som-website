@@ -3,6 +3,7 @@ import { Header } from "./sections/Header/Header";
 import { Hero } from "./sections/Hero/Hero";
 import { Services } from "./sections/Services/Services";
 import { TopBar } from "./sections/TopBar/TopBar";
+import { WhyUs } from "./sections/WhyUs/WhyUs";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Header />
       <Hero />
       <Services />
+      <WhyUs />
     </>
   );
 }

@@ -1,0 +1,274 @@
+@use "../../app/styles/mixins.scss" as *;
+@use "../../app/styles/typography.scss" as *;
+@use "../../app/styles/variables.scss" as *;
+
+.section {
+  padding-block: 96px;
+  background-color: $color-bg-section;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: minmax(0, 933px) minmax(0, 1fr);
+  gap: 96px;
+  align-items: start;
+}
+
+.headingGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  @include above-heading;
+}
+
+.title {
+  @include desktop-h2;
+}
+
+.lead {
+  @include font($fs-text-md, $fw-light, $lh-paragraph-md);
+  color: #f2f2f2;
+  opacity: 0.85;
+  padding-top: 63px;
+}
+
+.body {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 581px);
+  gap: 96px;
+  align-items: start;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  max-width: 983px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 5.83%;
+    left: 0;
+    width: 87.89%;
+    aspect-ratio: 864 / 506;
+    border-radius: $radius-sm;
+    background-color: $color-bg-main;
+  }
+}
+
+.image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 89.32%;
+  height: auto;
+  margin-top: 2.5%;
+  margin-left: 2.14%;
+  border-radius: $radius-sm;
+  object-fit: cover;
+}
+
+.rightColumn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 581px;
+  z-index: 1;
+}
+
+.list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-left: 64px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 20px;
+    bottom: 90px;
+    width: 1px;
+    background-color: rgba(245, 247, 250, 0.22);
+  }
+}
+
+.listItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dot {
+  position: absolute;
+  top: 14px;
+  left: -61px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: $color-text-main;
+}
+
+.itemTitle {
+  @include desktop-h4;
+}
+
+.itemText {
+  @include font($fs-text-md, $fw-light, $lh-paragraph-md);
+  color: $color-text-main;
+}
+
+.cta {
+  width: fit-content;
+}
+
+@media (max-width: 1600px) {
+  .header,
+  .body {
+    grid-template-columns: 1fr;
+  }
+
+  .lead {
+    padding-top: 0;
+    max-width: 581px;
+  }
+
+  .imageWrap {
+    width: 100%;
+  }
+
+  .rightColumn {
+    width: 100%;
+    max-width: 581px;
+  }
+}
+
+@media (max-width: $bp-desktop) {
+  .section {
+    padding-block: 64px;
+  }
+
+  .content {
+    gap: 48px;
+  }
+
+  .header {
+    gap: 32px;
+  }
+
+  .title {
+    font-size: $fs-heading-3;
+  }
+
+  .lead,
+  .imageWrap,
+  .rightColumn {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding-block: 64px;
+  }
+
+  .content {
+    gap: 48px;
+  }
+
+  .header {
+    gap: 24px;
+  }
+
+  .eyebrow {
+    font-size: $fs-text-lg-mobile;
+    line-height: 25.2px;
+    letter-spacing: 3.6px;
+  }
+
+  .title {
+    font-size: $fs-heading-2-mobile;
+    line-height: 38.4px;
+    letter-spacing: 1.6px;
+    max-width: 271px;
+  }
+
+  .lead {
+    max-width: 311px;
+    padding-top: 0;
+    opacity: 0.85;
+  }
+
+  .body {
+    gap: 48px;
+  }
+
+  .imageWrap {
+    width: 100%;
+    max-width: 344px;
+
+    &::before {
+      top: 16px;
+      left: 16px;
+      width: 100%;
+      aspect-ratio: 344 / 258;
+    }
+  }
+
+  .image {
+    width: 100%;
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .rightColumn {
+    width: 100%;
+    max-width: 344px;
+    gap: 48px;
+  }
+
+  .list {
+    gap: 32px;
+    padding-left: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .listItem {
+    gap: 8px;
+    padding-left: 28px;
+  }
+
+  .dot {
+    top: 8px;
+    left: 0;
+    background-color: #d9d9d9;
+  }
+
+  .itemTitle {
+    font-size: $fs-heading-4-mobile;
+    line-height: $lh-tight;
+  }
+
+  .itemText {
+    font-size: $fs-text-sm-mobile;
+    line-height: 25.6px;
+    opacity: 0.85;
+  }
+}
