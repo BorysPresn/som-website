@@ -34,7 +34,7 @@ export const servicesData: ServiceCardConfig[] = [
     backgroundStyle: {
       backgroundImage: `url(${tireReplacementImage})`,
       backgroundPosition: "center",
-      backgroundSize: "auto 100%",
+      backgroundSize: "cover",
     },
   },
   {
@@ -43,8 +43,8 @@ export const servicesData: ServiceCardConfig[] = [
     imageAlt: "Komora silnika samochodu podczas prac mechanicznych.",
     backgroundStyle: {
       backgroundImage: `url(${vehicleMechanicsImage})`,
-      backgroundPosition: "center",
-      backgroundSize: "auto",
+      backgroundPosition: "2% 56%",
+      backgroundSize: "138%",
     },
   },
   {
@@ -83,8 +83,8 @@ export const servicesData: ServiceCardConfig[] = [
     imageAlt: "Serwis klimatyzacji samochodowej z podłączonym manometrem.",
     backgroundStyle: {
       backgroundImage: `url(${airConditioningServiceImage})`,
-      backgroundPosition: "-10.64% 0%",
-      backgroundSize: "131.36% 100%",
+      backgroundPosition: "center",
+      backgroundSize: "cover",
     },
   },
   {

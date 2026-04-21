@@ -7,6 +7,12 @@
 
 @media (min-width: $bp-desktop){
     .container {
+        padding-inline: 64px;
+    }
+}
+
+@media (min-width: 1557px){
+    .container {
         padding-inline: $padding-container-desktop;
     }
 }
