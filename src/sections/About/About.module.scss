@@ -1,0 +1,267 @@
+@use "../../app/styles/mixins.scss" as *;
+@use "../../app/styles/typography.scss" as *;
+@use "../../app/styles/variables.scss" as *;
+
+.section {
+  padding-block: 64px;
+  background-color: $color-bg-section;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.headingGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  @include above-heading;
+  font-size: $fs-text-lg-mobile;
+  line-height: 25.2px;
+  letter-spacing: 3.6px;
+}
+
+.title {
+  @include desktop-h2;
+  max-width: 100%;
+  font-size: $fs-heading-2-mobile;
+  line-height: 38.4px;
+  letter-spacing: 1.6px;
+}
+
+.lead {
+  @include font($fs-text-md, $fw-light, $lh-paragraph-md);
+  width: 100%;
+  padding-top: 0;
+  color: #f2f2f2;
+  opacity: 0.85;
+}
+
+.body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+}
+
+.imageWrap::before {
+  content: "";
+  display: none;
+  position: absolute;
+  top: 5.83%;
+  left: 0;
+  width: 87.89%;
+  aspect-ratio: 864 / 506;
+  border-radius: $radius-sm;
+  background-color: $color-bg-main;
+}
+
+.image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 0;
+  margin-left: 0;
+  border-radius: $radius-sm;
+  object-fit: cover;
+}
+
+.rightColumn {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+}
+
+.list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-left: 0;
+}
+
+.list::after {
+  content: "";
+  display: none;
+  position: absolute;
+  left: 8px;
+  top: 24px;
+  width: 1px;
+  height: 445px;
+  background-color: rgba(245, 247, 250, 0.22);
+}
+
+.listItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 86px;
+  padding-left: 28px;
+}
+
+.dot {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+}
+
+.itemTitle {
+  @include desktop-h4;
+  font-size: $fs-heading-4-mobile;
+  line-height: $lh-tight;
+  white-space: normal;
+}
+
+.itemText {
+  @include font($fs-text-sm-mobile, $fw-light, 25.6px);
+  color: $color-text-main;
+  opacity: 0.85;
+}
+
+.cta {
+  width: fit-content;
+}
+
+@media (min-width: $bp-tablet) {
+  .section {
+    padding-block: 96px;
+  }
+
+  .header {
+    gap: 32px;
+  }
+
+  .eyebrow {
+    @include above-heading;
+  }
+
+  .title {
+    font-size: $fs-heading-3;
+    line-height: $lh-heading-display;
+    letter-spacing: $ls-heading-wide;
+  }
+
+  .imageWrap::before {
+    display: block;
+  }
+
+  .rightColumn {
+    gap: 40px;
+  }
+
+  .list {
+    padding-left: 42px;
+  }
+  .list::after {
+    display: block;
+    height: 355px;
+  }
+
+  .listItem {
+    gap: 16px;
+    padding-left: 0;
+  }
+
+  .dot {
+    top: 14px;
+    left: -39px;
+    background-color: $color-text-main;
+  }
+
+  .itemTitle {
+    @include desktop-h4;
+    white-space: nowrap;
+  }
+
+  .itemText {
+    @include font($fs-text-md, $fw-light, $lh-paragraph-md);
+    opacity: 1;
+  }
+}
+
+@media (min-width: $bp-desktop) {
+  .content {
+    gap: 96px;
+  }
+
+  .header {
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 0.9fr);
+    gap: clamp(32px, 6vw, 96px);
+  }
+
+  .title {
+    font-size: 62px;
+  }
+
+  .lead {
+    max-width: 581px;
+  }
+
+  .body {
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  .imageWrap {
+    max-width: 983px;
+  }
+  .image {
+    width: 89.32%;
+    margin-top: 2.5%;
+    margin-left: 2.14%;
+  }
+
+  .rightColumn {
+    width: 581px;
+    gap: 48px;
+  }
+  .list::after {
+    height: 420px;
+  }
+}
+
+@media (min-width: 1557px) {
+  .title {
+    font-size: $fs-heading-2;
+  }
+
+  .lead {
+    max-width: 539px;
+    padding-top: 63px;
+  }
+
+  .imageWrap {
+    min-height: 721px;
+  }
+}
