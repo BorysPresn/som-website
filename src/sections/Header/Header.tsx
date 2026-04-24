@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { useState } from "react";
 import burgerIcon from "../../assets/icons/burger.svg";
-import logo from "../../assets/images/logo_300x300.png";
+import logo from "../../assets/images/logo_web.png";
 import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
 import style from "./Header.module.scss";
