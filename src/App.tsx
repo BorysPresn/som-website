@@ -1,4 +1,5 @@
 import "./app/styles/globals.scss";
+import { About } from "./sections/About/About";
 import { Header } from "./sections/Header/Header";
 import { Hero } from "./sections/Hero/Hero";
 import { Services } from "./sections/Services/Services";
@@ -11,6 +12,7 @@ function App() {
       <Header />
       <Hero />
       <Services />
+      <About />
     </>
   );
 }
