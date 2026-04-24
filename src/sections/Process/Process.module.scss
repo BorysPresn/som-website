@@ -1,0 +1,86 @@
+@use "../../app/styles/mixins.scss" as *;
+@use "../../app/styles/typography.scss" as *;
+@use "../../app/styles/variables.scss" as *;
+
+.section {
+  padding-block: 64px;
+  background-color: $color-bg-main;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.eyebrow {
+  @include above-heading;
+  color: $color-text-accent-secondary;
+}
+
+.title {
+  @include desktop-h2;
+  color: $color-text-headings;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  gap: 24px;
+}
+
+.stepNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1.6px solid $color-stroke-accent;
+  border-radius: $radius-sm;
+  background-color: $color-bg-accent-dark;
+  color: $color-text-headings;
+}
+
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stepTitle,
+.stepText {
+  margin: 0;
+}
+
+.stepTitle {
+  color: $color-text-main;
+}
+
+.stepText {
+  color: $color-text-main;
+}
+
+.media {
+  min-height: 430px;
+  border-radius: $radius-sm;
+  background-color: $color-bg-section;
+}
+
+.cta {
+  width: fit-content;
+}
+
