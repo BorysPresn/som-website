@@ -39,7 +39,6 @@
 
 .description {
   @include font($fs-text-sm-mobile, $fw-light, $lh-paragraph-md);
-  max-width: 318px;
   color: $color-text-main;
   opacity: 0.85;
 }
@@ -75,4 +74,18 @@
 
 .detailValue:hover {
   color: $color-text-accent;
+}
+
+.mapWrap {
+  width: 100%;
+  height: 258px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
