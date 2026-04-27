@@ -11,8 +11,10 @@ interface ButtonProps extends React.HTMLAttributes<HTMLElement> {
   variant: "primary" | "call";
 }
 
+const defaultButtonText = "Um\u00F3w wizyt\u0119";
+
 export const Button = ({
-  text = "Umów wizytę",
+  text = defaultButtonText,
   iconName,
   href,
   variant,

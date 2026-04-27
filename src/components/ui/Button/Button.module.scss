@@ -1,7 +1,9 @@
 @use "../../../app/styles/variables.scss" as *;
 @use "../../../app/styles/mixins.scss" as *;
+@use "../../../app/styles/typography.scss" as *;
 
 .button {
+  width: fit-content;
   position: relative;
   display: inline-flex;
   gap: 8px;
@@ -28,8 +30,9 @@
 }
 
 .primary {
-  @include desktop-button-m;
-  padding: $padding-btn-y $padding-btn-x;
+  @include font($fs-text-xs, $fw-regular, $lh-paragraph-md);
+  height: 44px;
+  padding: 7px $padding-btn-x;
   border: none;
   text-shadow: 0.5px 0.5px 0 rgba(0, 0, 0, 0.15);
 }
@@ -85,4 +88,12 @@
   background-color: $color-button-secondary-hover;
   color: $color-button-secondary-text-hover;
   border-color: $color-button-secondary-border-hover;
+}
+
+@media (min-width: $bp-desktop) {
+  .primary {
+    @include desktop-button-m;
+    height: auto;
+    padding: $padding-btn-y $padding-btn-x;
+  }
 }
