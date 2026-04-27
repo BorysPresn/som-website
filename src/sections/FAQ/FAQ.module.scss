@@ -137,7 +137,7 @@
   .content {
     display: grid;
     grid-template-columns: 541px minmax(0, 962px);
-    column-gap: clamp(64px, 7vw, 128px);
+    column-gap: clamp(0px, 10px, 128px);
     align-items: start;
     justify-content: space-between;
   }
