@@ -1,0 +1,158 @@
+@use "../../app/styles/mixins.scss" as *;
+@use "../../app/styles/typography.scss" as *;
+@use "../../app/styles/variables.scss" as *;
+
+.section {
+  padding-block: 64px;
+  background-color: $color-bg-main;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.headingGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.textGroup {
+  display: flex;
+  gap: 48px;
+  flex-direction: column;
+}
+.eyebrow {
+  @include above-heading;
+  font-size: $fs-text-lg-mobile;
+  line-height: 25.2px;
+  letter-spacing: 3.6px;
+}
+
+.title {
+  @include desktop-h2;
+  font-size: $fs-heading-2-mobile;
+  line-height: 38.4px;
+  letter-spacing: 1.6px;
+  text-transform: none;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 344 / 430;
+  max-height: 450px;
+}
+
+.imageWrap::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -9px;
+  right: 9px;
+  bottom: 16px;
+  border-radius: $radius-sm;
+  background-color: $color-bg-section;
+}
+
+.image {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: $radius-sm;
+  object-fit: cover;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: $color-text-main;
+  opacity: 0.85;
+}
+
+.text p {
+  @include font($fs-text-sm-mobile, $fw-light, 25.6px);
+}
+
+@media (min-width: $bp-tablet) {
+  .section {
+    padding-block: 96px;
+  }
+
+  .content {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .headingGroup {
+    gap: 16px;
+  }
+
+  .textGroup {
+    flex-direction: row;
+    gap: 30px;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .imageWrap {
+    flex: 0 0 min(36vw, 300px);
+    max-height: none;
+    aspect-ratio: 642 / 794;
+  }
+
+  .imageWrap::before {
+    top: 0;
+    left: 14.95%;
+    right: 0;
+    bottom: 11.84%;
+  }
+
+  .image {
+    position: absolute;
+    top: 3.15%;
+    left: 4.21%;
+    width: 91.59%;
+    height: 93.58%;
+    object-position: center 40%;
+  }
+
+  .text {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}
+
+@media (min-width: $bp-desktop) {
+  .eyebrow {
+    @include above-heading;
+    white-space: nowrap;
+  }
+
+  .title {
+    @include desktop-h2;
+    text-transform: uppercase;
+  }
+
+  .textGroup {
+    gap: 30px;
+  }
+
+  .text {
+    gap: 30px;
+    max-width: 900px;
+  }
+
+  .text p {
+    @include font($fs-text-md, $fw-light, $lh-paragraph-md);
+  }
+
+  .imageWrap {
+    flex-basis: auto;
+    max-width: 642px;
+    aspect-ratio: 642 / 794;
+  }
+}
