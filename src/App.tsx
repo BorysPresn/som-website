@@ -3,6 +3,7 @@ import { About } from "./sections/About/About";
 import { Header } from "./sections/Header/Header";
 import { Hero } from "./sections/Hero/Hero";
 import { Process } from "./sections/Process/Process";
+import { Reviews } from "./sections/Reviews/Reviews";
 import { Services } from "./sections/Services/Services";
 import { TopBar } from "./sections/TopBar/TopBar";
 
@@ -15,6 +16,7 @@ function App() {
       <Services />
       <About />
       <Process />
+      <Reviews />
     </>
   );
 }
