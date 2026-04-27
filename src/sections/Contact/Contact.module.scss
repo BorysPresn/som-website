@@ -1,0 +1,78 @@
+@use "../../app/styles/mixins.scss" as *;
+@use "../../app/styles/typography.scss" as *;
+@use "../../app/styles/variables.scss" as *;
+
+.section {
+  padding-block: 64px;
+  background-color: $color-bg-main;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.headingBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.headingGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.eyebrow {
+  @include above-heading;
+  font-size: $fs-text-lg-mobile;
+  line-height: 25.2px;
+  letter-spacing: 3.6px;
+}
+
+.title {
+  @include font(26px, $fw-medium, 36px, 1.6px);
+  color: $color-text-headings;
+}
+
+.description {
+  @include font($fs-text-sm-mobile, $fw-light, $lh-paragraph-md);
+  max-width: 318px;
+  color: $color-text-main;
+  opacity: 0.85;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-style: normal;
+}
+
+.detailItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.detailLabel,
+.detailValue {
+  @include font($fs-text-sm-mobile, $fw-light, 25.6px);
+}
+
+.detailLabel {
+  flex: 0 0 auto;
+  color: $color-text-accent;
+}
+
+.detailValue {
+  max-width: 193px;
+  color: $color-text-main;
+  text-decoration: none;
+}
+
+.detailValue:hover {
+  color: $color-text-accent;
+}
