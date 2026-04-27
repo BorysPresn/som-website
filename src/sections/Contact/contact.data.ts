@@ -26,3 +26,52 @@ export const contactDetails = [
     value: "ul. Szparagowa 8, 62-081 Wysogotowo",
   },
 ];
+
+export const contactFormCopy = {
+  consent:
+    "Wyra\u017Cam zgod\u0119 na przetwarzanie moich danych osobowych przez AUTO-SOM w celu kontaktu oraz realizacji zg\u0142oszenia, zgodnie z obowi\u0105zuj\u0105cymi przepisami i polityk\u0105 prywatno\u015Bci.",
+  requiredNote: "* Pola obowi\u0105zkowe",
+  submit: "Wy\u015Blij",
+  errors: {
+    fullName: "Wpisanie imienia i nazwiska jest wymagane.",
+    phone: "Wpisanie numeru telefonu jest wymagane.",
+    phoneFormat: "Wpisz poprawny numer telefonu.",
+    vin: "Wpisanie numeru VIN jest wymagane.",
+    vinLength: "Numer VIN musi mie\u0107 dok\u0142adnie 17 znak\u00F3w.",
+    vinFormat:
+      "Numer VIN mo\u017Ce zawiera\u0107 tylko litery A-Z i cyfry, bez I, O oraz Q.",
+    message: "Opisanie problemu jest wymagane.",
+    consent: "Zgoda na przetwarzanie danych jest wymagana.",
+  },
+};
+
+export const contactFormFields = [
+  {
+    label: "Imi\u0119 i nazwisko*",
+    name: "fullName",
+    type: "text",
+    placeholder: "Wpisz imi\u0119 i nazwisko",
+    required: true,
+  },
+  {
+    label: "Numer telefonu*",
+    name: "phone",
+    type: "tel",
+    placeholder: "+48 123 456 789",
+    required: true,
+  },
+  {
+    label: "Numer VIN*",
+    name: "vin",
+    type: "text",
+    placeholder: "Np. WAUZZZ8V4KA123456",
+    required: true,
+  },
+  {
+    label: "Wiadomo\u015B\u0107*",
+    name: "message",
+    placeholder: "Opisz problem...",
+    multiline: true,
+    required: true,
+  },
+];
