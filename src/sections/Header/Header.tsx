@@ -35,7 +35,7 @@ export const Header = ({}: HeaderProps) => {
       <div className={style.bar}>
         <Container>
           <div className={style.row}>
-            <a href="/" aria-label="S.O.M. Serwis">
+            <a href="/" aria-label="S.O.M. Serwis" >
               <img
                 src={logo}
                 alt="S.O.M. Serwis logo"
