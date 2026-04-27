@@ -7,6 +7,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLElement> {
   text?: string;
   iconName?: ButtonIcons;
   href?: string;
+  target?: string;
   variant: "primary" | "call";
 }
 
@@ -21,13 +22,10 @@ export const Button = ({
   const content = (
     <>
       <span className={style.label}>{text}</span>
-      {iconName === "arrow-right" && (
+      {iconName && (
         <div className={style["icon-container"]}>
-          <Icon name="arrow-right" variant="button" className={style.icon} />
+          <Icon name={iconName} variant="button" className={style.icon} />
         </div>
-      )}
-      {iconName === "arrow-up-right" && (
-        <Icon name="arrow-up-right" variant="button" className={style.icon} />
       )}
     </>
   );

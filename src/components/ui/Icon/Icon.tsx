@@ -4,13 +4,15 @@ import type { IconName } from "../../../types/types";
 import { iconMap } from "./iconMap";
 import style from "./Icon.module.scss";
 
-type IconVariant = "button" | "topbar" | "footer" | "contact";
+type IconVariant = "button" | "topbar" | "footer" | "contact" | "brand" | "rating";
 
 const sizes: Record<IconVariant, number> = {
   button: 20,
   topbar: 17,
   footer: 24,
   contact: 40,
+  brand: 16,
+  rating: 16,
 };
 
 interface IconProps extends SVGProps<SVGSVGElement> {

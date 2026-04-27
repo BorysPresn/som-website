@@ -8,11 +8,9 @@ import slide3 from "../../assets/images/slide3.jpg";
 import slide4 from "../../assets/images/slide4.jpg";
 import style from "./Hero.module.scss";
 
-interface HeroProps {}
-
 const slides = [slide1, slide2, slide3, slide4];
 
-export const Hero = ({}: HeroProps) => {
+export const Hero = () => {
   const [activeSlide, setActiveSlide] = useState(0);
 
   useEffect(() => {

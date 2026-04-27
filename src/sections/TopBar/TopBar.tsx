@@ -4,8 +4,6 @@ import { Icon } from "../../components/ui/Icon/Icon";
 import { StatusIcon } from "./StatusIcon";
 import style from "./TopBar.module.scss";
 
-interface TopBarProps {}
-
 const OPEN_AT = 9;
 const CLOSE_AT = 18;
 
@@ -20,7 +18,7 @@ const isOpen = () => {
   return true;
 };
 
-export const TopBar = ({}: TopBarProps) => {
+export const TopBar = () => {
   const [open, setOpen] = useState(isOpen());
   useEffect(() => {
     const id = window.setInterval(() => {
