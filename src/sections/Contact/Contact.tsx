@@ -1,5 +1,5 @@
 import { Container } from "../../components/layout/Container/Container";
-import { contactCopy, contactDetails } from "./contact.data";
+import { contactCopy, contactDetails, contactMap } from "./contact.data";
 import style from "./Contact.module.scss";
 
 export const Contact = () => {
@@ -32,6 +32,16 @@ export const Contact = () => {
               </div>
             ))}
           </address>
+
+          <div className={style.mapWrap}>
+            <iframe
+              className={style.map}
+              title={contactMap.title}
+              src={contactMap.src}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </div>
       </Container>
     </section>
