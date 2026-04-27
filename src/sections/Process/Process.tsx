@@ -1,11 +1,8 @@
 import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
-import { processSteps } from "./process.data";
+import repairProcessImage from "../../assets/images/process/repair-process.webp";
+import { processContent, processSteps } from "./process.data";
 import style from "./Process.module.scss";
-
-const eyebrow = "Proces serwisu";
-const title = "Jak przebiega naprawa";
-const ctaText = "Um\u00F3w wizyt\u0119";
 
 export const Process = () => {
   return (
@@ -13,8 +10,8 @@ export const Process = () => {
       <Container>
         <div className={style.content}>
           <div className={style.header}>
-            <p className={style.eyebrow}>{eyebrow}</p>
-            <h2 className={style.title}>{title}</h2>
+            <p className={style.eyebrow}>{processContent.eyebrow}</p>
+            <h2 className={style.title}>{processContent.title}</h2>
           </div>
 
           <ol className={style.steps}>
@@ -29,12 +26,18 @@ export const Process = () => {
             ))}
           </ol>
 
-          <div className={style.media} aria-hidden="true" />
+          <div className={style.media}>
+            <img
+              src={repairProcessImage}
+              alt={processContent.imageAlt}
+              className={style.image}
+            />
+          </div>
 
           <div className={style.cta}>
             <Button
               variant="primary"
-              text={ctaText}
+              text={processContent.ctaText}
               href="#contact"
               iconName="arrow-right"
             />

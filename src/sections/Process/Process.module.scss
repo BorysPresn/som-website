@@ -3,14 +3,14 @@
 @use "../../app/styles/variables.scss" as *;
 
 .section {
-  padding-block: 64px;
+  padding-block: $space-xl;
   background-color: $color-bg-main;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: $space-lg;
 }
 
 .header {
@@ -20,35 +20,62 @@
 }
 
 .eyebrow {
-  @include above-heading;
+  @include font($fs-text-lg-mobile, $fw-regular, 25.2px, 3.6px);
+  margin: 0;
   color: $color-text-accent-secondary;
+  text-transform: uppercase;
 }
 
 .title {
-  @include desktop-h2;
+  @include font($fs-heading-2-mobile, $fw-medium, 38.4px, 1.6px);
+  margin: 0;
   color: $color-text-headings;
 }
 
 .steps {
+  --process-list-gap: #{$space-md};
+  --process-marker-width: #{$space-lg};
+  --process-marker-height: #{$space-lg};
+  --process-marker-left: 0px;
+  --process-marker-center-y: calc(var(--process-marker-height) / 2);
+  --process-line-left: calc(
+    var(--process-marker-left) + (var(--process-marker-width) / 2)
+  );
+
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: var(--process-list-gap);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .step {
+  position: relative;
   display: flex;
-  gap: 24px;
+  gap: $space-sm;
+}
+
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: var(--process-line-left);
+  top: var(--process-marker-center-y);
+  width: 1px;
+  height: calc(100% + var(--process-list-gap));
+  background-color: rgba(245, 247, 250, 0.22);
 }
 
 .stepNumber {
+  @include font($fs-heading-5-mobile, $fw-regular, 27px);
+  position: relative;
+  z-index: 1;
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: var(--process-marker-width);
+  height: var(--process-marker-height);
   border: 1.6px solid $color-stroke-accent;
   border-radius: $radius-sm;
   background-color: $color-bg-accent-dark;
@@ -59,28 +86,143 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
 }
 
 .stepTitle,
 .stepText {
   margin: 0;
+  color: $color-text-main;
 }
 
 .stepTitle {
-  color: $color-text-main;
+  @include font($fs-heading-5-mobile, $fw-medium, $lh-heading-display);
 }
 
 .stepText {
-  color: $color-text-main;
+  @include font($fs-text-sm-mobile, $fw-light, 25.6px);
 }
 
 .media {
-  min-height: 430px;
+  position: relative;
+  width: 100%;
+  height: 430px;
   border-radius: $radius-sm;
+}
+
+.media::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
   background-color: $color-bg-section;
+}
+
+.image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  object-position: 42% center;
 }
 
 .cta {
   width: fit-content;
 }
 
+@media (min-width: $bp-desktop) {
+  .section {
+    padding-block: 96px;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 40.125%);
+    gap: clamp(48px, 4vw, 96px);
+    align-items: center;
+  }
+
+  .header,
+  .steps,
+  .cta {
+    grid-column: 1;
+  }
+
+  .header {
+    gap: 16px;
+    align-self: end;
+  }
+
+  .eyebrow {
+    @include above-heading;
+  }
+
+  .title {
+    @include desktop-h2;
+    max-width: none;
+  }
+
+  .steps {
+    --process-list-gap: 64px;
+    --process-marker-width: 83px;
+    --process-marker-height: 61px;
+  }
+
+  .step {
+    gap: $space-lg;
+    align-items: center;
+  }
+
+  .stepNumber {
+    @include font($fs-heading-6, $fw-regular, $lh-paragraph-md);
+    border-width: 3px;
+  }
+
+  .stepContent {
+    gap: 16px;
+    max-width: 713px;
+  }
+
+  .stepTitle {
+    @include desktop-h4;
+  }
+
+  .stepText {
+    @include font($fs-text-md, $fw-light, $lh-paragraph-md);
+  }
+
+  .media {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    width: 100%;
+    max-width: 642px;
+    height: 794px;
+    justify-self: end;
+  }
+
+  .media::before {
+    top: 33px;
+    left: 9.35%;
+    width: 85.05%;
+    height: 700px;
+  }
+
+  .image {
+    top: 51px;
+    width: 91.59%;
+    height: 743px;
+  }
+}
+
+@media (min-width: $bp-wide) {
+  .content {
+    grid-template-columns: minmax(0, 907px) minmax(360px, 642px);
+    justify-content: space-between;
+  }
+}

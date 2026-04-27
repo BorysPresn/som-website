@@ -1,3 +1,11 @@
+export const processContent = {
+  eyebrow: "Proces serwisu",
+  title: "Jak przebiega naprawa",
+  ctaText: "Um\u00F3w wizyt\u0119",
+  imageAlt:
+    "Pracownik serwisu omawia zakres naprawy z klientk\u0105 przy tablecie.",
+};
+
 export const processSteps = [
   {
     number: "01",
