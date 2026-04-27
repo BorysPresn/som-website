@@ -6,8 +6,6 @@ import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
 import style from "./Header.module.scss";
 
-interface HeaderProps {}
-
 const navItems = [
   { href: "#services", label: "Uslugi" },
   { href: "#about", label: "O nas" },
@@ -15,7 +13,7 @@ const navItems = [
   { href: "#contact", label: "Kontakt" },
 ];
 
-export const Header = ({}: HeaderProps) => {
+export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const renderNavList = () => {
