@@ -1,4 +1,5 @@
 import { Container } from "../../components/layout/Container/Container";
+import { ContactForm } from "./ContactForm";
 import { contactCopy, contactDetails, contactMap } from "./contact.data";
 import style from "./Contact.module.scss";
 
@@ -42,6 +43,8 @@ export const Contact = () => {
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
+
+          <ContactForm />
         </div>
       </Container>
     </section>
