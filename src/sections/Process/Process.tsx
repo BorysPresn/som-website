@@ -39,7 +39,6 @@ export const Process = () => {
           <div className={style.cta}>
             <Button
               variant="primary"
-              text={processContent.ctaText}
               href="#contact"
               iconName="arrow-right"
             />

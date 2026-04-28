@@ -12,10 +12,13 @@ interface ButtonProps extends React.HTMLAttributes<HTMLElement> {
   variant: "primary" | "call";
 }
 
-const defaultButtonText = "Um\u00F3w wizyt\u0119";
+const defaultButtonTextByVariant: Record<ButtonProps["variant"], string> = {
+  primary: "Um\u00F3w wizyt\u0119",
+  call: "Zadzwo\u0144 teraz",
+};
 
 export const Button = ({
-  text = defaultButtonText,
+  text,
   iconName,
   href,
   type = "button",
@@ -23,9 +26,10 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   const classNames = clsx(style.button, style[variant]);
+  const buttonText = text ?? defaultButtonTextByVariant[variant];
   const content = (
     <>
-      <span className={style.label}>{text}</span>
+      <span className={style.label}>{buttonText}</span>
       {iconName && (
         <div className={style["icon-container"]}>
           <Icon name={iconName} variant="button" className={style.icon} />

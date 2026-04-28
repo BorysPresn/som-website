@@ -120,3 +120,27 @@
   );
   color: $color-button-secondary-text;
 }
+
+@mixin card-hover-decoration($display: block) {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    display: $display;
+    border: 3px solid $color-stroke-accent;
+    border-radius: inherit;
+    box-shadow: 0 5px 16.5px rgba(255, 255, 255, 0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.28s ease,
+      box-shadow 0.28s ease;
+    z-index: 2;
+  }
+
+  &:hover::after,
+  &:focus-within::after,
+  &:focus-visible::after {
+    opacity: 1;
+  }
+}

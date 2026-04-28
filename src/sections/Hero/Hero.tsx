@@ -57,8 +57,8 @@ export const Hero = () => {
 
           <Button
             variant="primary"
-            text="Umów wizytę"
             iconName="arrow-right"
+            href="#contact"
           />
         </div>
       </Container>

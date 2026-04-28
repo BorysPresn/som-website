@@ -8,7 +8,6 @@ const aboutTitle = "Dlaczego warto nam zaufa\u0107";
 const aboutLead =
   "Nasz zesp\u00F3\u0142 zapewnia szybk\u0105 i skuteczn\u0105 napraw\u0119, aby Tw\u00F3j samoch\u00F3d by\u0142 niezawodny jak najd\u0142u\u017Cej.";
 const serviceBayAlt = "Samochody na podno\u015Bnikach w hali serwisowej.";
-const ctaText = "Um\u00F3w wizyt\u0119";
 
 const aboutItems = [
   {
@@ -72,7 +71,6 @@ export const About = () => {
               <div className={style.cta}>
                 <Button
                   variant="primary"
-                  text={ctaText}
                   href="#contact"
                   iconName="arrow-right"
                 />
