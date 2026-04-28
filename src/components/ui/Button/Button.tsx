@@ -8,6 +8,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLElement> {
   iconName?: ButtonIcons;
   href?: string;
   target?: string;
+  type?: React.ButtonHTMLAttributes<HTMLButtonElement>["type"];
   variant: "primary" | "call";
 }
 
@@ -17,6 +18,7 @@ export const Button = ({
   text = defaultButtonText,
   iconName,
   href,
+  type = "button",
   variant,
   ...props
 }: ButtonProps) => {
@@ -41,7 +43,7 @@ export const Button = ({
   }
 
   return (
-    <button className={classNames} {...props}>
+    <button className={classNames} type={type} {...props}>
       {content}
     </button>
   );

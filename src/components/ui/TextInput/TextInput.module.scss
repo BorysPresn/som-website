@@ -43,6 +43,16 @@
   opacity: 1;
 }
 
+.control:-webkit-autofill,
+.control:-webkit-autofill:hover,
+.control:-webkit-autofill:focus,
+.control:-webkit-autofill:active {
+  -webkit-text-fill-color: $color-text-main;
+  caret-color: $color-text-main;
+  box-shadow: 0 0 0 1000px $color-bg-main inset;
+  transition: background-color 9999s ease-out;
+}
+
 .control:hover {
   border-color: #555;
 }

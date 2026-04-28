@@ -6,6 +6,9 @@ import { contactFormCopy, contactFormFields } from "./contact.data";
 import {
   type ContactFormErrors,
   type ContactFormValues,
+  contactFullNameMaxLength,
+  formatPolishPhoneForSubmit,
+  formatPolishPhoneInput,
   initialContactFormValues,
   validateContactForm,
 } from "./contact.validation";
@@ -26,6 +29,16 @@ export const ContactForm = () => {
     if (Object.keys(nextErrors).length > 0) {
       return;
     }
+
+    const formData = new FormData();
+    Object.entries(values).forEach(([name, value]) => {
+      formData.set(
+        name,
+        name === "phone" ? formatPolishPhoneForSubmit(String(value)) : String(value),
+      );
+    });
+
+    console.log("Contact form data", Object.fromEntries(formData.entries()));
   };
 
   return (
@@ -46,13 +59,18 @@ export const ContactForm = () => {
               placeholder={field.placeholder}
               required={field.required}
               multiline={field.multiline}
+              maxLength={
+                field.name === "fullName" ? contactFullNameMaxLength : undefined
+              }
               value={values[fieldName]}
               errorText={errors[fieldName]}
               onChange={(event) => {
                 const nextValue =
-                  field.name === "vin"
-                    ? event.currentTarget.value.toUpperCase()
-                    : event.currentTarget.value;
+                  field.name === "phone"
+                    ? formatPolishPhoneInput(event.currentTarget.value)
+                    : field.name === "vin"
+                      ? event.currentTarget.value.toUpperCase()
+                      : event.currentTarget.value;
 
                 setValues((currentValues) => ({
                   ...currentValues,
@@ -88,6 +106,7 @@ export const ContactForm = () => {
       <div className={style.submitGroup}>
         <p className={style.requiredNote}>{contactFormCopy.requiredNote}</p>
         <Button
+          type="submit"
           variant="primary"
           text={contactFormCopy.submit}
           iconName="arrow-right"

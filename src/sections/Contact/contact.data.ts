@@ -34,8 +34,11 @@ export const contactFormCopy = {
   submit: "Wy\u015Blij",
   errors: {
     fullName: "Wpisanie imienia i nazwiska jest wymagane.",
+    fullNameLength: "Imi\u0119 i nazwisko nie mo\u017Ce przekracza\u0107 80 znak\u00F3w.",
     phone: "Wpisanie numeru telefonu jest wymagane.",
     phoneFormat: "Wpisz poprawny numer telefonu.",
+    phoneCountry:
+      "Formularz przyjmuje polskie numery telefonu. Je\u015Bli masz numer z innego kraju, napisz do nas przez Telegram lub e-mail.",
     vin: "Wpisanie numeru VIN jest wymagane.",
     vinLength: "Numer VIN musi mie\u0107 dok\u0142adnie 17 znak\u00F3w.",
     vinFormat:
