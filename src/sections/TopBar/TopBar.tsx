@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { socialLinks } from "../../app/site.data";
 import { Container } from "../../components/layout/Container/Container";
 import { Icon } from "../../components/ui/Icon/Icon";
 import { StatusIcon } from "./StatusIcon";
@@ -34,22 +35,17 @@ export const TopBar = () => {
       <Container>
         <div className={style.wrapper}>
           <div className={style.social}>
-            <a
-              href="https://www.facebook.com/groups/auto.seriws.s.o.m2020/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-            >
-              <Icon name="facebook" variant="topbar" />
-            </a>
-            <a
-              href="https://www.instagram.com/auto_serwis_s_o_m_/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              <Icon name="instagram" variant="topbar" />
-            </a>
+            {socialLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+              >
+                <Icon name={link.icon} variant="topbar" />
+              </a>
+            ))}
           </div>
           <div className={style.schedule}>
             <span className={style.status}>
