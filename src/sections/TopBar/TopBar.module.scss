@@ -2,6 +2,7 @@
 @use "../../app/styles/mixins.scss" as *;
 
 .topbar {
+  display: none;
   padding-top: 8px;
   padding-bottom: 8px;
   background-color: $color-bg-section;
@@ -42,8 +43,8 @@
   color: $color-error;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 769px) {
   .topbar {
-    display: none;
+    display: block;
   }
 }

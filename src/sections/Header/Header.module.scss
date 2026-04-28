@@ -19,10 +19,16 @@
   align-items: center;
   min-height: 80px;
 }
+
 .logo {
-  width: 64px;
-  height: auto;
+  width: 48px;
+  height: 48px;
   vertical-align: middle;
+}
+
+.desktopNav,
+.desktopCta {
+  display: none;
 }
 
 .navList {
@@ -84,7 +90,9 @@
 }
 
 .burger {
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 44px;
   height: 44px;
   padding: 8px;
@@ -105,23 +113,24 @@
   transform: rotate(-90deg);
 }
 
-@media (max-width: 768px) {
-  .desktopNav,
+@media (min-width: 769px) {
+  .desktopNav {
+    display: block;
+  }
+
   .desktopCta {
+    display: block;
+  }
+
+  .logo {
+    width: 64px;
+    height: auto;
+  }
+
+  .burger {
     display: none;
   }
-  .logo {
-    width: 48px;
-    height: 48px;
-  }
-  .burger {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
 
-@media (min-width: 769px) {
   .mobileMenu {
     display: none;
   }
