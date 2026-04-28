@@ -2,6 +2,7 @@ import "./app/styles/globals.scss";
 import { About } from "./sections/About/About";
 import { Contact } from "./sections/Contact/Contact";
 import { FAQ } from "./sections/FAQ/FAQ";
+import { Footer } from "./sections/Footer/Footer";
 import { Header } from "./sections/Header/Header";
 import { Hero } from "./sections/Hero/Hero";
 import { Owner } from "./sections/Owner/Owner";
@@ -23,6 +24,7 @@ function App() {
       <Owner />
       <FAQ />
       <Contact />
+      <Footer />
     </>
   );
 }

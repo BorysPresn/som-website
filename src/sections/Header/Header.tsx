@@ -1,23 +1,16 @@
 import clsx from "clsx";
 import { useState } from "react";
 import burgerIcon from "../../assets/icons/burger.svg";
-import logo from "../../assets/images/logo_web.png";
+import { siteLogo, siteNavigation } from "../../app/site.data";
 import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
 import style from "./Header.module.scss";
-
-const navItems = [
-  { href: "#services", label: "Uslugi" },
-  { href: "#about", label: "O nas" },
-  { href: "#testimonials", label: "Opinie" },
-  { href: "#contact", label: "Kontakt" },
-];
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const renderNavList = () => {
-    return navItems.map((item) => (
+    return siteNavigation.map((item) => (
       <li key={item.href}>
         <a href={item.href}>{item.label}</a>
       </li>
@@ -33,10 +26,10 @@ export const Header = () => {
       <div className={style.bar}>
         <Container>
           <div className={style.row}>
-            <a href="/" aria-label="S.O.M. Serwis" >
+            <a href={siteLogo.href} aria-label="S.O.M. Serwis">
               <img
-                src={logo}
-                alt="S.O.M. Serwis logo"
+                src={siteLogo.src}
+                alt={siteLogo.alt}
                 width={74}
                 height={74}
                 className={style.logo}
