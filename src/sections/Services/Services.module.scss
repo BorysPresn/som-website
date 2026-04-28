@@ -43,27 +43,7 @@
   isolation: isolate;
   text-decoration: none;
   cursor: pointer;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 3px solid $color-stroke-accent;
-    border-radius: inherit;
-    box-shadow: 0 5px 16.5px rgba(255, 255, 255, 0.15);
-    opacity: 0;
-    pointer-events: none;
-    transition:
-      opacity 0.28s ease,
-      box-shadow 0.28s ease;
-    z-index: 2;
-    display: none;
-  }
-
-  &:hover::after,
-  &:focus-within::after {
-    opacity: 1;
-  }
+  @include card-hover-decoration(none);
 }
 
 .background,

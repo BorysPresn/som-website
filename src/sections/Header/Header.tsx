@@ -6,6 +6,9 @@ import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
 import style from "./Header.module.scss";
 
+const phoneHref = "tel:+48793545208";
+const callButtonText = "Zadzwon teraz";
+
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -39,7 +42,7 @@ export const Header = () => {
               <ul className={style.navList}>{renderNavList()}</ul>
             </nav>
             <div className={style.desktopCta}>
-              <Button variant="call" text="Zadzwon teraz" />
+              <Button variant="call" text={callButtonText} href={phoneHref} />
             </div>
             <button
               type="button"
@@ -69,7 +72,7 @@ export const Header = () => {
             <ul className={style.mobileNavList}>{renderNavList()}</ul>
           </nav>
           <div className={style.mobileCta}>
-            <Button variant="call" text="Zadzwon teraz" />
+            <Button variant="call" text={callButtonText} href={phoneHref} />
           </div>
         </Container>
       </div>

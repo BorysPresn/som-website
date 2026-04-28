@@ -234,25 +234,7 @@
   background-color: $color-bg-section;
   color: $color-text-main;
   text-decoration: none;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 3px solid $color-stroke-accent;
-    border-radius: inherit;
-    box-shadow: 0 5px 16.5px rgba(255, 255, 255, 0.15);
-    opacity: 0;
-    pointer-events: none;
-    transition:
-      opacity 0.28s ease,
-      box-shadow 0.28s ease;
-  }
-}
-
-.methodCard:hover::after,
-.methodCard:focus-visible::after {
-  opacity: 1;
+  @include card-hover-decoration;
 }
 
 .methodLink:focus-visible {
