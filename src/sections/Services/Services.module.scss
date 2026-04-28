@@ -19,16 +19,7 @@
   gap: 16px;
 }
 
-.eyebrow {
-  @include above-heading;
-  font-size: $fs-text-lg-mobile;
-  line-height: 25.2px;
-  letter-spacing: 3.6px;
-}
-
 .title {
-  @include font($fs-heading-2-mobile, $fw-medium, 38.4px, 1.6px);
-  color: $color-text-headings;
   max-width: 222px;
 }
 
@@ -199,12 +190,7 @@
     gap: 96px;
   }
 
-  .eyebrow {
-    @include above-heading;
-  }
-
   .title {
-    @include desktop-h2;
     max-width: none;
   }
 

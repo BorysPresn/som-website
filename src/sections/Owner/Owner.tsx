@@ -1,4 +1,5 @@
 import { Container } from "../../components/layout/Container/Container";
+import { SectionHeading } from "../../components/ui/SectionHeading/SectionHeading";
 import ownerImage from "../../assets/images/owner/owner.jpg";
 import style from "./Owner.module.scss";
 
@@ -20,12 +21,13 @@ export const Owner = () => {
     <section className={style.section} aria-labelledby="owner-title">
       <Container>
         <div className={style.content}>
-          <div className={style.headingGroup}>
-            <p className={style.eyebrow}>{eyebrow}</p>
-            <h2 id="owner-title" className={style.title}>
-              {title}
-            </h2>
-          </div>
+          <SectionHeading
+            eyebrow={eyebrow}
+            title={title}
+            titleId="owner-title"
+            className={style.headingGroup}
+            titleClassName={style.title}
+          />
 
           <div className={style.textGroup}>
             <div className={style.imageWrap}>
