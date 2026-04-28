@@ -39,6 +39,18 @@
   @include desktop-buttons-header;
 }
 
+.navList a,
+.mobileNavList a {
+  transition: color 0.2s ease;
+}
+
+.navList a:hover,
+.navList a:focus-visible,
+.mobileNavList a:hover,
+.mobileNavList a:focus-visible {
+  color: $color-text-accent;
+}
+
 .mobileMenu {
   position: absolute;
   top: 100%;
@@ -129,6 +141,31 @@
 
   .burger {
     display: none;
+  }
+
+  .navList a {
+    position: relative;
+    display: inline-flex;
+    padding-block: 4px;
+    outline: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      background-color: $color-stroke-accent;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.2s ease;
+    }
+  }
+
+  .navList a:hover::after,
+  .navList a:focus-visible::after {
+    transform: scaleX(1);
   }
 
   .mobileMenu {

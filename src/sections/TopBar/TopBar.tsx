@@ -38,6 +38,7 @@ export const TopBar = () => {
             {socialLinks.map((link) => (
               <a
                 key={link.href}
+                className={style.socialLink}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -49,7 +50,7 @@ export const TopBar = () => {
           </div>
           <div className={style.schedule}>
             <span className={style.status}>
-              {status} teraz <StatusIcon isOpen={open} />
+              {status} <StatusIcon isOpen={open} />
             </span>
             <span>|</span>
             <span>Pon-Pt 9:00-18:00 | Sobota, Niedziela - Zamknięte</span>

@@ -22,6 +22,21 @@
   gap: 12px;
 }
 
+.socialLink {
+  display: inline-flex;
+  color: $color-icon-secondary;
+  transition:
+    color 0.2s ease,
+    filter 0.2s ease;
+}
+
+.socialLink:hover,
+.socialLink:focus-visible {
+  color: $color-text-accent;
+  filter: drop-shadow(0 0 6px rgba(81, 236, 218, 0.45));
+  outline: none;
+}
+
 .schedule {
   @include info;
   display: flex;

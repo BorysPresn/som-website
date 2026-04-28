@@ -14,6 +14,11 @@ export const siteNavigation = [
   { href: "#contact", label: "Kontakt" },
 ];
 
+export const headerCta = {
+  href: "tel:+48793545208",
+  label: "Zadzwo\u0144 teraz",
+};
+
 type SocialLink = {
   href: string;
   label: string;

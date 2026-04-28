@@ -1,4 +1,5 @@
 import "./app/styles/globals.scss";
+import style from "./App.module.scss";
 import { About } from "./sections/About/About";
 import { Contact } from "./sections/Contact/Contact";
 import { FAQ } from "./sections/FAQ/FAQ";
@@ -16,14 +17,16 @@ function App() {
     <>
       <TopBar />
       <Header />
-      <Hero />
-      <Services />
-      <About />
-      <Process />
-      <Reviews />
-      <Owner />
-      <FAQ />
-      <Contact />
+      <main className={style.main}>
+        <Hero />
+        <Services />
+        <About />
+        <Process />
+        <Reviews />
+        <Owner />
+        <FAQ />
+        <Contact />
+      </main>
       <Footer />
     </>
   );

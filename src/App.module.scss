@@ -1,0 +1,7 @@
+@use "./app/styles/variables.scss" as *;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
