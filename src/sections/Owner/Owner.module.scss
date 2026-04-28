@@ -23,18 +23,7 @@
   gap: 48px;
   flex-direction: column;
 }
-.eyebrow {
-  @include above-heading;
-  font-size: $fs-text-lg-mobile;
-  line-height: 25.2px;
-  letter-spacing: 3.6px;
-}
-
 .title {
-  @include desktop-h2;
-  font-size: $fs-heading-2-mobile;
-  line-height: 38.4px;
-  letter-spacing: 1.6px;
   text-transform: none;
 }
 
@@ -127,13 +116,7 @@
 }
 
 @media (min-width: $bp-desktop) {
-  .eyebrow {
-    @include above-heading;
-    white-space: nowrap;
-  }
-
   .title {
-    @include desktop-h2;
     text-transform: uppercase;
   }
 

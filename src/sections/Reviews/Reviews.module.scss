@@ -19,19 +19,6 @@
   gap: 16px;
 }
 
-.eyebrow {
-  @include font($fs-text-lg-mobile, $fw-regular, 25.2px, 3.6px);
-  margin: 0;
-  color: $color-text-accent-secondary;
-  text-transform: uppercase;
-}
-
-.title {
-  @include font($fs-heading-2-mobile, $fw-medium, 38.4px, 1.6px);
-  margin: 0;
-  color: $color-text-headings;
-}
-
 .list {
   display: flex;
   flex-direction: column;
@@ -160,15 +147,6 @@
   .header {
     width: 100%;
     max-width: 1107px;
-  }
-
-  .eyebrow {
-    @include above-heading;
-  }
-
-  .title {
-    @include desktop-h2;
-    max-width: 100%;
   }
 
   .list {

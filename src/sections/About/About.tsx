@@ -1,5 +1,6 @@
 import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
+import { SectionHeading } from "../../components/ui/SectionHeading/SectionHeading";
 import serviceBayImage from "../../assets/images/why-us/service-bay.jpg";
 import style from "./About.module.scss";
 
@@ -38,10 +39,12 @@ export const About = () => {
       <Container>
         <div className={style.content}>
           <div className={style.header}>
-            <div className={style.headingGroup}>
-              <p className={style.eyebrow}>O nas</p>
-              <h2 className={style.title}>{aboutTitle}</h2>
-            </div>
+            <SectionHeading
+              eyebrow="O nas"
+              title={aboutTitle}
+              className={style.headingGroup}
+              titleClassName={style.title}
+            />
 
             <p className={style.lead}>{aboutLead}</p>
           </div>

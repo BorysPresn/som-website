@@ -1,4 +1,5 @@
 import { Container } from "../../components/layout/Container/Container";
+import { SectionHeading } from "../../components/ui/SectionHeading/SectionHeading";
 import { ServiceCard } from "./ServiceCard";
 import { servicesData } from "./services.data";
 import style from "./Services.module.scss";
@@ -8,10 +9,12 @@ export const Services = () => {
     <section id="services" className={style.servicesSection}>
       <Container>
         <div className={style.content}>
-          <div className={style.header}>
-            <p className={style.eyebrow}>Co robimy</p>
-            <h2 className={style.title}>Zakres usług serwisowych</h2>
-          </div>
+          <SectionHeading
+            eyebrow="Co robimy"
+            title="Zakres usług serwisowych"
+            className={style.header}
+            titleClassName={style.title}
+          />
 
           <div className={style.grid}>
             {servicesData.map((service) => (

@@ -1,0 +1,38 @@
+@use "../../../app/styles/mixins.scss" as *;
+@use "../../../app/styles/typography.scss" as *;
+@use "../../../app/styles/variables.scss" as *;
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.eyebrow {
+  @include font($fs-text-lg-mobile, $fw-regular, 25.2px, 3.6px);
+  margin: 0;
+  color: $color-text-accent-secondary;
+  text-transform: uppercase;
+}
+
+.title {
+  @include font($fs-heading-2-mobile, $fw-medium, 38.4px, 1.6px);
+  margin: 0;
+  color: $color-text-headings;
+}
+
+@media (min-width: $bp-tablet) {
+  .eyebrow {
+    @include above-heading;
+  }
+
+  .title {
+    @include font($fs-heading-3, $fw-medium, $lh-heading-display);
+  }
+}
+
+@media (min-width: $bp-desktop) {
+  .titleDesktopUppercase {
+    text-transform: uppercase;
+  }
+}

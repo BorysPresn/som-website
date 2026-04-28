@@ -2,6 +2,7 @@ import { useState } from "react";
 import clsx from "clsx";
 import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
+import { SectionHeading } from "../../components/ui/SectionHeading/SectionHeading";
 import { faqCopy, faqItems } from "./faq.data";
 import style from "./FAQ.module.scss";
 
@@ -13,12 +14,13 @@ export const FAQ = () => {
       <Container>
         <div className={style.content}>
           <div className={style.intro}>
-            <div className={style.headingGroup}>
-              <p className={style.eyebrow}>{faqCopy.eyebrow}</p>
-              <h2 id="faq-title" className={style.title}>
-                {faqCopy.title}
-              </h2>
-            </div>
+            <SectionHeading
+              eyebrow={faqCopy.eyebrow}
+              title={faqCopy.title}
+              titleId="faq-title"
+              className={style.headingGroup}
+              titleClassName={style.title}
+            />
 
             <div className={style.cta}>
               <Button

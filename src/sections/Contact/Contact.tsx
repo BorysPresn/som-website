@@ -1,4 +1,5 @@
 import { Container } from "../../components/layout/Container/Container";
+import { SectionHeading } from "../../components/ui/SectionHeading/SectionHeading";
 import { ContactForm } from "./ContactForm";
 import { ContactMethods } from "./ContactMethods";
 import { contactCopy, contactDetails, contactMap } from "./contact.data";
@@ -12,12 +13,13 @@ export const Contact = () => {
           <div className={style.infoColumn}>
             <div className={style.infoIntro}>
               <div className={style.headingBlock}>
-                <div className={style.headingGroup}>
-                  <p className={style.eyebrow}>{contactCopy.eyebrow}</p>
-                  <h2 id="contact-title" className={style.title}>
-                    {contactCopy.title}
-                  </h2>
-                </div>
+                <SectionHeading
+                  eyebrow={contactCopy.eyebrow}
+                  title={contactCopy.title}
+                  titleId="contact-title"
+                  className={style.headingGroup}
+                  titleClassName={style.title}
+                />
 
                 <p className={style.description}>{contactCopy.description}</p>
               </div>

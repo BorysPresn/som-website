@@ -1,5 +1,6 @@
 import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
+import { SectionHeading } from "../../components/ui/SectionHeading/SectionHeading";
 import repairProcessImage from "../../assets/images/process/repair-process.webp";
 import { processContent, processSteps } from "./process.data";
 import style from "./Process.module.scss";
@@ -9,10 +10,11 @@ export const Process = () => {
     <section id="process" className={style.section}>
       <Container>
         <div className={style.content}>
-          <div className={style.header}>
-            <p className={style.eyebrow}>{processContent.eyebrow}</p>
-            <h2 className={style.title}>{processContent.title}</h2>
-          </div>
+          <SectionHeading
+            eyebrow={processContent.eyebrow}
+            title={processContent.title}
+            className={style.header}
+          />
 
           <ol className={style.steps}>
             {processSteps.map((step) => (

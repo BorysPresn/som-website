@@ -24,17 +24,10 @@
   gap: 16px;
 }
 
-.eyebrow {
-  @include above-heading;
-  font-size: $fs-text-lg-mobile;
-  line-height: 25.2px;
-  letter-spacing: 3.6px;
-}
-
 .title {
-  @include font(26px, $fw-medium, 36px, 1.6px);
   max-width: 318px;
-  color: $color-text-headings;
+  font-size: 26px;
+  line-height: 36px;
 }
 
 .list {
@@ -155,12 +148,7 @@
     width: 100%;
   }
 
-  .eyebrow {
-    @include above-heading;
-  }
-
   .title {
-    @include font($fs-heading-3, $fw-medium, $lh-heading-display);
     max-width: 541px;
   }
 

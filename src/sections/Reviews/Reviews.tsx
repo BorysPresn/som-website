@@ -1,5 +1,6 @@
 import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
+import { SectionHeading } from "../../components/ui/SectionHeading/SectionHeading";
 import { ReviewCard } from "./ReviewCard";
 import { reviews, reviewsContent } from "./reviews.data";
 import style from "./Reviews.module.scss";
@@ -9,10 +10,11 @@ export const Reviews = () => {
     <section id="reviews" className={style.section}>
       <Container>
         <div className={style.content}>
-          <div className={style.header}>
-            <p className={style.eyebrow}>{reviewsContent.eyebrow}</p>
-            <h2 className={style.title}>{reviewsContent.title}</h2>
-          </div>
+          <SectionHeading
+            eyebrow={reviewsContent.eyebrow}
+            title={reviewsContent.title}
+            className={style.header}
+          />
 
           <div className={style.list}>
             {reviews.map((review) => (
