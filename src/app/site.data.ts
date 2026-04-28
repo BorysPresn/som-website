@@ -4,7 +4,7 @@ import type { SocialMediaIcons } from "../types/types";
 export const siteLogo = {
   src: logo,
   alt: "S.O.M. Serwis logo",
-  href: "/",
+  href: import.meta.env.BASE_URL,
 };
 
 export const siteNavigation = [
