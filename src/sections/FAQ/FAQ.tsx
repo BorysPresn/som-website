@@ -26,7 +26,6 @@ export const FAQ = () => {
               <Button
                 href="#contact"
                 variant="primary"
-                text={faqCopy.cta}
                 iconName="arrow-right"
               />
             </div>

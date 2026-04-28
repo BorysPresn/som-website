@@ -1,7 +1,6 @@
 export const faqCopy = {
   eyebrow: "FAQ",
   title: "Najcz\u0119\u015Bciej zadawane pytania",
-  cta: "Um\u00F3w wizyt\u0119",
 };
 
 export const faqItems = [

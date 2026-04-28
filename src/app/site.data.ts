@@ -16,7 +16,6 @@ export const siteNavigation = [
 
 export const headerCta = {
   href: "tel:+48793545208",
-  label: "Zadzwo\u0144 teraz",
 };
 
 type SocialLink = {

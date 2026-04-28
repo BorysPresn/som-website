@@ -39,7 +39,7 @@ export const Header = () => {
               <ul className={style.navList}>{renderNavList()}</ul>
             </nav>
             <div className={style.desktopCta}>
-              <Button variant="call" text={headerCta.label} href={headerCta.href} />
+              <Button variant="call" href={headerCta.href} />
             </div>
             <button
               type="button"
@@ -69,7 +69,7 @@ export const Header = () => {
             <ul className={style.mobileNavList}>{renderNavList()}</ul>
           </nav>
           <div className={style.mobileCta}>
-            <Button variant="call" text={headerCta.label} href={headerCta.href} />
+            <Button variant="call" href={headerCta.href} />
           </div>
         </Container>
       </div>
