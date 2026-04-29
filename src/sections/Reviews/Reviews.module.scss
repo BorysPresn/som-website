@@ -97,6 +97,32 @@
   color: $color-text-main;
 }
 
+.reviewTextCollapsed {
+  display: -webkit-box;
+  max-height: 92px;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+}
+
+.reviewToggle {
+  @include font($fs-text-xs, $fw-regular, 20px);
+  align-self: flex-start;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: $color-text-accent;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.reviewToggle:hover,
+.reviewToggle:focus-visible {
+  color: $color-text-accent-secondary;
+  outline: none;
+}
+
 .rating {
   display: flex;
   gap: 4px;
@@ -193,10 +219,10 @@
 
   .reviewText {
     @include font($fs-text-md, $fw-light, $lh-paragraph-md);
-    display: -webkit-box;
+  }
+
+  .reviewTextCollapsed {
     max-height: 90px;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     line-clamp: 3;
   }

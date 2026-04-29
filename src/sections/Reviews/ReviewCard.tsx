@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { useId, useState } from "react";
 import { Icon } from "../../components/ui/Icon/Icon";
 import style from "./Reviews.module.scss";
 
@@ -11,6 +12,9 @@ interface ReviewCardProps {
 }
 
 const maxRating = 5;
+const expandableReviewLength = 150;
+const showMoreText = "Poka\u017C wi\u0119cej";
+const showLessText = "Poka\u017C mniej";
 
 export const ReviewCard = ({
   author,
@@ -19,6 +23,10 @@ export const ReviewCard = ({
   text,
   rating,
 }: ReviewCardProps) => {
+  const reviewTextId = useId();
+  const [isExpanded, setIsExpanded] = useState(false);
+  const isExpandable = text.length > expandableReviewLength;
+
   return (
     <article className={style.card}>
       <div className={style.cardHeader}>
@@ -38,7 +46,27 @@ export const ReviewCard = ({
         </div>
       </div>
 
-      <p className={style.reviewText}>{text}</p>
+      <p
+        id={reviewTextId}
+        className={clsx(
+          style.reviewText,
+          isExpandable && !isExpanded && style.reviewTextCollapsed,
+        )}
+      >
+        {text}
+      </p>
+
+      {isExpandable && (
+        <button
+          type="button"
+          className={style.reviewToggle}
+          aria-expanded={isExpanded}
+          aria-controls={reviewTextId}
+          onClick={() => setIsExpanded((currentValue) => !currentValue)}
+        >
+          {isExpanded ? showLessText : showMoreText}
+        </button>
+      )}
 
       <div className={style.rating} aria-label={`${rating} z ${maxRating}`}>
         {Array.from({ length: maxRating }, (_, index) => (
