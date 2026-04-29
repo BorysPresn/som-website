@@ -31,7 +31,15 @@ export const Owner = () => {
 
           <div className={style.textGroup}>
             <div className={style.imageWrap}>
-              <img src={ownerImage} alt={ownerAlt} className={style.image} />
+              <img
+                src={ownerImage}
+                alt={ownerAlt}
+                width={688}
+                height={1032}
+                loading="lazy"
+                decoding="async"
+                className={style.image}
+              />
             </div>
 
             <div className={style.text}>

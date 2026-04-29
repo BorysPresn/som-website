@@ -32,6 +32,10 @@ export const Process = () => {
             <img
               src={repairProcessImage}
               alt={processContent.imageAlt}
+              width={2048}
+              height={1365}
+              loading="lazy"
+              decoding="async"
               className={style.image}
             />
           </div>

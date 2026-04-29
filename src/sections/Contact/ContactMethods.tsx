@@ -17,7 +17,15 @@ export const ContactMethods = () => {
                   method.iconVariant === "wide" && style.methodIconWide,
                 )}
               >
-                <img src={method.icon} alt="" aria-hidden="true" />
+                <img
+                  src={method.icon}
+                  alt=""
+                  width={method.iconWidth}
+                  height={method.iconHeight}
+                  loading="lazy"
+                  decoding="async"
+                  aria-hidden="true"
+                />
               </span>
 
               <span className={style.methodText}>
