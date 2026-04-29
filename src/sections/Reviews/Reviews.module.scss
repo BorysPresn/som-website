@@ -141,6 +141,9 @@
 
 .cta {
   align-self: center;
+  width: calc(100px + #{$padding-btn-x * 2} + 28px);
+  max-width: 100%;
+  text-align: left;
 }
 
 .visuallyHidden {
