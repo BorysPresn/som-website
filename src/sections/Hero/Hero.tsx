@@ -9,35 +9,66 @@ import slide4 from "../../assets/images/slide4.jpg";
 import style from "./Hero.module.scss";
 
 const slides = [slide1, slide2, slide3, slide4];
+const desktopSliderQuery = "(min-width: 769px)";
 
 export const Hero = () => {
+  const [isSliderEnabled, setIsSliderEnabled] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    return window.matchMedia(desktopSliderQuery).matches;
+  });
   const [activeSlide, setActiveSlide] = useState(0);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia(desktopSliderQuery);
+
+    const handleMediaChange = () => {
+      setIsSliderEnabled(mediaQuery.matches);
+
+      if (!mediaQuery.matches) {
+        setActiveSlide(0);
+      }
+    };
+
+    handleMediaChange();
+    mediaQuery.addEventListener("change", handleMediaChange);
+
+    return () => mediaQuery.removeEventListener("change", handleMediaChange);
+  }, []);
+
+  useEffect(() => {
+    if (!isSliderEnabled) {
+      return;
+    }
+
     const id = window.setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
     }, 4000);
 
     return () => window.clearInterval(id);
-  }, []);
+  }, [isSliderEnabled]);
 
   return (
     <section className={style.heroSection}>
       <div className={style.media}>
-        <div className={style.desktopSlider}>
-          {slides.map((slide, index) => (
-            <img
-              key={slide}
-              src={slide}
-              alt=""
-              aria-hidden="true"
-              className={clsx(
-                style.slide,
-                index === activeSlide && style.slideActive,
-              )}
-            />
-          ))}
-        </div>
+        {isSliderEnabled && (
+          <div className={style.desktopSlider}>
+            {slides.map((slide, index) => (
+              <img
+                key={slide}
+                src={slide}
+                alt=""
+                aria-hidden="true"
+                className={clsx(
+                  style.slide,
+                  index === activeSlide && style.slideActive,
+                )}
+              />
+            ))}
+          </div>
+        )}
 
         <div className={style.overlay} />
       </div>
