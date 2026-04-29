@@ -53,6 +53,10 @@ export const About = () => {
               <img
                 src={serviceBayImage}
                 alt={serviceBayAlt}
+                width={1600}
+                height={1066}
+                loading="lazy"
+                decoding="async"
                 className={style.image}
               />
             </div>

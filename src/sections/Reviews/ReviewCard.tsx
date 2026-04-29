@@ -31,7 +31,15 @@ export const ReviewCard = ({
     <article className={style.card}>
       <div className={style.cardHeader}>
         <div className={style.avatar}>
-          <img src={avatar} alt="" className={style.avatarImage} />
+          <img
+            src={avatar}
+            alt=""
+            width={96}
+            height={96}
+            loading="lazy"
+            decoding="async"
+            className={style.avatarImage}
+          />
         </div>
 
         <div className={style.authorInfo}>
