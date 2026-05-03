@@ -5,15 +5,20 @@ export const ServiceCard = ({
   title,
   description,
   imageAlt,
-  backgroundStyle,
+  imageSrc,
+  imageStyle,
 }: ServiceCardConfig) => {
   return (
     <a href="#contact" className={style.card} aria-label={`${title}. Przejdź do sekcji kontakt.`}>
-      <div
+      <img
+        src={imageSrc}
+        alt={imageAlt}
+        width={720}
+        height={480}
+        loading="lazy"
+        decoding="async"
         className={style.background}
-        style={backgroundStyle}
-        role="img"
-        aria-label={imageAlt}
+        style={imageStyle}
       />
       <div className={style.overlay} />
       <div className={style.cardContent}>

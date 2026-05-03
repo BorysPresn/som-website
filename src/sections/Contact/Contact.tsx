@@ -25,18 +25,27 @@ export const Contact = () => {
               </div>
 
               <address className={style.details} aria-label="Dane kontaktowe">
-                {contactDetails.map((item) => (
-                  <div key={item.label} className={style.detailItem}>
-                    <span className={style.detailLabel}>{item.label}</span>
-                    {item.href ? (
-                      <a href={item.href} className={style.detailValue}>
-                        {item.value}
-                      </a>
-                    ) : (
-                      <span className={style.detailValue}>{item.value}</span>
-                    )}
-                  </div>
-                ))}
+                {contactDetails.map((item) => {
+                  const isExternalLink = item.href?.startsWith("http");
+
+                  return (
+                    <div key={item.label} className={style.detailItem}>
+                      <span className={style.detailLabel}>{item.label}</span>
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          className={style.detailValue}
+                          target={isExternalLink ? "_blank" : undefined}
+                          rel={isExternalLink ? "noreferrer" : undefined}
+                        >
+                          {item.value}
+                        </a>
+                      ) : (
+                        <span className={style.detailValue}>{item.value}</span>
+                      )}
+                    </div>
+                  );
+                })}
               </address>
             </div>
 

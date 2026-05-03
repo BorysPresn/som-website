@@ -15,7 +15,11 @@ export const Services = () => {
             className={style.header}
             titleClassName={style.title}
           />
-
+          <p className={style.text}>
+            Zajmujemy się bieżącą obsługą i naprawami samochodów — od prostych
+            prac po bardziej złożone usterki. Wśród nich m.in. geometria kół 3D,
+            wymiana opon oraz mechanika pojazdowa.
+          </p>
           <div className={style.grid}>
             {servicesData.map((service) => (
               <ServiceCard key={service.title} {...service} />

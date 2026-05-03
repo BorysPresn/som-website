@@ -1,15 +1,35 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>som-website</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Serwis samochodowy Poznań Wysogotowo | S.O.M.</title>
+  <meta name="description"
+    content="Diagnostyka i naprawa samochodów osobowych i dostawczych w Poznaniu i Wysogotowie. Jasna wycena przed naprawą i krótkie terminy realizacji." />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <meta property="og:title" content="Serwis samochodowy Poznań Wysogotowo | S.O.M." />
+  <meta property="og:description"
+    content="Diagnostyka i naprawa samochodów osobowych i dostawczych. Geometria kół 3D, wymiana opon i naprawy mechaniczne." />
+  <meta property="og:type" content="website" />
+  <link rel="preload" as="image" href="/src/assets/images/slide1_mobile.webp" media="(max-width: 768px)"
+    fetchpriority="high" />
+
+  <link rel="preload" as="image" href="/src/assets/images/slide1_desktop.webp" media="(min-width: 769px)"
+    fetchpriority="high" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

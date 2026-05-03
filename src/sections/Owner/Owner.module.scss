@@ -66,6 +66,12 @@
   @include font($fs-text-sm-mobile, $fw-light, 25.6px);
 }
 
+.text strong {
+  color: $white;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
 @media (min-width: $bp-tablet) {
   .section {
     padding-block: 96px;

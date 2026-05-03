@@ -76,14 +76,14 @@ export const ReviewCard = ({
         </button>
       )}
 
-      <div className={style.rating} aria-label={`${rating} z ${maxRating}`}>
+      <div className={style.rating}>
+        <span className={style.visuallyHidden}>
+          Ocena: {rating} z {maxRating}
+        </span>
         {Array.from({ length: maxRating }, (_, index) => (
           <span
             key={index}
-            className={clsx(
-              style.star,
-              index >= rating && style.starMuted,
-            )}
+            className={clsx(style.star, index >= rating && style.starMuted)}
             aria-hidden="true"
           >
             <Icon name="star" variant="rating" />
