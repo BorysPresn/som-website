@@ -67,8 +67,9 @@
 }
 
 .text strong {
-  color: $color-text-headings;
-  font-weight: $fw-regular;
+  color: $white;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 @media (min-width: $bp-tablet) {
