@@ -2,16 +2,17 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
+import slide1 from "../../assets/images/slide1_desktop.webp";
+import slide1Mobile from "../../assets/images/slide1_mobile.webp";
 import style from "./Hero.module.scss";
 
 const desktopSliderQuery = "(min-width: 769px)";
 
 const loadDesktopSlides = async () => {
   const slideModules = await Promise.all([
-    import("../../assets/images/slide1.jpg"),
-    import("../../assets/images/slide2.jpg"),
-    import("../../assets/images/slide3.jpg"),
-    import("../../assets/images/slide4.jpg"),
+    import("../../assets/images/slide2.webp"),
+    import("../../assets/images/slide3.webp"),
+    import("../../assets/images/slide4.webp"),
   ]);
 
   return slideModules.map((slideModule) => slideModule.default);
@@ -64,12 +65,14 @@ export const Hero = () => {
   }, [isSliderEnabled, slides.length]);
 
   useEffect(() => {
-    if (!isSliderEnabled || slides.length <= 1) {
+    const slideCount = slides.length + 1;
+
+    if (!isSliderEnabled || slideCount <= 1) {
       return;
     }
 
     const id = window.setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % slides.length);
+      setActiveSlide((prev) => (prev + 1) % slideCount);
     }, 4000);
 
     return () => window.clearInterval(id);
@@ -78,22 +81,42 @@ export const Hero = () => {
   return (
     <section className={style.heroSection}>
       <div className={style.media}>
-        {isSliderEnabled && slides.length > 0 && (
-          <div className={style.desktopSlider}>
-            {slides.map((slide, index) => (
+        <div className={style.desktopSlider}>
+          <picture>
+            <source media="(max-width: 768px)" srcSet={slide1Mobile} />
+            <img
+              src={slide1}
+              alt=""
+              aria-hidden="true"
+              width={1920}
+              height={831}
+              loading="eager"
+              fetchPriority="high"
+              className={clsx(
+                style.slide,
+                activeSlide === 0 && style.slideActive,
+              )}
+            />
+          </picture>
+
+          {isSliderEnabled &&
+            slides.map((slide, index) => (
               <img
                 key={slide}
                 src={slide}
                 alt=""
                 aria-hidden="true"
+                width={1920}
+                height={831}
+                loading="eager"
+                decoding="async"
                 className={clsx(
                   style.slide,
-                  index === activeSlide && style.slideActive,
+                  index + 1 === activeSlide && style.slideActive,
                 )}
               />
             ))}
-          </div>
-        )}
+        </div>
 
         <div className={style.overlay} />
       </div>
@@ -102,12 +125,15 @@ export const Hero = () => {
         <div className={style.content}>
           <div className={style.textContent}>
             <h1 className={style.title}>
-              Profesjonalny serwis samochodowy w Poznaniu
+              Serwis samochodowy Poznań - Wysogotowo
             </h1>
             <p className={style.text}>
-              Specjalizujemy się w obsłudze samochodów osobowych i dostawczych.
-              Oferujemy diagnostykę oraz naprawy mechaniczne, stawiając na
-              uczciwą wycenę i szybkie terminy realizacji.
+              Diagnostyka i naprawa samochodów osobowych i dostawczych.
+              <br />
+              Jasna wycena przed rozpoczęciem prac i krótkie terminy realizacji.
+            </p>
+            <p className={style.text}>
+              Geometria kół 3D · Wymiana opon · Naprawy mechaniczne
             </p>
           </div>
 
@@ -115,6 +141,7 @@ export const Hero = () => {
             variant="primary"
             iconName="arrow-right"
             href="#contact"
+            text="Umów termin"
           />
         </div>
       </Container>
