@@ -13,7 +13,8 @@ export interface ServiceCardConfig {
   title: string;
   description: string;
   imageAlt: string;
-  backgroundStyle: CSSProperties;
+  imageSrc: string;
+  imageStyle: CSSProperties;
 }
 
 export const servicesData: ServiceCardConfig[] = [
@@ -21,90 +22,84 @@ export const servicesData: ServiceCardConfig[] = [
     title: "Geometria kół 3D",
     description: "Dokładne ustawienie zbieżności dla pewnej i równej jazdy.",
     imageAlt: "Stanowisko do geometrii kół 3D przy samochodzie w serwisie.",
-    backgroundStyle: {
-      backgroundImage: `url(${wheelAlignment3dImage})`,
-      backgroundPosition: "center",
-      backgroundSize: "cover",
+    imageSrc: wheelAlignment3dImage,
+    imageStyle: {
+      objectPosition: "center",
     },
   },
   {
     title: "Wymiana opon",
     description: "Sezonowa wymiana opon z szybkim i pewnym montażem.",
     imageAlt: "Mechanik wymienia oponę przy ciemnej feldze samochodu.",
-    backgroundStyle: {
-      backgroundImage: `url(${tireReplacementImage})`,
-      backgroundPosition: "center",
-      backgroundSize: "cover",
+    imageSrc: tireReplacementImage,
+    imageStyle: {
+      objectPosition: "center",
     },
   },
   {
     title: "Mechanika pojazdowa",
     description: "Naprawy mechaniczne od diagnostyki po większe serwisy.",
     imageAlt: "Komora silnika samochodu podczas prac mechanicznych.",
-    backgroundStyle: {
-      backgroundImage: `url(${vehicleMechanicsImage})`,
-      backgroundPosition: "2% 56%",
-      backgroundSize: "138%",
+    imageSrc: vehicleMechanicsImage,
+    imageStyle: {
+      width: "138%",
+      height: "auto",
+      minHeight: "100%",
+      objectPosition: "2% 56%",
     },
   },
   {
     title: "Chip tuning",
     description: "Bezpieczna optymalizacja osiągów dopasowana do Twojego auta.",
     imageAlt: "Tablet diagnostyczny używany podczas chip tuningu samochodu.",
-    backgroundStyle: {
-      backgroundImage: `url(${engineTuningImage})`,
-      backgroundPosition: "center",
-      backgroundSize: "cover",
+    imageSrc: engineTuningImage,
+    imageStyle: {
+      objectPosition: "center",
     },
   },
   {
     title: "Auto elektronika",
     description: "Diagnostyka i naprawa układów elektronicznych w samochodzie.",
     imageAlt: "Laptop diagnostyczny podłączony do samochodu w warsztacie.",
-    backgroundStyle: {
-      backgroundImage: `url(${carElectronicsImage})`,
-      backgroundPosition: "center",
-      backgroundSize: "cover",
+    imageSrc: carElectronicsImage,
+    imageStyle: {
+      objectPosition: "center",
     },
   },
   {
     title: "Naprawa zawieszenia",
     description: "Usuwamy luzy, stuki i problemy z prowadzeniem.",
     imageAlt: "Spód samochodu na podnośniku podczas naprawy zawieszenia.",
-    backgroundStyle: {
-      backgroundImage: `url(${suspensionRepairImage})`,
-      backgroundPosition: "center",
-      backgroundSize: "cover",
+    imageSrc: suspensionRepairImage,
+    imageStyle: {
+      objectPosition: "center",
     },
   },
   {
     title: "Klimatyzacja",
     description: "Serwis klimatyzacji dla skutecznego chłodzenia i świeżości.",
     imageAlt: "Serwis klimatyzacji samochodowej z podłączonym manometrem.",
-    backgroundStyle: {
-      backgroundImage: `url(${airConditioningServiceImage})`,
-      backgroundPosition: "center",
-      backgroundSize: "cover",
+    imageSrc: airConditioningServiceImage,
+    imageStyle: {
+      objectPosition: "center",
     },
   },
   {
     title: "Regeneracja przekładni kierowniczych",
     description: "Regenerujemy przekładnie dla precyzyjnego i lekkiego skrętu.",
     imageAlt: "Prace serwisowe przy elementach układu kierowniczego.",
-    backgroundStyle: {
-      backgroundImage: `url(${steeringRackRegenerationImage})`,
-      backgroundPosition: "center",
-      backgroundSize: "cover",
+    imageSrc: steeringRackRegenerationImage,
+    imageStyle: {
+      objectPosition: "center",
     },
   },
   {
     title: "Inne usługi",
     description: "Sprawdź dodatkowe prace wykonywane w naszym serwisie.",
     imageAlt: "Dolewanie oleju silnikowego podczas obsługi samochodu.",
-    backgroundStyle: {
-      backgroundImage: `url(${additionalServicesImage})`,
-      backgroundPosition: "left center",
-      backgroundSize: "cover",
+    imageSrc: additionalServicesImage,
+    imageStyle: {
+      objectPosition: "left center",
     },
   },
 ];
