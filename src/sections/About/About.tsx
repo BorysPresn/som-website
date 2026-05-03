@@ -13,12 +13,12 @@ const aboutItems = [
   {
     title: "Wieloletnie do\u015Bwiadczenie",
     description:
-      "Dzia\u0142amy na rynku od 15 lat, naprawiaj\u0105c dziesi\u0105tki aut miesi\u0119cznie.",
+      "Na co dzień pracujemy z różnymi samochodami i typami usterek.",
   },
   {
     title: "Profesjonalna kadra",
     description:
-      "Nasi mechanicy i elektromechanicy to specjali\u015Bci z wieloletnim sta\u017Cem.",
+      "Nasi mechanicy i elektromechanicy to specjali\u015Bci z wieloletnim sta\u017Cem i dokładnym podejściem.", 
   },
   {
     title: "Nowoczesne narz\u0119dzia",
@@ -28,7 +28,7 @@ const aboutItems = [
   {
     title: "Szybkie terminy realizacji",
     description:
-      "Cenimy Tw\u00F3j czas, dlatego naprawy realizujemy jak najszybciej.",
+      "Działamy sprawnie, bez zbędnego oczekiwania.",
   },
 ];
 
