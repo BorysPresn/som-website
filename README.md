@@ -4,6 +4,10 @@ Production landing page for S.O.M., an auto service workshop based in Poznan/Wys
 
 The project is a static React application focused on fast loading, clear service presentation, local SEO, reviews, and contact conversion.
 
+## Live
+
+https://boryspresn.github.io/som-website/
+
 ## Tech Stack
 
 - React 19
