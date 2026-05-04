@@ -9,9 +9,9 @@ import style from "./Header.module.scss";
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const renderNavList = () => {
+  const renderNavList = (onItemClick?: () => void) => {
     return siteNavigation.map((item) => (
-      <li key={item.href}>
+      <li key={item.href} onClick={onItemClick}>
         <a href={item.href}>{item.label}</a>
       </li>
     ));
@@ -66,7 +66,7 @@ export const Header = () => {
       >
         <Container>
           <nav className={style.mobileNav} aria-label="Mobile navigation">
-            <ul className={style.mobileNavList}>{renderNavList()}</ul>
+            <ul className={style.mobileNavList}>{renderNavList(() => setIsMenuOpen(false))}</ul>
           </nav>
           <div className={style.mobileCta}>
             <Button variant="call" href={headerCta.href} />
