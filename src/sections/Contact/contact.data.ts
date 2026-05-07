@@ -18,8 +18,8 @@ export const contactDetails = [
   },
   {
     label: "E-mail:",
-    value: "autoserwis.som@gmail.com",
-    href: "mailto:autoserwis.som@gmail.com",
+    value: "kontakt@auto-som.pl",
+    href: "mailto:kontakt@auto-som.pl",
   },
   {
     label: "Adres:",
