@@ -32,7 +32,7 @@ export const ContactForm = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setStatus("idle");
-    
+
     const nextErrors = validateContactForm(values);
     setErrors(nextErrors);
 
@@ -57,9 +57,9 @@ export const ContactForm = () => {
         body: JSON.stringify(payload),
       });
 
-      if (res.ok) {
-        const data: { ok: boolean; message: string } = await res.json();
-        console.log(data.message);
+      const data: { ok: boolean; message: string } = await res.json();
+
+      if (data.ok) {
         setValues(initialContactFormValues);
         setStatus("success");
       } else {
@@ -94,6 +94,7 @@ export const ContactForm = () => {
               value={values[fieldName]}
               errorText={errors[fieldName]}
               onChange={(event) => {
+                setStatus("idle");
                 const nextValue =
                   field.name === "phone"
                     ? formatPolishPhoneInput(event.currentTarget.value)
