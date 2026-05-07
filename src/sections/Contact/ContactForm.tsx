@@ -20,7 +20,7 @@ import {
 import style from "./Contact.module.scss";
 
 type FormStatus = "idle" | "success" | "error" | "loading";
-const URL = import.meta.env.VITE_API_URL;
+const apiUrl = import.meta.env.VITE_API_URL;
 
 export const ContactForm = () => {
   const [values, setValues] = useState<ContactFormValues>(
@@ -41,6 +41,10 @@ export const ContactForm = () => {
     }
 
     try {
+      if (!apiUrl) {
+        setStatus("error");
+        return;
+      }
       setStatus("loading");
 
       const payload = {
@@ -48,18 +52,18 @@ export const ContactForm = () => {
         phone: formatPolishPhoneForSubmit(String(values.phone)),
       };
 
-      const res = await fetch(`${URL}/api/contact`, {
+      const res = await fetch(`${apiUrl}/api/contact`, {
         method: "POST",
         mode: "cors",
         headers: {
-          "Content-type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       });
 
       const data: { ok: boolean; message: string } = await res.json();
 
-      if (data.ok) {
+      if (res.ok && data.ok) {
         setValues(initialContactFormValues);
         setStatus("success");
       } else {
@@ -121,6 +125,7 @@ export const ContactForm = () => {
         checked={values.consent}
         error={errors.consent}
         onToggle={() => {
+          setStatus("idle");
           setValues((currentValues) => ({
             ...currentValues,
             consent: !currentValues.consent,
