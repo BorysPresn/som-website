@@ -18,8 +18,8 @@ export const contactDetails = [
   },
   {
     label: "E-mail:",
-    value: "autoserwis.som@gmail.com",
-    href: "mailto:autoserwis.som@gmail.com",
+    value: "kontakt@auto-som.pl",
+    href: "mailto:kontakt@auto-som.pl",
   },
   {
     label: "Adres:",
@@ -35,7 +35,8 @@ export const contactFormCopy = {
   submit: "Wy\u015Blij",
   errors: {
     fullName: "Wpisanie imienia i nazwiska jest wymagane.",
-    fullNameLength: "Imi\u0119 i nazwisko nie mo\u017Ce przekracza\u0107 80 znak\u00F3w.",
+    fullNameLength:
+      "Imi\u0119 i nazwisko nie mo\u017Ce przekracza\u0107 80 znak\u00F3w.",
     phone: "Wpisanie numeru telefonu jest wymagane.",
     phoneFormat: "Wpisz poprawny numer telefonu.",
     phoneCountry:
@@ -79,3 +80,11 @@ export const contactFormFields = [
     required: true,
   },
 ];
+
+export const statusMessages = {
+  success:
+    "Dziękujemy! Zgłoszenie zostało wysłane. Skontaktujemy się z Tobą najszybciej jak to możliwe.",
+  error:
+    "Nie udało się wysłać zgłoszenia. Spróbuj ponownie lub skontaktuj się z nami w inny sposób poniżej.",
+  loading: "Wysyłanie...",
+};

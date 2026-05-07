@@ -1,8 +1,13 @@
 import { useState } from "react";
+import clsx from "clsx";
 import { Button } from "../../components/ui/Button/Button";
 import { TextInput } from "../../components/ui/TextInput/TextInput";
 import { ContactConsentCheckbox } from "./ContactConsentCheckbox";
-import { contactFormCopy, contactFormFields } from "./contact.data";
+import {
+  contactFormCopy,
+  contactFormFields,
+  statusMessages,
+} from "./contact.data";
 import {
   type ContactFormErrors,
   type ContactFormValues,
@@ -14,14 +19,19 @@ import {
 } from "./contact.validation";
 import style from "./Contact.module.scss";
 
+type FormStatus = "idle" | "success" | "error" | "loading";
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export const ContactForm = () => {
   const [values, setValues] = useState<ContactFormValues>(
     initialContactFormValues,
   );
   const [errors, setErrors] = useState<ContactFormErrors>({});
+  const [status, setStatus] = useState<FormStatus>("idle");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setStatus("idle");
 
     const nextErrors = validateContactForm(values);
     setErrors(nextErrors);
@@ -30,15 +40,38 @@ export const ContactForm = () => {
       return;
     }
 
-    const formData = new FormData();
-    Object.entries(values).forEach(([name, value]) => {
-      formData.set(
-        name,
-        name === "phone" ? formatPolishPhoneForSubmit(String(value)) : String(value),
-      );
-    });
+    try {
+      if (!apiUrl) {
+        setStatus("error");
+        return;
+      }
+      setStatus("loading");
 
-    console.log("Contact form data", Object.fromEntries(formData.entries()));
+      const payload = {
+        ...values,
+        phone: formatPolishPhoneForSubmit(String(values.phone)),
+      };
+
+      const res = await fetch(`${apiUrl}/api/contact`, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data: { ok: boolean; message: string } = await res.json();
+
+      if (res.ok && data.ok) {
+        setValues(initialContactFormValues);
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -65,6 +98,7 @@ export const ContactForm = () => {
               value={values[fieldName]}
               errorText={errors[fieldName]}
               onChange={(event) => {
+                setStatus("idle");
                 const nextValue =
                   field.name === "phone"
                     ? formatPolishPhoneInput(event.currentTarget.value)
@@ -91,6 +125,7 @@ export const ContactForm = () => {
         checked={values.consent}
         error={errors.consent}
         onToggle={() => {
+          setStatus("idle");
           setValues((currentValues) => ({
             ...currentValues,
             consent: !currentValues.consent,
@@ -105,12 +140,27 @@ export const ContactForm = () => {
 
       <div className={style.submitGroup}>
         <p className={style.requiredNote}>{contactFormCopy.requiredNote}</p>
-        <Button
-          type="submit"
-          variant="primary"
-          text={contactFormCopy.submit}
-          iconName="arrow-right"
-        />
+        <div className={style.submitRow}>
+          <Button
+            type="submit"
+            variant="primary"
+            text={contactFormCopy.submit}
+            iconName="arrow-right"
+            disabled={status === "loading"}
+          />
+          {status !== "idle" && (
+            <p
+              className={clsx(
+                style.submitMessage,
+                status === "success" && style.submitMessageSuccess,
+                status === "error" && style.submitMessageError,
+              )}
+              aria-live="polite"
+            >
+              {statusMessages[status]}
+            </p>
+          )}
+        </div>
       </div>
     </form>
   );
