@@ -194,8 +194,31 @@
 .submitGroup {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   align-items: flex-start;
+}
+
+.submitRow {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.submitMessage {
+  @include info;
+  max-width: 100%;
+  margin: 0;
+  color: $color-text-secondary;
+}
+
+.submitMessageSuccess {
+  color: $color-success;
+}
+
+.submitMessageError {
+  color: $color-error;
 }
 
 .requiredNote {
@@ -446,6 +469,21 @@
 
   .requiredNote {
     color: #939393;
+  }
+
+  .submitRow {
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    min-height: 44px;
+    width: 100%;
+  }
+
+  .submitMessage {
+    position: absolute;
+    top: 50%;
+    left: 132px;
+    transform: translateY(-50%);
   }
 
   .methods {
