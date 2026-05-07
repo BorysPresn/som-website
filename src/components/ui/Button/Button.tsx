@@ -10,6 +10,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLElement> {
   target?: string;
   type?: React.ButtonHTMLAttributes<HTMLButtonElement>["type"];
   variant: "primary" | "call";
+  disabled?: boolean;
 }
 
 const defaultButtonTextByVariant: Record<ButtonProps["variant"], string> = {
