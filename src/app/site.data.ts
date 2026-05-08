@@ -1,4 +1,4 @@
-import logo from "../assets/images/logo_web_70x70.webp";
+import logo from "../assets/images/logo_300x300.png";
 import type { SocialMediaIcons } from "../types/types";
 
 export const siteLogo = {
