@@ -1,5 +1,6 @@
 import { useState } from "react";
 import clsx from "clsx";
+import { trackFormSubmit } from "../../app/analytics";
 import { Button } from "../../components/ui/Button/Button";
 import { TextInput } from "../../components/ui/TextInput/TextInput";
 import { ContactConsentCheckbox } from "./ContactConsentCheckbox";
@@ -66,11 +67,14 @@ export const ContactForm = () => {
       if (res.ok && data.ok) {
         setValues(initialContactFormValues);
         setStatus("success");
+        trackFormSubmit("success");
       } else {
         setStatus("error");
+        trackFormSubmit("error");
       }
     } catch {
       setStatus("error");
+      trackFormSubmit("error");
     }
   };
 

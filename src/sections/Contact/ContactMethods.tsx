@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { trackContactLinkClick } from "../../app/analytics";
 import { contactMethods, contactMethodsCopy } from "./contactMethods.data";
 import style from "./Contact.module.scss";
 
@@ -48,6 +49,9 @@ export const ContactMethods = () => {
                 href={method.href}
                 target={isExternalLink ? "_blank" : undefined}
                 rel={isExternalLink ? "noreferrer" : undefined}
+                onClick={() => {
+                  trackContactLinkClick(method.title, "contact_methods");
+                }}
               >
                 {content}
               </a>
