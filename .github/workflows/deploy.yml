@@ -25,6 +25,7 @@ jobs:
         run: npm run build
         env:
           VITE_API_URL: https://tgbot-production-b8ab.up.railway.app
+          VITE_GA_ID: ${{ vars.VITE_GA_ID }}
 
       - name: Deploy to LH.pl via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
