@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useState } from "react";
 import burgerIcon from "../../assets/icons/burger.svg";
+import { trackContactLinkClick, trackNavigationClick } from "../../app/analytics";
 import { headerCta, siteLogo, siteNavigation } from "../../app/site.data";
 import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
@@ -12,7 +13,14 @@ export const Header = () => {
   const renderNavList = (onItemClick?: () => void) => {
     return siteNavigation.map((item) => (
       <li key={item.href} onClick={onItemClick}>
-        <a href={item.href}>{item.label}</a>
+        <a
+          href={item.href}
+          onClick={() => {
+            trackNavigationClick(item.label, "header");
+          }}
+        >
+          {item.label}
+        </a>
       </li>
     ));
   };
@@ -39,7 +47,13 @@ export const Header = () => {
               <ul className={style.navList}>{renderNavList()}</ul>
             </nav>
             <div className={style.desktopCta}>
-              <Button variant="call" href={headerCta.href} />
+              <Button
+                variant="call"
+                href={headerCta.href}
+                onClick={() => {
+                  trackContactLinkClick("phone", "header_cta");
+                }}
+              />
             </div>
             <button
               type="button"
@@ -69,7 +83,13 @@ export const Header = () => {
             <ul className={style.mobileNavList}>{renderNavList(() => setIsMenuOpen(false))}</ul>
           </nav>
           <div className={style.mobileCta}>
-            <Button variant="call" href={headerCta.href} />
+            <Button
+              variant="call"
+              href={headerCta.href}
+              onClick={() => {
+                trackContactLinkClick("phone", "mobile_header_cta");
+              }}
+            />
           </div>
         </Container>
       </div>

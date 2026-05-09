@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
+import { trackCtaClick } from "../../app/analytics";
 import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
 import slide1 from "../../assets/images/slide1_desktop.webp";
@@ -142,6 +143,9 @@ export const Hero = () => {
             iconName="arrow-right"
             href="#contact"
             text="Umów termin"
+            onClick={() => {
+              trackCtaClick("hero");
+            }}
           />
         </div>
       </Container>

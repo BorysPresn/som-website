@@ -1,3 +1,4 @@
+import { trackContactLinkClick } from "../../app/analytics";
 import { Container } from "../../components/layout/Container/Container";
 import { SectionHeading } from "../../components/ui/SectionHeading/SectionHeading";
 import { ContactForm } from "./ContactForm";
@@ -37,6 +38,9 @@ export const Contact = () => {
                           className={style.detailValue}
                           target={isExternalLink ? "_blank" : undefined}
                           rel={isExternalLink ? "noreferrer" : undefined}
+                          onClick={() => {
+                            trackContactLinkClick(item.label, "contact_details");
+                          }}
                         >
                           {item.value}
                         </a>

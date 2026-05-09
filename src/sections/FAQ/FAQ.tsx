@@ -1,5 +1,6 @@
 import { useState } from "react";
 import clsx from "clsx";
+import { trackAnalyticsEvent, trackCtaClick } from "../../app/analytics";
 import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
 import { SectionHeading } from "../../components/ui/SectionHeading/SectionHeading";
@@ -27,6 +28,9 @@ export const FAQ = () => {
                 href="#contact"
                 variant="primary"
                 iconName="arrow-right"
+                onClick={() => {
+                  trackCtaClick("faq");
+                }}
               />
             </div>
           </div>
@@ -46,7 +50,15 @@ export const FAQ = () => {
                     type="button"
                     aria-expanded={isOpen}
                     aria-controls={answerId}
-                    onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                    onClick={() => {
+                      setOpenIndex(isOpen ? -1 : index);
+
+                      if (!isOpen) {
+                        trackAnalyticsEvent("faq_open", {
+                          question: item.question,
+                        });
+                      }
+                    }}
                   >
                     <span>{item.question}</span>
                     <span className={style.chevron} aria-hidden="true" />

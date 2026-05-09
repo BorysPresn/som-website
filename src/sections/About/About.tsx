@@ -1,3 +1,4 @@
+import { trackCtaClick } from "../../app/analytics";
 import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
 import { SectionHeading } from "../../components/ui/SectionHeading/SectionHeading";
@@ -77,6 +78,9 @@ export const About = () => {
                   variant="primary"
                   href="#contact"
                   iconName="arrow-right"
+                  onClick={() => {
+                    trackCtaClick("about");
+                  }}
                 />
               </div>
             </div>
