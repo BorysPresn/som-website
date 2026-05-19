@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { trackAnalyticsEvent } from "../../app/analytics";
 import { socialLinks } from "../../app/site.data";
 import { Container } from "../../components/layout/Container/Container";
 import { Icon } from "../../components/ui/Icon/Icon";
@@ -44,12 +43,6 @@ export const TopBar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={link.label}
-                onClick={() => {
-                  trackAnalyticsEvent("social_link_click", {
-                    label: link.label,
-                    location: "topbar",
-                  });
-                }}
               >
                 <Icon name={link.icon} variant="topbar" />
               </a>

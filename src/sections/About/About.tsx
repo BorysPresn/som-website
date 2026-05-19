@@ -79,7 +79,7 @@ export const About = () => {
                   href="#contact"
                   iconName="arrow-right"
                   onClick={() => {
-                    trackCtaClick("about");
+                    trackCtaClick({ label: "umow_wizyte", location: "about" });
                   }}
                 />
               </div>

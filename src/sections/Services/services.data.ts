@@ -1,3 +1,4 @@
+import type { ServiceSlug } from "../../app/analytics";
 import airConditioningServiceImage from "../../assets/images/services/air-conditioning-service.jpg";
 import additionalServicesImage from "../../assets/images/services/additional-services.jpg";
 import carElectronicsImage from "../../assets/images/services/car-electronics.jpg";
@@ -9,6 +10,7 @@ import vehicleMechanicsImage from "../../assets/images/services/vehicle-mechanic
 import wheelAlignment3dImage from "../../assets/images/services/wheel-alignment-3d.jpg";
 
 export interface ServiceCardConfig {
+  analyticsId: ServiceSlug;
   title: string;
   description: string;
   imageAlt: string;
@@ -18,54 +20,63 @@ export interface ServiceCardConfig {
 
 export const servicesData: ServiceCardConfig[] = [
   {
+    analyticsId: "geometria_kol_3d",
     title: "Geometria kół 3D",
     description: "Dokładne ustawienie zbieżności dla pewnej i równej jazdy.",
     imageAlt: "Stanowisko do geometrii kół 3D przy samochodzie w serwisie.",
     imageSrc: wheelAlignment3dImage,
   },
   {
+    analyticsId: "wymiana_opon",
     title: "Wymiana opon",
     description: "Sezonowa wymiana opon z szybkim i pewnym montażem.",
     imageAlt: "Mechanik wymienia oponę przy ciemnej feldze samochodu.",
     imageSrc: tireReplacementImage,
   },
   {
+    analyticsId: "mechanika_pojazdowa",
     title: "Mechanika pojazdowa",
     description: "Naprawy mechaniczne od diagnostyki po większe serwisy.",
     imageAlt: "Komora silnika samochodu podczas prac mechanicznych.",
     imageSrc: vehicleMechanicsImage,
   },
   {
+    analyticsId: "chip_tuning",
     title: "Chip tuning",
     description: "Bezpieczna optymalizacja osiągów dopasowana do Twojego auta.",
     imageAlt: "Tablet diagnostyczny używany podczas chip tuningu samochodu.",
     imageSrc: engineTuningImage,
   },
   {
+    analyticsId: "elektronika_samochodowa",
     title: "Auto elektronika",
     description: "Diagnostyka i naprawa układów elektronicznych w samochodzie.",
     imageAlt: "Laptop diagnostyczny podłączony do samochodu w warsztacie.",
     imageSrc: carElectronicsImage,
   },
   {
+    analyticsId: "naprawa_zawieszenia",
     title: "Naprawa zawieszenia",
     description: "Usuwamy luzy, stuki i problemy z prowadzeniem.",
     imageAlt: "Spód samochodu na podnośniku podczas naprawy zawieszenia.",
     imageSrc: suspensionRepairImage,
   },
   {
+    analyticsId: "klimatyzacja",
     title: "Klimatyzacja",
     description: "Serwis klimatyzacji dla skutecznego chłodzenia i świeżości.",
     imageAlt: "Serwis klimatyzacji samochodowej z podłączonym manometrem.",
     imageSrc: airConditioningServiceImage,
   },
   {
+    analyticsId: "regeneracja_przekladni_kierowniczych",
     title: "Regeneracja przekładni kierowniczych",
     description: "Regenerujemy przekładnie dla precyzyjnego i lekkiego skrętu.",
     imageAlt: "Prace serwisowe przy elementach układu kierowniczego.",
     imageSrc: steeringRackRegenerationImage,
   },
   {
+    analyticsId: "dodatkowe_uslugi",
     title: "Inne usługi",
     description: "Sprawdź dodatkowe prace wykonywane w naszym serwisie.",
     imageAlt: "Dolewanie oleju silnikowego podczas obsługi samochodu.",

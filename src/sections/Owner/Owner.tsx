@@ -40,7 +40,7 @@ const paragraphs: ReactNode[] = [
 
 export const Owner = () => {
   return (
-    <section className={style.section} aria-labelledby="owner-title">
+    <section id="owner" className={style.section} aria-labelledby="owner-title">
       <Container>
         <div className={style.content}>
           <SectionHeading

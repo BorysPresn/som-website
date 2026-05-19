@@ -1,3 +1,5 @@
+import type { ContactMethod } from "../../app/analytics";
+
 export const contactCopy = {
   eyebrow: "KONTAKT",
   title: "Um\u00F3w wizyt\u0119 lub wy\u015Blij zapytanie",
@@ -12,11 +14,13 @@ export const contactMap = {
 
 export const contactDetails = [
   {
+    analyticsMethod: "phone",
     label: "Telefon:",
     value: "+48 793 545 208",
     href: "tel:+48793545208",
   },
   {
+    analyticsMethod: "email",
     label: "E-mail:",
     value: "kontakt@auto-som.pl",
     href: "mailto:kontakt@auto-som.pl",
@@ -26,7 +30,12 @@ export const contactDetails = [
     value: "ul. Szparagowa 8, 62-081 Wysogotowo",
     href: "https://www.google.com/maps/dir/?api=1&destination=Auto%20Serwis%20S.O.M.%20Geometria%20K%C3%B3%C5%82%2C%20Szparagowa%208%2C%2062-081%20Wysogotowo&travelmode=driving",
   },
-];
+] satisfies Array<{
+  analyticsMethod?: ContactMethod;
+  label: string;
+  value: string;
+  href: string;
+}>;
 
 export const contactFormCopy = {
   consent:

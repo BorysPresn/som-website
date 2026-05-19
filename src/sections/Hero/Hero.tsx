@@ -80,7 +80,7 @@ export const Hero = () => {
   }, [isSliderEnabled, slides.length]);
 
   return (
-    <section className={style.heroSection}>
+    <section id="hero" className={style.heroSection}>
       <div className={style.media}>
         <div className={style.desktopSlider}>
           <picture>
@@ -144,7 +144,7 @@ export const Hero = () => {
             href="#contact"
             text="Umów termin"
             onClick={() => {
-              trackCtaClick("hero");
+              trackCtaClick({ label: "umow_termin", location: "hero" });
             }}
           />
         </div>

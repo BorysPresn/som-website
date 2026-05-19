@@ -1,4 +1,4 @@
-import { trackAnalyticsEvent, trackNavigationClick } from "../../app/analytics";
+import { trackNavigationClick } from "../../app/analytics";
 import { siteLogo, siteNavigation, socialLinks } from "../../app/site.data";
 import { Icon } from "../../components/ui/Icon/Icon";
 import style from "./Footer.module.scss";
@@ -23,7 +23,10 @@ export const Footer = () => {
               <a
                 href={item.href}
                 onClick={() => {
-                  trackNavigationClick(item.label, "footer");
+                  trackNavigationClick({
+                    target: item.analyticsTarget,
+                    location: "footer_menu",
+                  });
                 }}
               >
                 {item.label}
@@ -42,12 +45,6 @@ export const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={link.label}
-              onClick={() => {
-                trackAnalyticsEvent("social_link_click", {
-                  label: link.label,
-                  location: "footer",
-                });
-              }}
             >
               <Icon name={link.icon} variant="footer" />
             </a>
