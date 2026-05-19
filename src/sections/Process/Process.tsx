@@ -47,7 +47,7 @@ export const Process = () => {
               href="#contact"
               iconName="arrow-right"
               onClick={() => {
-                trackCtaClick("process");
+                trackCtaClick({ label: "umow_wizyte", location: "process" });
               }}
             />
           </div>

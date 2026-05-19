@@ -1,7 +1,11 @@
 import clsx from "clsx";
 import { useState } from "react";
 import burgerIcon from "../../assets/icons/burger.svg";
-import { trackContactLinkClick, trackNavigationClick } from "../../app/analytics";
+import {
+  type NavigationLocation,
+  trackContactLinkClick,
+  trackNavigationClick,
+} from "../../app/analytics";
 import { headerCta, siteLogo, siteNavigation } from "../../app/site.data";
 import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
@@ -10,13 +14,19 @@ import style from "./Header.module.scss";
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const renderNavList = (onItemClick?: () => void) => {
+  const renderNavList = (
+    location: NavigationLocation,
+    onItemClick?: () => void,
+  ) => {
     return siteNavigation.map((item) => (
       <li key={item.href} onClick={onItemClick}>
         <a
           href={item.href}
           onClick={() => {
-            trackNavigationClick(item.label, "header");
+            trackNavigationClick({
+              target: item.analyticsTarget,
+              location,
+            });
           }}
         >
           {item.label}
@@ -44,14 +54,19 @@ export const Header = () => {
               />
             </a>
             <nav className={style.desktopNav} aria-label="Main navigation">
-              <ul className={style.navList}>{renderNavList()}</ul>
+              <ul className={style.navList}>
+                {renderNavList("desktop_menu")}
+              </ul>
             </nav>
             <div className={style.desktopCta}>
               <Button
                 variant="call"
                 href={headerCta.href}
                 onClick={() => {
-                  trackContactLinkClick("phone", "header_cta");
+                  trackContactLinkClick({
+                    method: "phone",
+                    location: "header",
+                  });
                 }}
               />
             </div>
@@ -80,14 +95,19 @@ export const Header = () => {
       >
         <Container>
           <nav className={style.mobileNav} aria-label="Mobile navigation">
-            <ul className={style.mobileNavList}>{renderNavList(() => setIsMenuOpen(false))}</ul>
+            <ul className={style.mobileNavList}>
+              {renderNavList("mobile_menu", () => setIsMenuOpen(false))}
+            </ul>
           </nav>
           <div className={style.mobileCta}>
             <Button
               variant="call"
               href={headerCta.href}
               onClick={() => {
-                trackContactLinkClick("phone", "mobile_header_cta");
+                trackContactLinkClick({
+                  method: "phone",
+                  location: "header",
+                });
               }}
             />
           </div>

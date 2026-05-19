@@ -1,6 +1,6 @@
 import { useState } from "react";
 import clsx from "clsx";
-import { trackAnalyticsEvent, trackCtaClick } from "../../app/analytics";
+import { trackCtaClick, trackFaqOpen } from "../../app/analytics";
 import { Container } from "../../components/layout/Container/Container";
 import { Button } from "../../components/ui/Button/Button";
 import { SectionHeading } from "../../components/ui/SectionHeading/SectionHeading";
@@ -11,7 +11,7 @@ export const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className={style.section} aria-labelledby="faq-title">
+    <section id="faq" className={style.section} aria-labelledby="faq-title">
       <Container>
         <div className={style.content}>
           <div className={style.intro}>
@@ -29,7 +29,7 @@ export const FAQ = () => {
                 variant="primary"
                 iconName="arrow-right"
                 onClick={() => {
-                  trackCtaClick("faq");
+                  trackCtaClick({ label: "umow_wizyte", location: "faq" });
                 }}
               />
             </div>
@@ -54,8 +54,9 @@ export const FAQ = () => {
                       setOpenIndex(isOpen ? -1 : index);
 
                       if (!isOpen) {
-                        trackAnalyticsEvent("faq_open", {
-                          question: item.question,
+                        trackFaqOpen({
+                          question: item.analyticsId,
+                          location: "faq",
                         });
                       }
                     }}

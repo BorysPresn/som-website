@@ -1,3 +1,4 @@
+import type { ContactMethod as ContactMethodSlug } from "../../app/analytics";
 import dobryMechanikIcon from "../../assets/images/contact-methods/dobry-mechanik.png";
 import mailIcon from "../../assets/images/contact-methods/mail.svg";
 import phoneIcon from "../../assets/images/contact-methods/phone.svg";
@@ -8,6 +9,7 @@ export const contactMethodsCopy = {
 };
 
 type ContactMethod = {
+  analyticsMethod: ContactMethodSlug;
   title: string;
   description: string;
   icon: string;
@@ -19,6 +21,7 @@ type ContactMethod = {
 
 export const contactMethods: ContactMethod[] = [
   {
+    analyticsMethod: "phone",
     title: "Zadzwo\u0144 do nas",
     description: "Zadzwo\u0144 i ustal dogodny termin wizyty.",
     icon: phoneIcon,
@@ -28,6 +31,7 @@ export const contactMethods: ContactMethod[] = [
     href: "tel:+48793545208",
   },
   {
+    analyticsMethod: "telegram",
     title: "Telegram",
     description: "Skontaktuj si\u0119 z nami szybko przez Telegram bota.",
     icon: telegramIcon,
@@ -37,6 +41,7 @@ export const contactMethods: ContactMethod[] = [
     href: "https://t.me/SerwisSOMbot",
   },
   {
+    analyticsMethod: "dobry_mechanik",
     title: "Dobry Mechanik",
     description: "Zarezerwuj wizyt\u0119 online przez platform\u0119 Dobry Mechanik.",
     icon: dobryMechanikIcon,
@@ -46,6 +51,7 @@ export const contactMethods: ContactMethod[] = [
     href: "https://dobrymechanik.pl/mechanicy/poznan/auto-serwis-s-o-m.html",
   },
   {
+    analyticsMethod: "email",
     title: "Napisz e-mail",
     description: "Wy\u015Blij wiadomo\u015B\u0107, odpowiemy jak najszybciej.",
     icon: mailIcon,

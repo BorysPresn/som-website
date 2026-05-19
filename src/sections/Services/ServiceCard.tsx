@@ -1,9 +1,10 @@
-import { trackAnalyticsEvent } from "../../app/analytics";
+import { trackServiceCardClick } from "../../app/analytics";
 import type { ServiceCardConfig } from "./services.data";
 import style from "./Services.module.scss";
 
 export const ServiceCard = ({
   title,
+  analyticsId,
   description,
   imageAlt,
   imageSrc,
@@ -15,7 +16,7 @@ export const ServiceCard = ({
       className={style.card}
       aria-label={`${title}. Przejdź do sekcji kontakt.`}
       onClick={() => {
-        trackAnalyticsEvent("service_card_click", { service: title });
+        trackServiceCardClick({ service: analyticsId, location: "services" });
       }}
     >
       <img

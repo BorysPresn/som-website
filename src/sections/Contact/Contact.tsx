@@ -39,7 +39,12 @@ export const Contact = () => {
                           target={isExternalLink ? "_blank" : undefined}
                           rel={isExternalLink ? "noreferrer" : undefined}
                           onClick={() => {
-                            trackContactLinkClick(item.label, "contact_details");
+                            if (item.analyticsMethod) {
+                              trackContactLinkClick({
+                                method: item.analyticsMethod,
+                                location: "contact_details",
+                              });
+                            }
                           }}
                         >
                           {item.value}

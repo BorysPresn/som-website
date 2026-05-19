@@ -1,4 +1,5 @@
 import logo from "../assets/images/logo_300x300.png";
+import type { NavigationTarget } from "./analytics";
 import type { SocialMediaIcons } from "../types/types";
 
 export const siteLogo = {
@@ -8,11 +9,15 @@ export const siteLogo = {
 };
 
 export const siteNavigation = [
-  { href: "#services", label: "Us\u0142ugi" },
-  { href: "#about", label: "O nas" },
-  { href: "#reviews", label: "Opinie" },
-  { href: "#contact", label: "Kontakt" },
-];
+  { href: "#services", label: "Us\u0142ugi", analyticsTarget: "services" },
+  { href: "#about", label: "O nas", analyticsTarget: "about" },
+  { href: "#reviews", label: "Opinie", analyticsTarget: "reviews" },
+  { href: "#contact", label: "Kontakt", analyticsTarget: "contact" },
+] satisfies Array<{
+  href: string;
+  label: string;
+  analyticsTarget: NavigationTarget;
+}>;
 
 export const headerCta = {
   href: "tel:+48793545208",

@@ -50,7 +50,10 @@ export const ContactMethods = () => {
                 target={isExternalLink ? "_blank" : undefined}
                 rel={isExternalLink ? "noreferrer" : undefined}
                 onClick={() => {
-                  trackContactLinkClick(method.title, "contact_methods");
+                  trackContactLinkClick({
+                    method: method.analyticsMethod,
+                    location: "contact_methods",
+                  });
                 }}
               >
                 {content}

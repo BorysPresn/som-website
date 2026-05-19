@@ -67,14 +67,14 @@ export const ContactForm = () => {
       if (res.ok && data.ok) {
         setValues(initialContactFormValues);
         setStatus("success");
-        trackFormSubmit("success");
+        trackFormSubmit({ status: "success", location: "contact_form" });
       } else {
         setStatus("error");
-        trackFormSubmit("error");
+        trackFormSubmit({ status: "error", location: "contact_form" });
       }
     } catch {
       setStatus("error");
-      trackFormSubmit("error");
+      trackFormSubmit({ status: "error", location: "contact_form" });
     }
   };
 

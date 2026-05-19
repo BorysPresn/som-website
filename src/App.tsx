@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useSectionViewTracking } from "./app/useSectionViewTracking";
 import "./app/styles/globals.scss";
 import style from "./App.module.scss";
 import { About } from "./sections/About/About";
@@ -14,6 +15,8 @@ import { Services } from "./sections/Services/Services";
 import { TopBar } from "./sections/TopBar/TopBar";
 
 function App() {
+  useSectionViewTracking();
+
   useEffect(() => {
     let frameId: number | undefined;
     let timeoutId: number | undefined;
