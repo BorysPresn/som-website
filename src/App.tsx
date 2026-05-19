@@ -11,8 +11,21 @@ import { Process } from "./sections/Process/Process";
 import { Reviews } from "./sections/Reviews/Reviews";
 import { Services } from "./sections/Services/Services";
 import { TopBar } from "./sections/TopBar/TopBar";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    if (!window.location.hash) return;
+
+    const id = window.location.hash.replace("#", "");
+
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 100);
+  }, []);
   return (
     <>
       <TopBar />
