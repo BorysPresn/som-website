@@ -1,0 +1,36 @@
+RewriteEngine On
+
+# Force HTTPS and canonical non-www host.
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.auto-som\.pl$ [NC]
+RewriteRule ^ https://auto-som.pl%{REQUEST_URI} [R=301,L]
+
+# Preserve old WordPress URLs and move users to the relevant landing section.
+RewriteRule ^index\.php$ https://auto-som.pl/ [R=301,L]
+RewriteRule ^naprawa-zawieszenia/?$ https://auto-som.pl/#services [R=301,L,NE]
+RewriteRule ^diagnostyka-komputerowa/?$ https://auto-som.pl/#services [R=301,L,NE]
+RewriteRule ^geometria-kol-3d/?$ https://auto-som.pl/#services [R=301,L,NE]
+RewriteRule ^chip-tuning/?$ https://auto-som.pl/#services [R=301,L,NE]
+RewriteRule ^mechanika-pojazdowa/?$ https://auto-som.pl/#services [R=301,L,NE]
+RewriteRule ^wymiana-oleju/?$ https://auto-som.pl/#services [R=301,L,NE]
+
+# Old WordPress technical endpoints.
+RewriteRule ^wp-login\.php$ https://auto-som.pl/ [R=301,L]
+RewriteRule ^xmlrpc\.php$ https://auto-som.pl/ [R=301,L]
+
+# React/Vite fallback for non-existing files and directories.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ /index.html [L]
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>
