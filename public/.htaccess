@@ -14,7 +14,17 @@ RewriteRule ^geometria-kol-3d-blog/?$ https://auto-som.pl/#services [R=301,L,NE]
 RewriteRule ^chip-tuning/?$ https://auto-som.pl/#services [R=301,L,NE]
 RewriteRule ^mechanika-pojazdowa/?$ https://auto-som.pl/#services [R=301,L,NE]
 RewriteRule ^wymiana-oleju/?$ https://auto-som.pl/#services [R=301,L,NE]
+RewriteRule ^konserwacja-podwozia/?$ https://auto-som.pl/#services [R=301,L,NE]
+
+# Old WordPress feeds, authors and taxonomy archives.
 RewriteRule ^feed/?$ https://auto-som.pl/ [R=301,L]
+RewriteRule ^comments/feed/?$ https://auto-som.pl/ [R=301,L]
+RewriteRule ^author/.*/feed/?$ https://auto-som.pl/ [R=301,L]
+RewriteRule ^category/.*/feed/?$ https://auto-som.pl/ [R=301,L]
+RewriteRule ^tag/.*/feed/?$ https://auto-som.pl/ [R=301,L]
+RewriteRule ^author/.*$ https://auto-som.pl/ [R=301,L]
+RewriteRule ^category/.*$ https://auto-som.pl/ [R=301,L]
+RewriteRule ^tag/.*$ https://auto-som.pl/ [R=301,L]
 
 # Old WordPress technical endpoints.
 RewriteRule ^wp-login\.php$ https://auto-som.pl/ [R=301,L]
