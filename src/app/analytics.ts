@@ -52,11 +52,19 @@ export type SectionSlug =
 type AnalyticsEventParams = Record<string, string | number | boolean | undefined>;
 
 export const initAnalytics = () => {
+  if (isAnalyticsEnabled) {
+    return;
+  }
+
   if (!import.meta.env.PROD || !gaId) {
     return;
   }
 
   ReactGA.initialize(gaId);
+  ReactGA.send({
+    hitType: "pageview",
+    page: window.location.pathname + window.location.search,
+  });
   isAnalyticsEnabled = true;
 };
 
