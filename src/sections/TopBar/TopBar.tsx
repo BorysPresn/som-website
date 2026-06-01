@@ -2,33 +2,20 @@ import { useEffect, useState } from "react";
 import { socialLinks } from "../../app/site.data";
 import { Container } from "../../components/layout/Container/Container";
 import { Icon } from "../../components/ui/Icon/Icon";
+import { isBusinessOpen } from "./businessHours";
 import { StatusIcon } from "./StatusIcon";
 import style from "./TopBar.module.scss";
 
-const OPEN_AT = 9;
-const CLOSE_AT = 18;
-
-const isOpen = () => {
-  const now = new Date();
-  const day = now.getDay();
-  const hour = now.getHours();
-
-  if (day === 0 || day === 6) return false;
-  if (hour < OPEN_AT || hour >= CLOSE_AT) return false;
-
-  return true;
-};
-
 export const TopBar = () => {
-  const [open, setOpen] = useState(isOpen());
+  const [isOpen, setIsOpen] = useState(isBusinessOpen());
   useEffect(() => {
     const id = window.setInterval(() => {
-      setOpen(isOpen());
+      setIsOpen(isBusinessOpen());
     }, 60_000);
     return () => window.clearInterval(id);
   }, []);
 
-  const status = open ? "Otwarte" : "Zamknięte";
+  const status = isOpen ? "Otwarte" : "Zamknięte";
 
   return (
     <div className={style.topbar}>
@@ -50,7 +37,7 @@ export const TopBar = () => {
           </div>
           <div className={style.schedule}>
             <span className={style.status}>
-              {status} <StatusIcon isOpen={open} />
+              {status} <StatusIcon isOpen={isOpen} />
             </span>
             <span>|</span>
             <span>Pon-Pt 9:00-18:00 | Sobota, Niedziela - Zamknięte</span>
