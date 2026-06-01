@@ -38,8 +38,11 @@ export const contactDetails = [
 }>;
 
 export const contactFormCopy = {
-  consent:
-    "Wyra\u017Cam zgod\u0119 na przetwarzanie moich danych osobowych przez AUTO-SOM w celu kontaktu oraz realizacji zg\u0142oszenia, zgodnie z obowi\u0105zuj\u0105cymi przepisami i polityk\u0105 prywatno\u015Bci.",
+  consent: {
+    before:
+      "Wyrażam zgodę na przetwarzanie moich danych osobowych przez AUTO-SOM w celu kontaktu oraz realizacji zgłoszenia, zgodnie z obowiązującymi przepisami i ",
+    link: "polityką prywatności",
+  },
   requiredNote: "* Pola obowi\u0105zkowe",
   submit: "Wy\u015Blij",
   errors: {

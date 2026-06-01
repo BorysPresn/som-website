@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSectionViewTracking } from "./app/useSectionViewTracking";
 import "./app/styles/globals.scss";
 import style from "./App.module.scss";
+import { CookieConsent } from "./components/CookieConsent/CookieConsent";
 import { About } from "./sections/About/About";
 import { Contact } from "./sections/Contact/Contact";
 import { FAQ } from "./sections/FAQ/FAQ";
@@ -86,6 +87,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <CookieConsent />
     </>
   );
 }

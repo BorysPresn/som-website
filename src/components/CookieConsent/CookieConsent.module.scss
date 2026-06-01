@@ -1,0 +1,93 @@
+@use "../../app/styles/variables.scss" as *;
+@use "../../app/styles/mixins.scss" as *;
+
+.banner {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 20;
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+  background-color: $color-bg-section;
+  border: 1px solid $color-stroke-dark;
+  border-radius: $radius-sm;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+}
+
+.text {
+  margin: 0;
+  color: $color-text-secondary;
+  @include font(14px, 400, 1.5);
+}
+
+.link {
+  margin-left: 4px;
+  color: $color-text-accent;
+  text-decoration: none;
+}
+
+.link:hover,
+.link:focus-visible {
+  text-decoration: underline;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 40px;
+  padding: 10px 16px;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  @include font(14px, 600, 1.2);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.primaryButton {
+  color: $color-text-accent-inverse;
+  background-color: $color-bg-accent-main;
+  border: 1px solid $color-bg-accent-main;
+}
+
+.secondaryButton {
+  color: $color-text-main;
+  background-color: transparent;
+  border: 1px solid $color-stroke-secondary;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primaryButton:hover {
+    background-color: $color-text-accent-secondary;
+    border-color: $color-text-accent-secondary;
+  }
+
+  .secondaryButton:hover {
+    color: $color-text-accent;
+    border-color: $color-stroke-accent;
+  }
+}
+
+@media (min-width: $bp-tablet) {
+  .banner {
+    right: 24px;
+    left: auto;
+    bottom: 24px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    width: min(640px, calc(100vw - 48px));
+    padding: 20px;
+  }
+
+  .actions {
+    justify-content: flex-end;
+  }
+}

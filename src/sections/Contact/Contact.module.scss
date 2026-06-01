@@ -112,27 +112,34 @@
 }
 
 .consent {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
   -webkit-tap-highlight-color: transparent;
 }
 
-.consentCheckboxButton {
-  flex: 0 0 20px;
-  width: 20px;
-  height: 20px;
-  margin-top: 6px;
-  padding: 0;
-  border: 0;
-  background: transparent;
+.consentLabel {
+  @include info;
+  display: block;
+  position: relative;
+  padding-left: 32px;
+  color: $color-text-secondary;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
+}
+
+.consentCheckbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .consentCheckboxVisual {
-  position: relative;
-  display: block;
+  position: absolute;
+  top: 2px;
+  left: 0;
   width: 20px;
   height: 20px;
   border: 1px solid $color-stroke-secondary;
@@ -143,17 +150,17 @@
   pointer-events: none;
 }
 
-.consentCheckboxButton:focus-visible .consentCheckboxVisual {
+.consentCheckbox:focus-visible + .consentCheckboxVisual {
   border-color: $white;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
-.consentCheckboxChecked .consentCheckboxVisual {
+.consentCheckboxChecked {
   border-color: $color-stroke-accent;
   background-color: $color-stroke-accent;
 }
 
-.consentCheckboxChecked .consentCheckboxVisual::after {
+.consentCheckboxChecked::after {
   content: "";
   position: absolute;
   top: 5px;
@@ -165,19 +172,22 @@
   transform: rotate(-45deg);
 }
 
-.consentTextButton {
-  @include info;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: $color-text-secondary;
-  text-align: left;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
+.consentText {
+  color: inherit;
 }
 
-.consentTextButton:hover {
+.consentLabel:hover .consentText {
   color: $color-text-main;
+}
+
+.consentLink {
+  color: $color-text-accent;
+  text-decoration: none;
+}
+
+.consentLink:hover,
+.consentLink:focus-visible {
+  text-decoration: underline;
 }
 
 .consentError .consentCheckboxVisual {

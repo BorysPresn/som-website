@@ -23,6 +23,8 @@ export const headerCta = {
   href: "tel:+48793545208",
 };
 
+export const privacyPolicyUrl = `${import.meta.env.BASE_URL}privacy-policy.html`;
+
 type SocialLink = {
   href: string;
   label: string;
