@@ -1,6 +1,7 @@
 const OPEN_AT = 9;
 const CLOSE_AT = 18;
 
+// Fixed holiday keys use MM-DD format, e.g. 01-06 means 6 January.
 const fixedPolishHolidayDates = new Set([
   "01-01",
   "01-06",
