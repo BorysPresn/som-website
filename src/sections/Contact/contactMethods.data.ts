@@ -58,6 +58,6 @@ export const contactMethods: ContactMethod[] = [
     iconVariant: "regular",
     iconWidth: 40,
     iconHeight: 40,
-    href: "mailto:autoserwis.som@gmail.com",
+    href: "mailto:kontakt@auto-som.pl",
   },
 ];
