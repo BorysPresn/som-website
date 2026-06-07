@@ -6,6 +6,7 @@ export type ContactFormValues = {
   vin: string;
   message: string;
   consent: boolean;
+  website: string;
 };
 
 export type ContactFormErrors = Partial<Record<keyof ContactFormValues, string>>;
@@ -16,6 +17,7 @@ export const initialContactFormValues: ContactFormValues = {
   vin: "",
   message: "",
   consent: false,
+  website: "",
 };
 
 const forbiddenVinCharsPattern = /[IOQ]/i;

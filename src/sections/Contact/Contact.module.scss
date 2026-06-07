@@ -111,6 +111,16 @@
   gap: 16px;
 }
 
+.honeypotField {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .consent {
   -webkit-tap-highlight-color: transparent;
 }
