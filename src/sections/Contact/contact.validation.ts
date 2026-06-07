@@ -22,6 +22,7 @@ export const initialContactFormValues: ContactFormValues = {
 
 const forbiddenVinCharsPattern = /[IOQ]/i;
 const vinAllowedCharsPattern = /^[A-HJ-NPR-Z0-9]+$/i;
+const fullNameAllowedCharsPattern = /^\p{L}+(?:[-' ]\p{L}+)*$/u;
 export const contactFullNameMaxLength = 80;
 const contactPhoneConfig = {
   countryCode: "48",
@@ -82,12 +83,15 @@ export const formatPolishPhoneForSubmit = (phone: string) => {
 
 export const validateContactForm = (formValues: ContactFormValues) => {
   const nextErrors: ContactFormErrors = {};
+  const fullName = formValues.fullName.trim();
   const vin = formValues.vin.trim().toUpperCase();
 
-  if (!formValues.fullName.trim()) {
+  if (!fullName) {
     nextErrors.fullName = contactFormCopy.errors.fullName;
-  } else if (formValues.fullName.trim().length > contactFullNameMaxLength) {
+  } else if (fullName.length > contactFullNameMaxLength) {
     nextErrors.fullName = contactFormCopy.errors.fullNameLength;
+  } else if (!fullNameAllowedCharsPattern.test(fullName)) {
+    nextErrors.fullName = contactFormCopy.errors.fullNameFormat;
   }
 
   const phoneDigits = getPhoneDigits(formValues.phone);
