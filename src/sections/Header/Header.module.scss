@@ -1,6 +1,8 @@
 @use "../../app/styles/variables.scss" as *;
 @use "../../app/styles/mixins.scss" as *;
 
+$mobile-header-height: 80px;
+
 .header {
   position: sticky;
   top: 0;
@@ -17,7 +19,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 80px;
+  min-height: $mobile-header-height;
 }
 
 .logo {
@@ -52,8 +54,9 @@
 }
 
 .mobileMenu {
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: $mobile-header-height;
+  bottom: 0;
   left: 0;
   right: 0;
   display: flex;
@@ -64,21 +67,25 @@
   color: $color-text-headings;
 
   overflow: hidden;
-  max-height: 0;
   opacity: 0;
+  overscroll-behavior: contain;
   pointer-events: none;
+  touch-action: none;
   transform: translateY(-8px);
+  visibility: hidden;
   transition:
-    max-height 0.35s ease,
     opacity 0.25s ease,
-    transform 0.25s ease;
+    transform 0.25s ease,
+    visibility 0s linear 0.25s;
 }
 
 .mobileMenuOpen {
-  max-height: 389px;
   opacity: 1;
+  overflow-y: auto;
   pointer-events: auto;
   transform: translateY(0);
+  visibility: visible;
+  transition-delay: 0s;
 }
 
 .mobileNav {

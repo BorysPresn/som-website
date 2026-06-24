@@ -14,12 +14,20 @@ import style from "./Header.module.scss";
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
   const renderNavList = (
     location: NavigationLocation,
     onItemClick?: () => void,
   ) => {
     return siteNavigation.map((item) => (
-      <li key={item.href} onClick={onItemClick}>
+      <li key={item.href}>
         <a
           href={item.href}
           onClick={() => {
@@ -27,16 +35,13 @@ export const Header = () => {
               target: item.analyticsTarget,
               location,
             });
+            onItemClick?.();
           }}
         >
           {item.label}
         </a>
       </li>
     ));
-  };
-
-  const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
   };
 
   return (
@@ -92,11 +97,12 @@ export const Header = () => {
       <div
         id="mobile-menu"
         className={clsx(style.mobileMenu, isMenuOpen && style.mobileMenuOpen)}
+        aria-hidden={!isMenuOpen}
       >
         <Container>
           <nav className={style.mobileNav} aria-label="Mobile navigation">
             <ul className={style.mobileNavList}>
-              {renderNavList("mobile_menu", () => setIsMenuOpen(false))}
+              {renderNavList("mobile_menu", closeMenu)}
             </ul>
           </nav>
           <div className={style.mobileCta}>
