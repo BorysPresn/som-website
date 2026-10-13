@@ -11,18 +11,12 @@ import {
   validateContactDetails,
   type ContactFormErrors,
 } from "../../sections/Contact/contact.validation";
-import { callbackCopy, type CallbackSource } from "./callback.data";
+import { callbackCopy } from "./callback.data";
 import style from "./CallbackDialog.module.scss";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export const CallbackDialog = ({
-  source,
-  onClose,
-}: {
-  source: CallbackSource;
-  onClose: () => void;
-}) => {
+export const CallbackDialog = ({ onClose }: { onClose: () => void }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const requestRef = useRef<AbortController | null>(null);
   const titleId = useId();
@@ -103,7 +97,6 @@ export const CallbackDialog = ({
             fullName: values.fullName.trim(),
             phone: formatPolishPhoneForSubmit(values.phone),
             website: values.website,
-            source,
           }),
         },
       );

@@ -12,39 +12,37 @@ import { Reviews } from "../sections/Reviews/Reviews";
 import { Services } from "../sections/Services/Services";
 import { TopBar } from "../sections/TopBar/TopBar";
 import { CallbackDialog } from "./callback/CallbackDialog";
-import { callbackCopy, type CallbackSource } from "./callback/callback.data";
+import { callbackCopy } from "./callback/callback.data";
 import promoStyle from "./PromoPage.module.scss";
 import { FloatingCallButton } from "./FloatingCallButton/FloatingCallButton";
 
 export const PromoPage = () => {
-  const [callbackSource, setCallbackSource] = useState<CallbackSource | null>(
-    null,
-  );
+  const [isCallbackOpen, setIsCallbackOpen] = useState(false);
 
   return (
     <div className={promoStyle.page}>
       <TopBar />
       <Header />
       <main className={style.main}>
-        <Hero onCtaClick={() => setCallbackSource("hero")} />
+        <Hero onCtaClick={() => setIsCallbackOpen(true)} />
         <Services carousel>
           <div className={promoStyle.cta}>
             <Button
               variant="primary"
               text={callbackCopy.cta}
               iconName="arrow-right"
-              onClick={() => setCallbackSource("services")}
+              onClick={() => setIsCallbackOpen(true)}
             />
           </div>
         </Services>
         <Reviews carousel />
-        <ContactLayout methodsBeforeMap detailsByMap>
+        <ContactLayout methodsBeforeMap detailsByMap fullWidthHeading>
           <ContactMethods
             showHeading={false}
             callback={{
               title: callbackCopy.contactTitle,
               description: callbackCopy.contactDescription,
-              onClick: () => setCallbackSource("contact"),
+              onClick: () => setIsCallbackOpen(true),
             }}
           />
         </ContactLayout>
@@ -52,11 +50,8 @@ export const PromoPage = () => {
       <Footer />
       <FloatingCallButton />
       <CookieConsent className={promoStyle.cookieBanner} />
-      {callbackSource && (
-        <CallbackDialog
-          source={callbackSource}
-          onClose={() => setCallbackSource(null)}
-        />
+      {isCallbackOpen && (
+        <CallbackDialog onClose={() => setIsCallbackOpen(false)} />
       )}
     </div>
   );

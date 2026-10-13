@@ -10,36 +10,41 @@ export const ContactLayout = ({
   children,
   methodsBeforeMap = false,
   detailsByMap = false,
+  fullWidthHeading = false,
 }: {
   children: ReactNode;
   methodsBeforeMap?: boolean;
   detailsByMap?: boolean;
+  fullWidthHeading?: boolean;
 }) => {
+  const heading = (
+    <div className={style.headingBlock}>
+      <SectionHeading
+        eyebrow={contactCopy.eyebrow}
+        title={contactCopy.title}
+        titleId="contact-title"
+        className={style.headingGroup}
+        titleClassName={style.title}
+      />
+      <p className={style.description}>{contactCopy.description}</p>
+    </div>
+  );
   return (
     <section
       id="contact"
       className={clsx(
         style.section,
         methodsBeforeMap && style.methodsBeforeMap,
+        fullWidthHeading && style.fullWidthHeading,
       )}
       aria-labelledby="contact-title"
     >
       <Container>
+        {fullWidthHeading && heading}
         <div className={style.content}>
           <div className={style.infoColumn}>
             <div className={style.infoIntro}>
-              <div className={style.headingBlock}>
-                <SectionHeading
-                  eyebrow={contactCopy.eyebrow}
-                  title={contactCopy.title}
-                  titleId="contact-title"
-                  className={style.headingGroup}
-                  titleClassName={style.title}
-                />
-
-                <p className={style.description}>{contactCopy.description}</p>
-              </div>
-
+              {!fullWidthHeading && heading}
               {!detailsByMap && <ContactDetails />}
             </div>
 

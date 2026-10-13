@@ -563,6 +563,24 @@
     grid-template-rows: repeat(2, minmax(0, 1fr));
     grid-auto-flow: column;
   }
+
+  .fullWidthHeading .infoColumn {
+    min-height: 0;
+  }
+
+  .fullWidthHeading .actionColumn {
+    justify-content: flex-end;
+  }
+
+  .fullWidthHeading .headingBlock,
+  .fullWidthHeading .title,
+  .fullWidthHeading .description {
+    max-width: none;
+  }
+
+  .fullWidthHeading .headingGroup {
+    width: auto;
+  }
 }
 
 @media (min-width: $bp-desktop) and (max-width: 1326px) {

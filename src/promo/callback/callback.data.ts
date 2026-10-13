@@ -15,5 +15,3 @@ export const callbackCopy = {
   error:
     "Nie udało się wysłać zgłoszenia. Spróbuj ponownie lub zadzwoń do nas.",
 };
-
-export type CallbackSource = "hero" | "services" | "contact";
