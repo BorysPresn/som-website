@@ -29,6 +29,11 @@
   gap: 48px;
 }
 
+.introAction {
+  display: flex;
+  align-items: flex-start;
+}
+
 .headingBlock {
   display: flex;
   flex-direction: column;
@@ -409,6 +414,10 @@
 }
 
 @media (min-width: $bp-desktop) {
+  .introAction {
+    display: none;
+  }
+
   .section {
     padding-block: 96px;
   }

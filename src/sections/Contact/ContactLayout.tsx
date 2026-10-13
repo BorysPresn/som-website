@@ -5,7 +5,13 @@ import type { ReactNode } from "react";
 import { contactCopy, contactDetails, contactMap } from "./contact.data";
 import style from "./Contact.module.scss";
 
-export const ContactLayout = ({ children }: { children: ReactNode }) => {
+export const ContactLayout = ({
+  children,
+  introAction,
+}: {
+  children: ReactNode;
+  introAction?: ReactNode;
+}) => {
   return (
     <section
       id="contact"
@@ -59,6 +65,9 @@ export const ContactLayout = ({ children }: { children: ReactNode }) => {
                   );
                 })}
               </address>
+              {introAction && (
+                <div className={style.introAction}>{introAction}</div>
+              )}
             </div>
 
             <div className={style.mapWrap}>

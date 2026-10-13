@@ -21,6 +21,15 @@ export const PromoPage = () => {
     null,
   );
 
+  const contactCta = (
+    <Button
+      variant="primary"
+      text={callbackCopy.cta}
+      iconName="arrow-right"
+      onClick={() => setCallbackSource("contact")}
+    />
+  );
+
   return (
     <div className={promoStyle.page}>
       <TopBar />
@@ -38,15 +47,8 @@ export const PromoPage = () => {
           </div>
         </Services>
         <Reviews carousel />
-        <ContactLayout>
-          <div className={promoStyle.cta}>
-            <Button
-              variant="primary"
-              text={callbackCopy.cta}
-              iconName="arrow-right"
-              onClick={() => setCallbackSource("contact")}
-            />
-          </div>
+        <ContactLayout introAction={contactCta}>
+          <div className={promoStyle.contactCta}>{contactCta}</div>
           <ContactMethods />
         </ContactLayout>
       </main>
