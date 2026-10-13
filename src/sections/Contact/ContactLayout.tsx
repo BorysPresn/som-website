@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { trackContactLinkClick } from "../../app/analytics";
 import { Container } from "../../components/layout/Container/Container";
 import { SectionHeading } from "../../components/ui/SectionHeading/SectionHeading";
@@ -7,15 +8,18 @@ import style from "./Contact.module.scss";
 
 export const ContactLayout = ({
   children,
-  introAction,
+  methodsBeforeMap = false,
 }: {
   children: ReactNode;
-  introAction?: ReactNode;
+  methodsBeforeMap?: boolean;
 }) => {
   return (
     <section
       id="contact"
-      className={style.section}
+      className={clsx(
+        style.section,
+        methodsBeforeMap && style.methodsBeforeMap,
+      )}
       aria-labelledby="contact-title"
     >
       <Container>
@@ -65,9 +69,6 @@ export const ContactLayout = ({
                   );
                 })}
               </address>
-              {introAction && (
-                <div className={style.introAction}>{introAction}</div>
-              )}
             </div>
 
             <div className={style.mapWrap}>

@@ -13,22 +13,11 @@
   align-items: flex-start;
 }
 
-.contactCta {
-  display: none;
-}
-
 @media (min-width: $bp-tablet) {
   .page {
     padding-bottom: 0;
   }
   .cookieBanner.cookieBanner {
     bottom: 24px;
-  }
-}
-
-@media (min-width: $bp-desktop) {
-  .contactCta {
-    display: flex;
-    align-items: flex-start;
   }
 }

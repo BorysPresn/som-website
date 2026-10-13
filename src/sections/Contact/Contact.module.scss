@@ -29,9 +29,25 @@
   gap: 48px;
 }
 
-.introAction {
-  display: flex;
-  align-items: flex-start;
+.methodsBeforeMap .content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.methodsBeforeMap .infoColumn {
+  display: contents;
+}
+
+.methodsBeforeMap .infoIntro {
+  grid-row: 1;
+}
+
+.methodsBeforeMap .actionColumn {
+  grid-row: 2;
+}
+
+.methodsBeforeMap .mapWrap {
+  grid-row: 3;
 }
 
 .headingBlock {
@@ -289,6 +305,13 @@
   outline: none;
 }
 
+.methodButton {
+  width: 100%;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
 .methodIcon {
   position: relative;
   display: block;
@@ -414,8 +437,9 @@
 }
 
 @media (min-width: $bp-desktop) {
-  .introAction {
-    display: none;
+  .methodsBeforeMap .content,
+  .methodsBeforeMap .infoColumn {
+    display: flex;
   }
 
   .section {

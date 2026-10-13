@@ -3,13 +3,19 @@ import { trackContactLinkClick } from "../../app/analytics";
 import { contactMethods, contactMethodsCopy } from "./contactMethods.data";
 import style from "./Contact.module.scss";
 
-export const ContactMethods = () => {
+type ContactMethodsProps = {
+  callback?: { title: string; description: string; onClick: () => void };
+};
+
+export const ContactMethods = ({ callback }: ContactMethodsProps) => {
   return (
     <div className={style.methods}>
       <h3 className={style.methodsTitle}>{contactMethodsCopy.title}</h3>
 
       <div className={style.methodsList}>
         {contactMethods.map((method) => {
+          const callbackAction =
+            method.analyticsMethod === "phone" ? callback : undefined;
           const content = (
             <>
               <span
@@ -30,16 +36,34 @@ export const ContactMethods = () => {
               </span>
 
               <span className={style.methodText}>
-                <span className={style.methodTitle}>{method.title}</span>
+                <span className={style.methodTitle}>
+                  {callbackAction?.title ?? method.title}
+                </span>
                 <span className={style.methodDescription}>
-                  {method.description}
+                  {callbackAction?.description ?? method.description}
                 </span>
               </span>
             </>
           );
 
-          const className = clsx(style.methodCard, method.href && style.methodLink);
+          const className = clsx(
+            style.methodCard,
+            method.href && style.methodLink,
+          );
           const isExternalLink = method.href?.startsWith("http");
+
+          if (callbackAction) {
+            return (
+              <button
+                key={method.title}
+                type="button"
+                className={clsx(className, style.methodButton)}
+                onClick={callbackAction.onClick}
+              >
+                {content}
+              </button>
+            );
+          }
 
           if (method.href) {
             return (

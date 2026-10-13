@@ -1,5 +1,7 @@
 export const callbackCopy = {
   cta: "Zostaw numer",
+  contactTitle: "Poproś o kontakt",
+  contactDescription: "Zostaw imię i numer telefonu — oddzwonimy do Ciebie.",
   title: "Oddzwonimy do Ciebie",
   close: "Zamknij",
   fullName: "Imię",
