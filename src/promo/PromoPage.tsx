@@ -38,8 +38,9 @@ export const PromoPage = () => {
           </div>
         </Services>
         <Reviews carousel />
-        <ContactLayout methodsBeforeMap>
+        <ContactLayout methodsBeforeMap detailsByMap>
           <ContactMethods
+            showHeading={false}
             callback={{
               title: callbackCopy.contactTitle,
               description: callbackCopy.contactDescription,

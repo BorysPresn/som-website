@@ -4,13 +4,24 @@ import { contactMethods, contactMethodsCopy } from "./contactMethods.data";
 import style from "./Contact.module.scss";
 
 type ContactMethodsProps = {
+  showHeading?: boolean;
   callback?: { title: string; description: string; onClick: () => void };
 };
 
-export const ContactMethods = ({ callback }: ContactMethodsProps) => {
+export const ContactMethods = ({
+  callback,
+  showHeading = true,
+}: ContactMethodsProps) => {
   return (
-    <div className={style.methods}>
-      <h3 className={style.methodsTitle}>{contactMethodsCopy.title}</h3>
+    <div
+      className={clsx(
+        style.methods,
+        !showHeading && style.methodsWithoutHeading,
+      )}
+    >
+      {showHeading && (
+        <h3 className={style.methodsTitle}>{contactMethodsCopy.title}</h3>
+      )}
 
       <div className={style.methodsList}>
         {contactMethods.map((method) => {
