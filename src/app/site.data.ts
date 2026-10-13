@@ -8,7 +8,7 @@ export const siteLogo = {
   href: import.meta.env.BASE_URL,
 };
 
-export const siteNavigation = [
+const mainSiteNavigation = [
   { href: "#services", label: "Us\u0142ugi", analyticsTarget: "services" },
   { href: "#about", label: "O nas", analyticsTarget: "about" },
   { href: "#reviews", label: "Opinie", analyticsTarget: "reviews" },
@@ -19,11 +19,19 @@ export const siteNavigation = [
   analyticsTarget: NavigationTarget;
 }>;
 
+export const siteNavigation =
+  import.meta.env.MODE === "promo"
+    ? mainSiteNavigation.filter((item) => item.analyticsTarget !== "about")
+    : mainSiteNavigation;
+
 export const headerCta = {
   href: "tel:+48793545208",
 };
 
-export const privacyPolicyUrl = `${import.meta.env.BASE_URL}privacy-policy.html`;
+export const privacyPolicyUrl =
+  import.meta.env.MODE === "promo"
+    ? "https://auto-som.pl/privacy-policy.html"
+    : `${import.meta.env.BASE_URL}privacy-policy.html`;
 
 type SocialLink = {
   href: string;

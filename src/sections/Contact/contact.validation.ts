@@ -9,7 +9,9 @@ export type ContactFormValues = {
   website: string;
 };
 
-export type ContactFormErrors = Partial<Record<keyof ContactFormValues, string>>;
+export type ContactFormErrors = Partial<
+  Record<keyof ContactFormValues, string>
+>;
 
 export const initialContactFormValues: ContactFormValues = {
   fullName: "",
@@ -37,7 +39,8 @@ const hasUnsupportedPhoneCountryCode = (phone: string) => {
   const { countryCode, localDigitsLength } = contactPhoneConfig;
 
   return (
-    (trimmedPhone.startsWith("+") && !trimmedPhone.startsWith(`+${countryCode}`)) ||
+    (trimmedPhone.startsWith("+") &&
+      !trimmedPhone.startsWith(`+${countryCode}`)) ||
     (digits.length > localDigitsLength && !digits.startsWith(countryCode))
   );
 };
@@ -51,7 +54,10 @@ export const getPolishLocalPhoneDigits = (phone: string) => {
     (digits.length > localDigitsLength && digits.startsWith(countryCode));
 
   if (hasCountryCode) {
-    return digits.slice(countryCode.length, countryCode.length + localDigitsLength);
+    return digits.slice(
+      countryCode.length,
+      countryCode.length + localDigitsLength,
+    );
   }
 
   return digits.slice(0, localDigitsLength);
@@ -81,10 +87,11 @@ export const formatPolishPhoneForSubmit = (phone: string) => {
     : phone;
 };
 
-export const validateContactForm = (formValues: ContactFormValues) => {
+export const validateContactDetails = (
+  formValues: Pick<ContactFormValues, "fullName" | "phone">,
+) => {
   const nextErrors: ContactFormErrors = {};
   const fullName = formValues.fullName.trim();
-  const vin = formValues.vin.trim().toUpperCase();
 
   if (!fullName) {
     nextErrors.fullName = contactFormCopy.errors.fullName;
@@ -104,6 +111,13 @@ export const validateContactForm = (formValues: ContactFormValues) => {
   } else if (localPhoneDigits.length !== contactPhoneConfig.localDigitsLength) {
     nextErrors.phone = contactFormCopy.errors.phoneFormat;
   }
+
+  return nextErrors;
+};
+
+export const validateContactForm = (formValues: ContactFormValues) => {
+  const nextErrors = validateContactDetails(formValues);
+  const vin = formValues.vin.trim().toUpperCase();
 
   if (!vin) {
     nextErrors.vin = contactFormCopy.errors.vin;

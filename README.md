@@ -130,6 +130,22 @@ BASE_PATH=/som-website/ npm run build
 
 `vite.config.ts` reads `BASE_PATH` and falls back to `/` for local and production-domain builds.
 
+## Advertising Version (In Development)
+
+The advertising page has its own React entry point in `src/promo/main.tsx` and uses the `promo` Vite mode. It reuses the header, footer, hero, services, reviews, and contact layout without the main contact form.
+
+```bash
+npm run dev:promo
+npm run build:promo
+npm run preview:promo
+```
+
+The main build remains in `dist/`; the advertising build is written to `dist-promo/`. Promo has its own public directory, allows crawling, and includes a `noindex` directive. Its favicon and privacy policy links currently point to the main website.
+
+The existing deployment workflow still publishes only the main build. Callback UI/API, advertising analytics, and the promo deployment workflow are subsequent implementation steps. Promo navigation omits `O nas`, since the corresponding section is not included.
+
+GitHub Pages publishes the advertising demo at `https://boryspresn.github.io/som-website/promo/` alongside the main preview. The Pages workflow runs on `main` and `feat/promo-foundation`, builds promo with `BASE_PATH=/som-website/promo/`, and includes `dist-promo/` under `dist/promo/`. The visual demo has no API URL or analytics ID configured; callback submission is not enabled there.
+
 ## CI
 
 GitHub Actions runs:
@@ -181,6 +197,12 @@ src/
 - `public/robots.txt` points crawlers to `public/sitemap.xml`.
 
 ## Contact Form
+
+Backend source: [BorysPresn/tg_bot](https://github.com/BorysPresn/tg_bot).
+
+The backend shares a repository with the Telegram bot. The website endpoint is implemented in `src/api/contact.routes.js`, with validation in `src/helpers/contactFormValidator.js`. Website submissions currently send email through Resend (`src/services/mail.sevices.js`); the HTTP handler does not send a Telegram notification.
+
+The API currently requires full name, a Polish phone number, VIN, message, and consent. A phone-only callback form needs a separate or explicitly extended API contract. Adding a frontend subdomain also requires updating the backend CORS configuration in `src/app.js`.
 
 The contact form submits JSON to:
 

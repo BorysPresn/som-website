@@ -1,0 +1,87 @@
+@use "../../app/styles/variables.scss" as *;
+
+.button {
+  position: fixed;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: $color-bg-accent-dark;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid $color-stroke-accent;
+    border-radius: inherit;
+    pointer-events: none;
+    animation: wave 3s ease-out infinite;
+  }
+
+  &::after {
+    animation-delay: -1.5s;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-text-main;
+    outline-offset: 4px;
+  }
+}
+
+.icon {
+  --fill-0: #{$color-bg-accent-main};
+  width: 56px;
+  height: 56px;
+  border-radius: inherit;
+  animation: ring 4s ease-in-out infinite;
+}
+
+@keyframes wave {
+  from {
+    opacity: 0.65;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.65);
+  }
+}
+
+@keyframes ring {
+  0%,
+  12%,
+  100% {
+    transform: rotate(0deg);
+  }
+  3%,
+  9% {
+    transform: rotate(-10deg);
+  }
+  6% {
+    transform: rotate(10deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon {
+    animation: none;
+  }
+  .button::before,
+  .button::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+@media (min-width: $bp-tablet) {
+  .button {
+    display: none;
+  }
+}

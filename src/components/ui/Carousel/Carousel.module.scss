@@ -1,0 +1,128 @@
+@use "../../../app/styles/variables.scss" as *;
+
+.carousel {
+  min-width: 0;
+  width: 100%;
+}
+
+.track {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-text-accent;
+    outline-offset: 4px;
+  }
+}
+
+.slide {
+  display: flex;
+  flex: 0 0 calc(100% - 28px);
+  min-width: 0;
+  scroll-snap-align: start;
+
+  > * {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.previous,
+.next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  color: $color-text-accent;
+  background: transparent;
+  border: 0;
+  border-radius: $radius-sm;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-text-accent;
+    outline-offset: 3px;
+  }
+}
+
+.chevron {
+  display: block;
+  width: 20px;
+  font-family: inherit;
+  font-size: 32px;
+  line-height: 1;
+  text-align: center;
+}
+
+.counter {
+  min-width: 64px;
+  color: $color-text-secondary;
+  text-align: center;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .previous:hover:not(:disabled),
+  .next:hover:not(:disabled) {
+    color: $color-text-accent-secondary;
+  }
+}
+
+@media (min-width: $bp-tablet) {
+  .previous,
+  .next {
+    border: 1px solid $color-stroke-secondary;
+  }
+
+  .slide {
+    flex-basis: calc((100% - 16px) / 2);
+  }
+
+  .mobileOnly .track {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .mobileOnly .controls {
+    display: none;
+  }
+}
+
+@media (min-width: $bp-desktop) {
+  .slide {
+    flex-basis: calc((100% - 32px) / 3);
+  }
+
+  .mobileOnly .track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

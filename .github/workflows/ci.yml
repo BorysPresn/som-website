@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - feat/promo-foundation
 
 jobs:
   build:
@@ -29,3 +30,6 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Build promo
+        run: npm run build:promo

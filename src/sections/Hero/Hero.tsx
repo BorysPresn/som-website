@@ -19,7 +19,7 @@ const loadDesktopSlides = async () => {
   return slideModules.map((slideModule) => slideModule.default);
 };
 
-export const Hero = () => {
+export const Hero = ({ onCtaClick }: { onCtaClick?: () => void }) => {
   const [isSliderEnabled, setIsSliderEnabled] = useState(() => {
     if (typeof window === "undefined") {
       return false;
@@ -141,10 +141,11 @@ export const Hero = () => {
           <Button
             variant="primary"
             iconName="arrow-right"
-            href="#contact"
+            href={onCtaClick ? undefined : "#contact"}
             text="Umów termin"
             onClick={() => {
               trackCtaClick({ label: "umow_termin", location: "hero" });
+              onCtaClick?.();
             }}
           />
         </div>
