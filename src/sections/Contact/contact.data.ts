@@ -49,6 +49,8 @@ export const contactFormCopy = {
     fullName: "Wpisanie imienia i nazwiska jest wymagane.",
     fullNameLength:
       "Imi\u0119 i nazwisko nie mo\u017Ce przekracza\u0107 80 znak\u00F3w.",
+    fullNameFormat:
+      "Wpisz poprawne imi\u0119 i nazwisko, u\u017Cywaj\u0105c tylko liter, spacji, apostrofu lub my\u015Blnika.",
     phone: "Wpisanie numeru telefonu jest wymagane.",
     phoneFormat: "Wpisz poprawny numer telefonu.",
     phoneCountry:

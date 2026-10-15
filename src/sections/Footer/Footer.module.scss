@@ -75,6 +75,10 @@
 
 .privacyLink {
   @include font(12px, $fw-regular, 18px);
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  margin-top: $space-xs;
   color: $color-text-secondary;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -114,11 +118,5 @@
 
   .socialList {
     justify-self: end;
-  }
-
-  .privacyLink {
-    display: inline-block;
-    width: 100%;
-    text-align: center;
   }
 }

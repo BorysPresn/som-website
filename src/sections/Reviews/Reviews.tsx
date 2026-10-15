@@ -1,11 +1,15 @@
 import { Container } from "../../components/layout/Container/Container";
+import { Carousel } from "../../components/ui/Carousel/Carousel";
 import { Button } from "../../components/ui/Button/Button";
 import { SectionHeading } from "../../components/ui/SectionHeading/SectionHeading";
 import { ReviewCard } from "./ReviewCard";
 import { reviews, reviewsContent } from "./reviews.data";
 import style from "./Reviews.module.scss";
 
-export const Reviews = () => {
+export const Reviews = ({ carousel = false }: { carousel?: boolean }) => {
+  const cards = reviews.map((review) => (
+    <ReviewCard key={review.author} {...review} />
+  ));
   return (
     <section id="reviews" className={style.section}>
       <Container>
@@ -16,11 +20,13 @@ export const Reviews = () => {
             className={style.header}
           />
 
-          <div className={style.list}>
-            {reviews.map((review) => (
-              <ReviewCard key={review.author} {...review} />
-            ))}
-          </div>
+          {carousel ? (
+            <Carousel label="Opinie klientów" mobileOnly>
+              {cards}
+            </Carousel>
+          ) : (
+            <div className={style.list}>{cards}</div>
+          )}
 
           <div className={style.cta}>
             <Button

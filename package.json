@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:promo": "vite --mode promo",
     "build": "tsc -b && vite build",
+    "build:promo": "tsc -b && vite build --mode promo",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "test:promo": "node --test tests/promo-analytics.test.mjs",
+    "preview": "vite preview",
+    "preview:promo": "vite preview --mode promo"
   },
   "dependencies": {
     "clsx": "^2.1.1",

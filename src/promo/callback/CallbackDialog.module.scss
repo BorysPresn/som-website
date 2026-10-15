@@ -1,0 +1,98 @@
+@use "../../app/styles/variables.scss" as *;
+
+.dialog {
+  position: fixed;
+  inset: 0;
+  width: min(480px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 24px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  color: $color-text-main;
+  background: $color-bg-main;
+  border: 1px solid $color-stroke-secondary;
+  border-radius: $radius-sm;
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.title {
+  flex: 1;
+  min-width: 0;
+  font-size: 22px;
+  line-height: 1.35;
+  color: $color-text-headings;
+}
+.close {
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 8px 0 8px 8px;
+  border: 0;
+  color: $color-text-secondary;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.close:focus-visible {
+  outline: 2px solid $color-text-accent;
+  outline-offset: 4px;
+}
+.form,
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.fields {
+  border: 0;
+  min-width: 0;
+}
+.privacy {
+  font-size: 12px;
+  line-height: 1.6;
+  color: $color-text-secondary;
+}
+.privacy a {
+  color: $color-text-accent;
+  text-decoration: underline;
+}
+.message {
+  min-height: 40px;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  color: $color-text-secondary;
+}
+.success {
+  color: $color-success;
+}
+.error {
+  color: $color-error;
+}
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (min-width: $bp-tablet) {
+  .dialog {
+    padding: 32px;
+  }
+  .title {
+    font-size: 24px;
+  }
+}

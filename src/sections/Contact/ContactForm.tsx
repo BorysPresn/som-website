@@ -41,6 +41,12 @@ export const ContactForm = () => {
       return;
     }
 
+    if (values.website.trim()) {
+      setValues(initialContactFormValues);
+      setStatus("success");
+      return;
+    }
+
     try {
       if (!apiUrl) {
         setStatus("error");
@@ -49,8 +55,11 @@ export const ContactForm = () => {
       setStatus("loading");
 
       const payload = {
-        ...values,
+        fullName: values.fullName,
         phone: formatPolishPhoneForSubmit(String(values.phone)),
+        vin: values.vin,
+        message: values.message,
+        consent: values.consent,
       };
 
       const res = await fetch(`${apiUrl}/api/contact`, {
@@ -84,7 +93,7 @@ export const ContactForm = () => {
         {contactFormFields.map((field) => {
           const fieldName = field.name as keyof Omit<
             ContactFormValues,
-            "consent"
+            "consent" | "website"
           >;
 
           return (
@@ -123,6 +132,24 @@ export const ContactForm = () => {
             />
           );
         })}
+      </div>
+
+      <div className={style.honeypotField} aria-hidden="true">
+        <label htmlFor="contact-website">Website</label>
+        <input
+          id="contact-website"
+          name="website"
+          type="text"
+          value={values.website}
+          onChange={(event) => {
+            setValues((currentValues) => ({
+              ...currentValues,
+              website: event.currentTarget.value,
+            }));
+          }}
+          tabIndex={-1}
+          autoComplete="off"
+        />
       </div>
 
       <ContactConsentCheckbox

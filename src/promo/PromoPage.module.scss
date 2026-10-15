@@ -1,0 +1,23 @@
+@use "../app/styles/variables.scss" as *;
+
+.page {
+  padding-bottom: calc(96px + env(safe-area-inset-bottom));
+}
+
+.cookieBanner.cookieBanner {
+  bottom: calc(104px + env(safe-area-inset-bottom));
+}
+
+.cta {
+  display: flex;
+  align-items: flex-start;
+}
+
+@media (min-width: $bp-tablet) {
+  .page {
+    padding-bottom: 0;
+  }
+  .cookieBanner.cookieBanner {
+    bottom: 24px;
+  }
+}

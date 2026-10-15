@@ -1,0 +1,75 @@
+name: Deploy promo frontend
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-promo-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check promo FTP directory
+        env:
+          PROMO_DIR: ${{ secrets.FTP_PROMO_TARGET_DIR }}
+          MAIN_DIR: ${{ secrets.FTP_TARGET_DIR }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import posixpath
+
+          def directory(name):
+              value = os.environ.get(name, "").strip()
+              if not value:
+                  raise SystemExit(f"{name} must be configured")
+              return posixpath.normpath("/" + value.lstrip("/"))
+
+          promo = directory("PROMO_DIR")
+          main = directory("MAIN_DIR")
+          if promo == "/" or main == "/":
+              raise SystemExit("Use explicit, separate FTP directories")
+          if promo == main or promo.startswith(main + "/") or main.startswith(promo + "/"):
+              raise SystemExit("Promo and main FTP directories must not overlap")
+          if not os.environ["PROMO_DIR"].endswith("/"):
+              raise SystemExit("FTP_PROMO_TARGET_DIR must end with /")
+          PY
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build promo
+        run: npm run build:promo
+        env:
+          BASE_PATH: /
+          VITE_API_URL: https://tgbot-production-b8ab.up.railway.app
+          VITE_GA_ID: ""
+          VITE_GTM_ID: ${{ vars.VITE_GTM_ID || 'GTM-M9TXM5GC' }}
+          VITE_CLARITY_ID: ${{ vars.VITE_CLARITY_ID }}
+
+      - name: Deploy promo to LH.pl via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist-promo/
+          server-dir: ${{ secrets.FTP_PROMO_TARGET_DIR }}

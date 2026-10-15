@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - feat/promo-foundation
   workflow_dispatch:
 
 permissions:
@@ -41,6 +42,20 @@ jobs:
         env:
           BASE_PATH: /som-website/
           VITE_GA_ID: ${{ vars.VITE_GA_ID }}
+
+      - name: Build promo demo
+        run: npm run build:promo
+        env:
+          BASE_PATH: /som-website/promo/
+          VITE_API_URL: ""
+          VITE_GA_ID: ""
+          VITE_GTM_ID: ""
+          VITE_CLARITY_ID: ""
+
+      - name: Include promo demo in Pages artifact
+        run: |
+          mkdir -p dist/promo
+          cp -a dist-promo/. dist/promo/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

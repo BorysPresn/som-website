@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import clsx from "clsx";
 import { initAnalytics } from "../../app/analytics";
 import { privacyPolicyUrl } from "../../app/site.data";
 import style from "./CookieConsent.module.scss";
@@ -23,16 +24,22 @@ const getStoredConsent = (): CookieConsentValue | null => {
   return null;
 };
 
-export const CookieConsent = () => {
+export const CookieConsent = ({
+  className,
+  onAccept = initAnalytics,
+}: {
+  className?: string;
+  onAccept?: () => void;
+}) => {
   const [consent, setConsent] = useState<CookieConsentValue | null>(() =>
     getStoredConsent(),
   );
 
   useEffect(() => {
     if (consent === "accepted") {
-      initAnalytics();
+      onAccept();
     }
-  }, [consent]);
+  }, [consent, onAccept]);
 
   const handleConsent = (value: CookieConsentValue) => {
     try {
@@ -49,7 +56,10 @@ export const CookieConsent = () => {
   }
 
   return (
-    <section className={style.banner} aria-label="Informacja o cookies">
+    <section
+      className={clsx(style.banner, className)}
+      aria-label="Informacja o cookies"
+    >
       <p className={style.text}>
         Używamy plików cookies analitycznych, aby sprawdzać, jak użytkownicy
         korzystają ze strony i poprawiać jej działanie. Więcej informacji:

@@ -6,9 +6,12 @@ export type ContactFormValues = {
   vin: string;
   message: string;
   consent: boolean;
+  website: string;
 };
 
-export type ContactFormErrors = Partial<Record<keyof ContactFormValues, string>>;
+export type ContactFormErrors = Partial<
+  Record<keyof ContactFormValues, string>
+>;
 
 export const initialContactFormValues: ContactFormValues = {
   fullName: "",
@@ -16,10 +19,12 @@ export const initialContactFormValues: ContactFormValues = {
   vin: "",
   message: "",
   consent: false,
+  website: "",
 };
 
 const forbiddenVinCharsPattern = /[IOQ]/i;
 const vinAllowedCharsPattern = /^[A-HJ-NPR-Z0-9]+$/i;
+const fullNameAllowedCharsPattern = /^\p{L}+(?:[-' ]\p{L}+)*$/u;
 export const contactFullNameMaxLength = 80;
 const contactPhoneConfig = {
   countryCode: "48",
@@ -34,7 +39,8 @@ const hasUnsupportedPhoneCountryCode = (phone: string) => {
   const { countryCode, localDigitsLength } = contactPhoneConfig;
 
   return (
-    (trimmedPhone.startsWith("+") && !trimmedPhone.startsWith(`+${countryCode}`)) ||
+    (trimmedPhone.startsWith("+") &&
+      !trimmedPhone.startsWith(`+${countryCode}`)) ||
     (digits.length > localDigitsLength && !digits.startsWith(countryCode))
   );
 };
@@ -48,7 +54,10 @@ export const getPolishLocalPhoneDigits = (phone: string) => {
     (digits.length > localDigitsLength && digits.startsWith(countryCode));
 
   if (hasCountryCode) {
-    return digits.slice(countryCode.length, countryCode.length + localDigitsLength);
+    return digits.slice(
+      countryCode.length,
+      countryCode.length + localDigitsLength,
+    );
   }
 
   return digits.slice(0, localDigitsLength);
@@ -78,14 +87,18 @@ export const formatPolishPhoneForSubmit = (phone: string) => {
     : phone;
 };
 
-export const validateContactForm = (formValues: ContactFormValues) => {
+export const validateContactDetails = (
+  formValues: Pick<ContactFormValues, "fullName" | "phone">,
+) => {
   const nextErrors: ContactFormErrors = {};
-  const vin = formValues.vin.trim().toUpperCase();
+  const fullName = formValues.fullName.trim();
 
-  if (!formValues.fullName.trim()) {
+  if (!fullName) {
     nextErrors.fullName = contactFormCopy.errors.fullName;
-  } else if (formValues.fullName.trim().length > contactFullNameMaxLength) {
+  } else if (fullName.length > contactFullNameMaxLength) {
     nextErrors.fullName = contactFormCopy.errors.fullNameLength;
+  } else if (!fullNameAllowedCharsPattern.test(fullName)) {
+    nextErrors.fullName = contactFormCopy.errors.fullNameFormat;
   }
 
   const phoneDigits = getPhoneDigits(formValues.phone);
@@ -98,6 +111,13 @@ export const validateContactForm = (formValues: ContactFormValues) => {
   } else if (localPhoneDigits.length !== contactPhoneConfig.localDigitsLength) {
     nextErrors.phone = contactFormCopy.errors.phoneFormat;
   }
+
+  return nextErrors;
+};
+
+export const validateContactForm = (formValues: ContactFormValues) => {
+  const nextErrors = validateContactDetails(formValues);
+  const vin = formValues.vin.trim().toUpperCase();
 
   if (!vin) {
     nextErrors.vin = contactFormCopy.errors.vin;
