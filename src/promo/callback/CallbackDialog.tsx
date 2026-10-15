@@ -13,6 +13,7 @@ import {
 } from "../../sections/Contact/contact.validation";
 import { callbackCopy } from "./callback.data";
 import style from "./CallbackDialog.module.scss";
+import { trackPromoCallbackSuccess } from "../analytics";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -111,6 +112,7 @@ export const CallbackDialog = ({ onClose }: { onClose: () => void }) => {
         throw new Error("Callback request failed");
       }
       if (dialogRef.current?.open) setStatus("success");
+      trackPromoCallbackSuccess();
     } catch {
       if (dialogRef.current?.open) setStatus("error");
     } finally {
@@ -149,6 +151,7 @@ export const CallbackDialog = ({ onClose }: { onClose: () => void }) => {
         </button>
       </div>
       <form
+        data-clarity-mask="true"
         className={style.form}
         onSubmit={submit}
         noValidate

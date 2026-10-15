@@ -142,7 +142,30 @@ npm run preview:promo
 
 The main build remains in `dist/`; the advertising build is written to `dist-promo/`. Promo has its own public directory, allows crawling, and includes a `noindex` directive. Its favicon and privacy policy links currently point to the main website.
 
-The existing deployment workflow still publishes only the main build. Callback UI/API, advertising analytics, and the promo deployment workflow are subsequent implementation steps. Promo navigation omits `O nas`, since the corresponding section is not included.
+The existing automatic deployment workflow still publishes only the main build. Promo navigation omits `O nas`, since the corresponding section is not included.
+
+The popup submits `fullName`, a normalized Polish `phone` (`+48` followed by nine digits), and the `website` honeypot to `${VITE_API_URL}/api/callback`. It uses the shared contact validation, blocks concurrent submissions, and waits up to 15 seconds. Success requires an HTTP success response with `ok: true`. The backend sends requests to email and Telegram; acceptance by either channel is considered success. Closing the popup aborts the browser request but cannot undo a request already accepted by the server.
+
+For local API testing, set `VITE_API_URL=http://localhost:3000` in the ignored `.env.promo.local` file and run the promo development mode. Vite environment values are embedded at build time; changing hosting settings without rebuilding does not update the API address.
+
+### Promo Production Deployment
+
+`.github/workflows/deploy-promo.yml` is a separate, manually triggered workflow restricted to `main`. It builds only `dist-promo/` with the Railway API address and uploads it using the existing FTP credentials. It does not run automatically on pushes and does not deploy the main build. Promo loads GTM after analytics consent and supports an optional Clarity project ID. Container configuration and live verification remain release requirements; see [Promo Analytics Contract](docs/promo-analytics.md).
+
+Add the repository secret `FTP_PROMO_TARGET_DIR`: the exact FTP directory configured as the document root of `promo.auto-som.pl`, ending with `/`. Do not guess this path from the subdomain name. The workflow rejects empty, root, and overlapping main/promo directory paths. Keep both document roots separate, preferably as sibling directories. The check compares configured paths; the hosting configuration must also point each domain at its intended directory.
+
+Promo release checklist:
+
+- Create `promo.auto-som.pl` on LH.pl with a separate document root and a valid HTTPS certificate.
+- Configure `FTP_PROMO_TARGET_DIR`; keep the existing `FTP_TARGET_DIR` unchanged.
+- Deploy the backend callback branch to Railway and check startup logs.
+- After that backend deploy, set `CLIENT_ORIGIN=https://auto-som.pl,https://promo.auto-som.pl` (or the preferred `CLIENT_ORIGINS` setting) and apply the configuration. Do not use the comma-separated value with the old backend code.
+- Finish and verify consent-aware GTM/Clarity integration and the agreed form-success/phone-click events.
+- Set the optional Actions variables `VITE_GTM_ID` and `VITE_CLARITY_ID` (the promo workflow defaults to the provided GTM container, but Clarity requires an ID).
+- Run lint and both main/promo builds, merge the frontend changes, then manually run `Deploy promo frontend` from `main`.
+- Check HTTPS, the promo `noindex` directive, assets, popup behavior, and mobile layout on the real subdomain.
+- Submit one approved test request from promo and verify email and Telegram delivery. Check browser CORS and the existing main-site form as well.
+- Confirm that the main site's content, canonical, sitemap, and deployment directory are unchanged.
 
 GitHub Pages publishes the advertising demo at `https://boryspresn.github.io/som-website/promo/` alongside the main preview. The Pages workflow runs on `main` and `feat/promo-foundation`, builds promo with `BASE_PATH=/som-website/promo/`, and includes `dist-promo/` under `dist/promo/`. The visual demo has no API URL or analytics ID configured; callback submission is not enabled there.
 
@@ -202,7 +225,7 @@ Backend source: [BorysPresn/tg_bot](https://github.com/BorysPresn/tg_bot).
 
 The backend shares a repository with the Telegram bot. The website endpoint is implemented in `src/api/contact.routes.js`, with validation in `src/helpers/contactFormValidator.js`. Website submissions currently send email through Resend (`src/services/mail.sevices.js`); the HTTP handler does not send a Telegram notification.
 
-The API currently requires full name, a Polish phone number, VIN, message, and consent. A phone-only callback form needs a separate or explicitly extended API contract. Adding a frontend subdomain also requires updating the backend CORS configuration in `src/app.js`.
+The main API requires full name, a Polish phone number, VIN, message, and consent. Promo uses the separate `/api/callback` endpoint with name and phone, implemented in the backend `feat/callback-request` branch. The backend must be deployed and its allowed CORS origins updated before production promo submissions are enabled.
 
 The contact form submits JSON to:
 

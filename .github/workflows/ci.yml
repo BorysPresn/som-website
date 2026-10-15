@@ -31,5 +31,8 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Test promo analytics
+        run: npm run test:promo
+
       - name: Build promo
         run: npm run build:promo

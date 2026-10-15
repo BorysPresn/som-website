@@ -9,6 +9,7 @@
     "build": "tsc -b && vite build",
     "build:promo": "tsc -b && vite build --mode promo",
     "lint": "eslint .",
+    "test:promo": "node --test tests/promo-analytics.test.mjs",
     "preview": "vite preview",
     "preview:promo": "vite preview --mode promo"
   },

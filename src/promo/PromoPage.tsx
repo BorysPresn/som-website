@@ -1,5 +1,5 @@
 import "../app/styles/globals.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "../App.module.scss";
 import { CookieConsent } from "../components/CookieConsent/CookieConsent";
 import { Button } from "../components/ui/Button/Button";
@@ -15,9 +15,11 @@ import { CallbackDialog } from "./callback/CallbackDialog";
 import { callbackCopy } from "./callback/callback.data";
 import promoStyle from "./PromoPage.module.scss";
 import { FloatingCallButton } from "./FloatingCallButton/FloatingCallButton";
+import { bindPromoPhoneTracking, initPromoAnalytics } from "./analytics";
 
 export const PromoPage = () => {
   const [isCallbackOpen, setIsCallbackOpen] = useState(false);
+  useEffect(() => bindPromoPhoneTracking(), []);
 
   return (
     <div className={promoStyle.page}>
@@ -49,7 +51,10 @@ export const PromoPage = () => {
       </main>
       <Footer />
       <FloatingCallButton />
-      <CookieConsent className={promoStyle.cookieBanner} />
+      <CookieConsent
+        className={promoStyle.cookieBanner}
+        onAccept={initPromoAnalytics}
+      />
       {isCallbackOpen && (
         <CallbackDialog onClose={() => setIsCallbackOpen(false)} />
       )}
